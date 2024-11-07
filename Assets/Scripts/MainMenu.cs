@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MenuScene
 {
     public string playConfigurationSceneName;
 	public string settingsLevelSceneName;

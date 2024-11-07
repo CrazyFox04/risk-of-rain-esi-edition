@@ -1206,7 +1206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0f542d45f3d4cdfbe3adfa1f1d60aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playConfigurationSceneName: 
+  playConfigurationSceneName: PlayConfiguration
   settingsLevelSceneName: 
 --- !u!1 &1714975950
 GameObject:
