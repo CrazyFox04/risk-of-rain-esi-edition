@@ -10,22 +10,22 @@ public class SettingsMenu : MonoBehaviour
 
     private Resolution[] resolutions;
 
-    void Start()
-    {
+    void Start() {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
+        
+        for (int i = 0; i < resolutions.Length; i++) {
+            string option = resolutions[i].width + " x " + resolutions[i].height + " " + resolutions[i].refreshRateRatio + "Hz";
+            
             options.Add(option);
             
-            if (resolutions[i].width == Screen.currentResolution.width && 
-                resolutions[i].height == Screen.currentResolution.height)
+            if (resolutions[i].width == Screen.width && 
+                resolutions[i].height == Screen.height)
             {
-                currentResolutionIndex = i;
+                    currentResolutionIndex = options.Count - 1;
             }
         }
 
