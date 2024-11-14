@@ -24,10 +24,12 @@ public class MouvementPlayer : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
+        
         float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         movePlayer(horizontalMovement);
 
         animatePlayer(rb.velocity.x);
+        animator.SetBool("IsGrounded", isGrounded);
     }
 
     void movePlayer(float horizontalMovement)
