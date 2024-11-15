@@ -1,0 +1,3 @@
+[submodule "External/risk-of-rain-esi-edition-cpp"]
+	path = External/risk-of-rain-esi-edition-cpp
+	url = git@git.esi-bru.be:esi-squad/risk-of-rain-esi-edition-cpp.git
