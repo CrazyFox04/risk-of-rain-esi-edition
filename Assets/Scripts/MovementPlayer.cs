@@ -2,58 +2,116 @@ using UnityEngine;
 
 public class MouvementPlayer : MonoBehaviour
 {
-    public float moveSpeed;
-    public float jumpForce;
-    public bool isJumping;
-    public bool isGrounded;
-    public Rigidbody2D rb;
-    private Vector2 velocity = Vector2.zero;
-    public Transform groundCheckLeft;
-    public Transform groundCheckRight;
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
+	public float moveSpeed;
+	public float jumpForce;
+	public bool isJumping;
+	public bool isGrounded;
+	public bool isDashing;
+	public bool isFacingRight = true;
+	public Rigidbody2D rb;
+	private Vector2 velocity = Vector2.zero;
+	public Transform groundCheckLeft;
+	public Transform groundCheckRight;
+	public Animator animator;
+	public SpriteRenderer spriteRenderer;
+	public float dashSpeed; 
+	public float dashDuration; 
+	private float dashTime;
 
-    void Update()
-    {
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            isJumping = true;
-        }
-    }
+	void Update()
+	{
+		// Check if the player presses the jump button and is grounded.
+		if (Input.GetButtonDown("Jump") && isGrounded)
+		{
+			isJumping = true;
+		}
 
-    void FixedUpdate()
-    {
-        isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
-        
-        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        movePlayer(horizontalMovement);
+		// Check if the player presses the dash button and is not already dashing.
+		if (Input.GetButtonDown("Dash") && !isDashing)
+		{
+			startJump();
+			StartDash();
+		}
+		// Update the player's animation.
+		animatePlayer(rb.linearVelocity.x);
+	}
 
-        animatePlayer(rb.velocity.x);
-        animator.SetBool("IsGrounded", isGrounded);
-    }
+	void FixedUpdate()
+	{
+		// Check if the player is grounded using two ground check points.
+		isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
 
-    void movePlayer(float horizontalMovement)
-    {
-        Vector2 targetVelocity = new Vector2(horizontalMovement, rb.velocity.y);
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
+		// If the player is dashing, perform the dash and return.
+		if (isDashing)
+		{
+			PerformDash();
+			return;
+		}
 
-        if (isJumping)
-        {
-            rb.AddForce(new Vector2(0f, jumpForce));
-            isJumping = false;
-        }
-    }
+		// Read the horizontal input from the user and move the player.
+		float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+		movePlayer(horizontalMovement);
+	}
 
-    void animatePlayer(float speed)
-    {
-        animator.SetFloat("Speed", Mathf.Abs(speed));
-        if (speed > 0.1f)
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (speed < -0.1f)
-        {
-            spriteRenderer.flipX = true;
-        }
-    }
+	void movePlayer(float horizontalMovement)
+	{
+		// Calculate the target velocity based on horizontal movement and current vertical velocity.
+		Vector2 targetVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
+		rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref velocity, .05f);
+
+		// If the player is jumping, start the jump and reset the jumping state.
+		if (isJumping)
+		{
+			startJump();
+			isJumping = false;
+		}
+ 
+		// Update the player's facing direction based on horizontal velocity.
+		if (rb.linearVelocity.x > 0.1f)
+		{
+			isFacingRight = true;
+		}
+		else if (rb.linearVelocity.x < -0.1f)
+		{
+			isFacingRight = false;
+		}
+	}
+
+	void startJump()
+	{
+		// Add a vertical force to the player to make them jump.
+		rb.AddForce(new Vector2(0f, jumpForce));
+	}
+
+	void StartDash()
+	{
+		// Start the dash by setting the dashing state and dash time.
+		isDashing = true;
+		dashTime = dashDuration;
+		if (isFacingRight)
+			rb.linearVelocity = new Vector2(transform.localScale.x * dashSpeed, rb.linearVelocity.y);
+		else
+			rb.linearVelocity = new Vector2(-transform.localScale.x * dashSpeed, rb.linearVelocity.y);
+	}
+
+	void PerformDash()
+	{
+		// Decrease the dash time.
+		dashTime -= Time.fixedDeltaTime;
+
+		// If the dash time is over, stop dashing.
+		if (dashTime <= 0)
+		{
+			isDashing = false;
+		}
+	}
+
+	void animatePlayer(float speed)
+	{
+		// Update the animator with the player's speed.
+		animator.SetFloat("Speed", Mathf.Abs(speed));
+		animator.SetBool("IsGrounded", isGrounded);
+		animator.SetBool("IsDashing", isDashing);
+		spriteRenderer.flipX = !isFacingRight;
+	}
 }

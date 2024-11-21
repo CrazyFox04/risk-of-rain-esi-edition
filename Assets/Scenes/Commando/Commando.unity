@@ -756,11 +756,14 @@ MonoBehaviour:
   jumpForce: 200
   isJumping: 0
   isGrounded: 0
+  isFacingRight: 1
   rb: {fileID: 2097164758}
   groundCheckLeft: {fileID: 1082688937}
   groundCheckRight: {fileID: 1125021699}
   animator: {fileID: 2097164761}
   spriteRenderer: {fileID: 2097164754}
+  dashSpeed: 10
+  dashDuration: 1
 --- !u!95 &2097164761
 Animator:
   serializedVersion: 7
