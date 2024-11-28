@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MouvementPlayer : MonoBehaviour
+public class MovementPlayer : MonoBehaviour
 {
 	public float moveSpeed;
 	public float jumpForce;
@@ -29,8 +29,8 @@ public class MouvementPlayer : MonoBehaviour
 		// Check if the player presses the dash button and is not already dashing.
 		if (Input.GetButtonDown("Dash") && !isDashing)
 		{
-			startJump();
-			StartDash();
+			jump();
+			startDash();
 		}
 		// Update the player's animation.
 		animatePlayer(rb.linearVelocity.x);
@@ -44,7 +44,7 @@ public class MouvementPlayer : MonoBehaviour
 		// If the player is dashing, perform the dash and return.
 		if (isDashing)
 		{
-			PerformDash();
+			performDash();
 			return;
 		}
 
@@ -62,7 +62,7 @@ public class MouvementPlayer : MonoBehaviour
 		// If the player is jumping, start the jump and reset the jumping state.
 		if (isJumping)
 		{
-			startJump();
+			jump();
 			isJumping = false;
 		}
  
@@ -77,13 +77,19 @@ public class MouvementPlayer : MonoBehaviour
 		}
 	}
 
-	void startJump()
+	void jump()
 	{
 		// Add a vertical force to the player to make them jump.
 		rb.AddForce(new Vector2(0f, jumpForce));
 	}
 
-	void StartDash()
+    public void weakJump()
+    {
+        // Add a vertical force to the player to make them jump.
+        rb.AddForce(new Vector2(0f, jumpForce/2));
+    }
+
+    void startDash()
 	{
 		// Start the dash by setting the dashing state and dash time.
 		isDashing = true;
@@ -94,7 +100,7 @@ public class MouvementPlayer : MonoBehaviour
 			rb.linearVelocity = new Vector2(-transform.localScale.x * dashSpeed, rb.linearVelocity.y);
 	}
 
-	void PerformDash()
+	void performDash()
 	{
 		// Decrease the dash time.
 		dashTime -= Time.fixedDeltaTime;
