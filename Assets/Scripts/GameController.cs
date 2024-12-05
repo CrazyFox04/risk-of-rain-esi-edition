@@ -1,8 +1,10 @@
-namespace DefaultNamespace;
+using System;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private const string libName = "librisk-of-rain-esi-edition-cpp";
+    private const string dllname = "librisk-of-rain-esi-edition-cpp";
     private IntPtr game;
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
@@ -26,7 +28,7 @@ public class GameController : MonoBehaviour
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern void takePlayerDamage(IntPtr game, int damage);
     
-    static MyAPI()
+    static GameController()
     {
         Debug.Log("Plugin name: " + dllname);
     }
@@ -38,22 +40,22 @@ public class GameController : MonoBehaviour
 
     int getPlayerMaxHealth()
     {
-        getPlayerMaxHealth(this.game);
+        return getPlayerMaxHealth(this.game);
     }
 
     int getPlayerCurrentHealth()
     {
-        getPayerCurrentHealth(this.game);
+        return getPlayerCurrentHealth(this.game);
     }
 
     void addPlayerMaxHealth(int health)
     {
-        addPlauerMaxHealth(this.game, health);
+        addPlayerMaxHealth(this.game, health);
     }
 
     void addPlayerHealth(int health)
     {
-        addPlayerHealth(this.game, health)
+        addPlayerHealth(this.game, health);
     }
 
     void takePlayerDamage(int damage)
