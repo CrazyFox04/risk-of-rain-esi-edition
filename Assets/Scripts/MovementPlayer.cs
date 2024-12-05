@@ -3,20 +3,22 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour
 {
 	public float moveSpeed;
+
 	public float jumpForce;
-	public bool isJumping;
-	public bool isGrounded;
-	public bool isDashing;
-	public bool isFacingRight = true;
+	private bool isGrounded = true;
+    private bool isJumping = false;
+
+    public bool isDashing;
+    public float dashForce;
+    public float dashDuration;
+    private float dashTime;
+
+    public bool isFacingRight = true;
 	public Rigidbody2D rb;
-	private Vector2 velocity = Vector2.zero;
 	public Transform groundCheckLeft;
 	public Transform groundCheckRight;
 	public Animator animator;
 	public SpriteRenderer spriteRenderer;
-	public float dashSpeed; 
-	public float dashDuration; 
-	private float dashTime;
 
 	void Update()
 	{
@@ -33,7 +35,7 @@ public class MovementPlayer : MonoBehaviour
 			startDash();
 		}
 		// Update the player's animation.
-		animatePlayer(rb.linearVelocity.x);
+		animatePlayer();
 	}
 
 	void FixedUpdate()
@@ -53,29 +55,29 @@ public class MovementPlayer : MonoBehaviour
 		movePlayer(horizontalMovement);
 	}
 
-	void movePlayer(float horizontalMovement)
-	{
-		// Calculate the target velocity based on horizontal movement and current vertical velocity.
-		Vector2 targetVelocity = new Vector2(horizontalMovement, rb.linearVelocity.y);
-		rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref velocity, .05f);
+    void movePlayer(float horizontalMovement)
+    {
+        float horizontal = Input.GetAxis("Horizontal");
 
-		// If the player is jumping, start the jump and reset the jumping state.
-		if (isJumping)
-		{
-			jump();
-			isJumping = false;
-		}
- 
-		// Update the player's facing direction based on horizontal velocity.
-		if (rb.linearVelocity.x > 0.1f)
-		{
-			isFacingRight = true;
-		}
-		else if (rb.linearVelocity.x < -0.1f)
-		{
-			isFacingRight = false;
-		}
-	}
+        rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y); // Déplacement sur X
+
+        // If the player is jumping, start the jump and reset the jumping state.
+        if (isJumping)
+        {
+            jump();
+            isJumping = false;
+        }
+
+        // Update the player's facing direction based on horizontal velocity.
+        if (rb.linearVelocity.x > 0.1f)
+        {
+            isFacingRight = true;
+        }
+        else if (rb.linearVelocity.x < -0.1f)
+        {
+            isFacingRight = false;
+        }
+    }
 
 	void jump()
 	{
@@ -95,10 +97,10 @@ public class MovementPlayer : MonoBehaviour
 		isDashing = true;
 		dashTime = dashDuration;
 		if (isFacingRight)
-			rb.linearVelocity = new Vector2(transform.localScale.x * dashSpeed, rb.linearVelocity.y);
-		else
-			rb.linearVelocity = new Vector2(-transform.localScale.x * dashSpeed, rb.linearVelocity.y);
-	}
+            rb.AddForce(new Vector2(dashForce, 0f));
+        else
+            rb.AddForce(new Vector2(-dashForce, 0f));
+    }
 
 	void performDash()
 	{
@@ -112,10 +114,10 @@ public class MovementPlayer : MonoBehaviour
 		}
 	}
 
-	void animatePlayer(float speed)
+	void animatePlayer()
 	{
 		// Update the animator with the player's speed.
-		animator.SetFloat("Speed", Mathf.Abs(speed));
+		animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
 		animator.SetBool("IsGrounded", isGrounded);
 		animator.SetBool("IsDashing", isDashing);
 		spriteRenderer.flipX = !isFacingRight;

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HealthPlayer : MonoBehaviour
@@ -6,8 +7,9 @@ public class HealthPlayer : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
-
     public MovementPlayer movementPlayer;
+    public SpriteRenderer spriteRenderer; // Ajoutez cette ligne
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -61,6 +63,14 @@ public class HealthPlayer : MonoBehaviour
         {
             movementPlayer.weakJump();
         }
+        StartCoroutine(ChangeColorTemporarily(new Color(1.0f, 0.3f, 0.3f), 0.3f));
     }
 
+    private IEnumerator ChangeColorTemporarily(Color color, float duration)
+    {
+        Color originalColor = spriteRenderer.color;
+        spriteRenderer.color = color;
+        yield return new WaitForSeconds(duration);
+        spriteRenderer.color = originalColor;
+    }
 }
