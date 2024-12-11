@@ -594,8 +594,9 @@ GameObject:
   m_Component:
   - component: {fileID: 693634613}
   - component: {fileID: 693634612}
-  - component: {fileID: 693634610}
   - component: {fileID: 693634614}
+  - component: {fileID: 693634617}
+  - component: {fileID: 693634610}
   - component: {fileID: 693634615}
   - component: {fileID: 693634616}
   m_Layer: 6
@@ -796,6 +797,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &693634617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693634609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8050f0fff7d3e6a4c97ede086693e731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2097164755}
+  healthPlayer: {fileID: 2097164763}
+  attackRange: 2
+  coolDown: 1
+  canAttack: 1
+  damage: 10
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &775455470
 GameObject:
   m_ObjectHideFlags: 0
