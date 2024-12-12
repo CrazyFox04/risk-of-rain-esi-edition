@@ -55,6 +55,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void animateEnemy()
     {
+        // Debug.Log(Mathf.Abs(rb.linearVelocity.x));
         animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
         spriteRenderer.flipX = !isFacingRight;
     }
