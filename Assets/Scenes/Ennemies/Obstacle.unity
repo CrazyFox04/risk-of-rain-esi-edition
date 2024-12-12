@@ -2458,7 +2458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54206bfed0bb5e146a402e6783abc442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 1581228616}
   healthBar: {fileID: 1390138565}
   movementPlayer: {fileID: 2097164759}
   spriteRenderer: {fileID: 2097164754}

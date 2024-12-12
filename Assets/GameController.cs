@@ -38,6 +38,11 @@ public class GameController : MonoBehaviour
         this.game = newGame();
     }
 
+    public void createNewGame()
+    {
+        this.game = newGame();
+    }
+
     public int getPlayerMaxHealth()
     {
         return getPlayerMaxHealth(this.game);

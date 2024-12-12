@@ -13,11 +13,16 @@ public class HealthPlayer : MonoBehaviour
 
     void Start()
     {
+        gameController.createNewGame();
+        gameController.addPlayerHealth(50);
+        Debug.Log(gameController.getPlayerCurrentHealth());
         maxHealth = gameController.getPlayerMaxHealth();
         currentHealth = gameController.getPlayerCurrentHealth();
         gameController.takePlayerDamage(10);
         currentHealth = gameController.getPlayerCurrentHealth();
         healthBar.setMaxHealth(maxHealth);
+        Debug.Log(gameController.getPlayerCurrentHealth());
+        Debug.Log(gameController.getPlayerMaxHealth()); 
     }
 
     void Update()
