@@ -697,7 +697,7 @@ Transform:
   m_GameObject: {fileID: 693634609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.64, y: 1.28, z: 0}
+  m_LocalPosition: {x: -12.25, y: 1.25, z: 0}
   m_LocalScale: {x: 1.9847015, y: 1.9847015, z: 1.9847015}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -815,7 +815,7 @@ MonoBehaviour:
   coolDown: 1
   canAttack: 1
   damage: 10
-  spriteRenderer: {fileID: 0}
+  delayOfAttack: 1
   animator: {fileID: 0}
 --- !u!1 &775455470
 GameObject:
@@ -1782,6 +1782,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 693634613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1581228615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1581228617}
+  - component: {fileID: 1581228616}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1581228616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581228615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39667a30b0bb37a4f99920ab40ef1622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1581228617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581228615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.97765064, y: 0.9644707, z: -4.517466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1739631251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,8 +2458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54206bfed0bb5e146a402e6783abc442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
+  gameController: {fileID: 0}
   healthBar: {fileID: 1390138565}
   movementPlayer: {fileID: 2097164759}
   spriteRenderer: {fileID: 2097164754}
@@ -2429,3 +2472,4 @@ SceneRoots:
   - {fileID: 775455471}
   - {fileID: 1298104923}
   - {fileID: 516772878}
+  - {fileID: 1581228617}

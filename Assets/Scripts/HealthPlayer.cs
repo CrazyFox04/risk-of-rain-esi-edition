@@ -3,16 +3,20 @@ using UnityEngine;
 
 public class HealthPlayer : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    private int maxHealth = 100;
+    private int currentHealth;
 
+    public GameController gameController;
     public HealthBar healthBar;
     public MovementPlayer movementPlayer;
     public SpriteRenderer spriteRenderer; // Ajoutez cette ligne
 
     void Start()
     {
-        currentHealth = maxHealth;
+        maxHealth = gameController.getPlayerMaxHealth();
+        currentHealth = gameController.getPlayerCurrentHealth();
+        gameController.takePlayerDamage(10);
+        currentHealth = gameController.getPlayerCurrentHealth();
         healthBar.setMaxHealth(maxHealth);
     }
 
