@@ -1197,7 +1197,50 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      background_0: -7443756053782179069
+      background_1: -3192133289119773823
+      background_10: 7001778013311136900
+      background_11: 4328097311078286071
+      background_12: 4372148480733514280
+      background_13: 8900154682771799127
+      background_14: 6063939892028557472
+      background_15: 3414901824912693521
+      background_16: 554659820273570864
+      background_17: -709579608419119541
+      background_18: -6444662470419259896
+      background_19: -2841738272403921048
+      background_2: 3970015981214305365
+      background_20: -8846625461509582439
+      background_21: -8017813488550349263
+      background_22: 7573440505101220439
+      background_23: -6863712573513296491
+      background_24: -8495518608564199154
+      background_25: 5054532152264460952
+      background_26: -8595306022536147679
+      background_27: -664377540809205162
+      background_28: -2151087672213475925
+      background_29: 2998442183771500188
+      background_3: 1405897620634370583
+      background_30: 5932175197008134668
+      background_31: 3782439835773572349
+      background_32: 8052486614023233278
+      background_33: -8142366524633573335
+      background_34: -7947557920358419523
+      background_35: 7984682239260073557
+      background_36: -7187019853680432391
+      background_37: 7593994550161921964
+      background_38: 5654044163260192531
+      background_39: 5103659082803753071
+      background_4: 2415078317887781457
+      background_40: -7612795665573856721
+      background_41: 1532420216585984091
+      background_42: -6588070226246289887
+      background_5: 1316490896907413468
+      background_6: 8343477328892443928
+      background_7: 7898562296661958002
+      background_8: 986969114328154071
+      background_9: -6344343437890535301
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

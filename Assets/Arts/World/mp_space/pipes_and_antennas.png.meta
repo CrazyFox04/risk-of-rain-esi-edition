@@ -397,7 +397,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pipes_and_antennas_0: -6068499197414970545
+      pipes_and_antennas_1: -7402619157865645138
+      pipes_and_antennas_10: -5286739214658777564
+      pipes_and_antennas_2: -3919741674004755458
+      pipes_and_antennas_3: -8411104339789767623
+      pipes_and_antennas_4: -2529650871604004396
+      pipes_and_antennas_5: -5022776205835980755
+      pipes_and_antennas_6: 1268507174297698337
+      pipes_and_antennas_7: 3380466423273809172
+      pipes_and_antennas_8: -5446853699233055856
+      pipes_and_antennas_9: 1871561086221338990
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

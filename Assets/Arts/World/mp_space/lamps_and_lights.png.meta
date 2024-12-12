@@ -547,7 +547,24 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lamps_and_lights_0: -4805151248171261363
+      lamps_and_lights_1: -1070785893784822220
+      lamps_and_lights_10: -4982247805533043488
+      lamps_and_lights_11: 6770932734921259729
+      lamps_and_lights_12: 2806417231137733268
+      lamps_and_lights_13: 777925524664634968
+      lamps_and_lights_14: -9031122740311112431
+      lamps_and_lights_15: -2401054630837993774
+      lamps_and_lights_16: 978881508861866200
+      lamps_and_lights_2: 1611266195501811084
+      lamps_and_lights_3: -3011608539004781969
+      lamps_and_lights_4: 4200271655035545670
+      lamps_and_lights_5: -4246600941632979906
+      lamps_and_lights_6: -7382493692503647463
+      lamps_and_lights_7: 2153486895197104288
+      lamps_and_lights_8: 5391436833637365401
+      lamps_and_lights_9: -507011562879837046
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

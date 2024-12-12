@@ -697,7 +697,30 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      blue_rocks_0: -473222746244504232
+      blue_rocks_1: 7705056563789893048
+      blue_rocks_10: 1914586488072413891
+      blue_rocks_11: -3599381137768542491
+      blue_rocks_12: 8765410908779057049
+      blue_rocks_13: -8737105227272251204
+      blue_rocks_14: 2916922779398046301
+      blue_rocks_15: -6433949291056908772
+      blue_rocks_16: -4753713987945951937
+      blue_rocks_17: -3742471397340303058
+      blue_rocks_18: 9164649221706347182
+      blue_rocks_19: 7613682069161457132
+      blue_rocks_2: -3624255105285558456
+      blue_rocks_20: 8289768033781660671
+      blue_rocks_21: -5367921903326079432
+      blue_rocks_22: -5439019488598883845
+      blue_rocks_3: -7877688974059106139
+      blue_rocks_4: -687063402204988286
+      blue_rocks_5: -7708029266023373607
+      blue_rocks_6: -126139664303213158
+      blue_rocks_7: -2739327413118777368
+      blue_rocks_8: -6851114386342192158
+      blue_rocks_9: -3172785961205205176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -822,7 +822,35 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fungal_forest_0: 6049645259351326065
+      fungal_forest_1: 1394836564109941972
+      fungal_forest_10: -1261617070598315660
+      fungal_forest_11: 459230840317361922
+      fungal_forest_12: 6705031072729840528
+      fungal_forest_13: 2112463886798099908
+      fungal_forest_14: 2163798022591629711
+      fungal_forest_15: 8880054179465744375
+      fungal_forest_16: 9157829202370599939
+      fungal_forest_17: -7595623948370454006
+      fungal_forest_18: -2447429352624146425
+      fungal_forest_19: 7045544833804608904
+      fungal_forest_2: 5130215581809651086
+      fungal_forest_20: 5149930357238241484
+      fungal_forest_21: -18177507750013239
+      fungal_forest_22: -4391994802294834890
+      fungal_forest_23: -5707071652248001477
+      fungal_forest_24: 548962706654764035
+      fungal_forest_25: -5821551395040457624
+      fungal_forest_26: 8299115829263756864
+      fungal_forest_27: 5377077578212142667
+      fungal_forest_3: 5731524411826197236
+      fungal_forest_4: -1193173521234303231
+      fungal_forest_5: -6096142477265792466
+      fungal_forest_6: -5101353824758261698
+      fungal_forest_7: 8096190043433634055
+      fungal_forest_8: -3310674224220643903
+      fungal_forest_9: -5334215423411081836
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

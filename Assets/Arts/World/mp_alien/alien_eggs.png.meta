@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      alien_eggs_0: 4227084197818709211
+      alien_eggs_1: -6185253180170846928
+      alien_eggs_2: -8411146961420285265
+      alien_eggs_3: -570743721883151732
+      alien_eggs_4: 6433868754586339917
+      alien_eggs_5: -8555198032945565944
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

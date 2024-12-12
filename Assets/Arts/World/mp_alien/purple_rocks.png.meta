@@ -597,7 +597,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      purple_rocks_0: 1439421795169366978
+      purple_rocks_1: -8763822453107557266
+      purple_rocks_10: -1238865893892246963
+      purple_rocks_11: 5627051006988825761
+      purple_rocks_12: 6376619686368954147
+      purple_rocks_13: -2288147177378079557
+      purple_rocks_14: -6714247905156489398
+      purple_rocks_15: -49300775128357581
+      purple_rocks_16: 8091164620181588646
+      purple_rocks_17: 3586505011110641248
+      purple_rocks_18: -2151765966308626449
+      purple_rocks_2: 6935882153510087656
+      purple_rocks_3: -4894181132447996232
+      purple_rocks_4: 5822035854072677243
+      purple_rocks_5: 8529831213520550303
+      purple_rocks_6: 4301307511997422499
+      purple_rocks_7: -5940783649124663120
+      purple_rocks_8: -4329739194818515231
+      purple_rocks_9: 8025064961429664449
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

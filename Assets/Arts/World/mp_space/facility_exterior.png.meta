@@ -372,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      facility_exterior_0: 7420117248068101823
+      facility_exterior_1: 6739704627493091890
+      facility_exterior_2: 3336155730167323245
+      facility_exterior_3: 4697970202643824108
+      facility_exterior_4: -4305335472338358904
+      facility_exterior_5: -4160169732798686196
+      facility_exterior_6: 7286088155111384087
+      facility_exterior_7: -5475949615494287702
+      facility_exterior_8: -2028753405666279380
+      facility_exterior_9: -7405416824349482236
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

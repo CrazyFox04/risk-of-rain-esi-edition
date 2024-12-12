@@ -1072,7 +1072,45 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      vegetation_0: 3769678016217286026
+      vegetation_1: 8023448962763478542
+      vegetation_10: 7326545045221046028
+      vegetation_11: -8814225154916422757
+      vegetation_12: -1618814673664309982
+      vegetation_13: -3619405235576096172
+      vegetation_14: 8637425608715240051
+      vegetation_15: -5356857781299460813
+      vegetation_16: 3081663102547177718
+      vegetation_17: 8907264070247409885
+      vegetation_18: 1083400057806172934
+      vegetation_19: -6841295215890379557
+      vegetation_2: -2798364573163613104
+      vegetation_20: 842345834986668064
+      vegetation_21: 3652525013052604946
+      vegetation_22: -2291611447946676397
+      vegetation_23: 3397800423656784368
+      vegetation_24: -656187221655254539
+      vegetation_25: -6045414168787793586
+      vegetation_26: -8369994597247910724
+      vegetation_27: -3086665608086486169
+      vegetation_28: -4419653676951429159
+      vegetation_29: 2449461127088198439
+      vegetation_3: -828040423557316158
+      vegetation_30: 9160230961715876921
+      vegetation_31: 6419839963350183004
+      vegetation_32: 9114670138694023839
+      vegetation_33: -433408764829126777
+      vegetation_34: -5142436221579027943
+      vegetation_35: 7534203140782290787
+      vegetation_36: 1254149146642741721
+      vegetation_37: -6516704755855484188
+      vegetation_4: -252394602697265231
+      vegetation_5: -420160148073354171
+      vegetation_6: 1596957317158838406
+      vegetation_7: -8681540811324367610
+      vegetation_8: 654241085969641700
+      vegetation_9: 4317296616220336182
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

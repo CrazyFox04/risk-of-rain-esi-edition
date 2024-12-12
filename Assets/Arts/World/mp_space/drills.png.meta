@@ -347,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      drills_0: 1810435400897959967
+      drills_1: 6005943569198880237
+      drills_2: -1206120653468595121
+      drills_3: -5461765103509139875
+      drills_4: -6124641960479019554
+      drills_5: 1777172395185878633
+      drills_6: 5880986737375815682
+      drills_7: -4426057480337032224
+      drills_8: -1924991168463018110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -372,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      doors_and_levers_0: -5251273377551992779
+      doors_and_levers_1: 7296780676403246415
+      doors_and_levers_2: 3014433509023032784
+      doors_and_levers_3: 1702778054386185616
+      doors_and_levers_4: -3828849905543706945
+      doors_and_levers_5: 4990945656637976695
+      doors_and_levers_6: -5105805501370365184
+      doors_and_levers_7: -1129417447913721283
+      doors_and_levers_8: 425798048322071230
+      doors_and_levers_9: 4491631323573143949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
