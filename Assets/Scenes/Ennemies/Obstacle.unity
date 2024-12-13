@@ -729,7 +729,7 @@ Transform:
   m_GameObject: {fileID: 693634609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.23, y: 0.84182, z: 0}
+  m_LocalPosition: {x: -11.05, y: 0.82, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2097164755}
-  healthPlayer: {fileID: 2097164763}
+  healthPlayer: {fileID: 0}
   attackRange: 3
   coolDown: 2
   canAttack: 1
@@ -1224,7 +1224,7 @@ GameObject:
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1082688937
 Transform:
   m_ObjectHideFlags: 0
@@ -1255,7 +1255,7 @@ GameObject:
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1125021699
 Transform:
   m_ObjectHideFlags: 0
@@ -1839,7 +1839,7 @@ Transform:
   m_GameObject: {fileID: 1299828164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.32, y: 0.84182, z: 0}
+  m_LocalPosition: {x: 10.74, y: 1, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2817,13 +2817,13 @@ MonoBehaviour:
   moveSpeed: 4
   jumpForce: 200
   isDashing: 0
-  dashForce: 400
-  dashDuration: 1
+  dashForce: 1000
+  dashDuration: 0.4
   isFacingRight: 1
   rb: {fileID: 2097164758}
   groundCheckLeft: {fileID: 1082688937}
   groundCheckRight: {fileID: 1125021699}
-  animator: {fileID: 0}
+  animator: {fileID: 2097164764}
   spriteRenderer: {fileID: 2097164754}
 --- !u!61 &2097164762
 BoxCollider2D:
@@ -2886,8 +2886,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1390138565}
-  movementPlayer: {fileID: 2097164759}
-  spriteRenderer: {fileID: 2097164754}
+  animator: {fileID: 2097164764}
 --- !u!95 &2097164764
 Animator:
   serializedVersion: 7

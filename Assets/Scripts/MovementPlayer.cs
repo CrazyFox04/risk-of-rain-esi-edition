@@ -19,6 +19,21 @@ public class MovementPlayer : MonoBehaviour
 	public Transform groundCheckRight;
 	public Animator animator;
 	public SpriteRenderer spriteRenderer;
+	
+	
+	public const string ATTACK1 = "PlayerAttack1";
+	public const string ATTACK2 = "PlayerAttack2";
+	public const string ATTACK3 = "PlayerAttack3";
+	public const string ATTACK4 = "PlayerAttack4";
+	public const string ATTACK5 = "PlayerAttack5";
+	public const string JUMP = "PlayerJump";
+	public const string RUN = "PlayerRun";
+	public const string RUN_SHOTGUN = "PlayerRunShotgun";
+	public const string FALLING = "PlayerFalling";
+	public const string LANDING = "PlayerLanding";
+	public const string DASH = "PlayerDash";
+	public const string JETPACK = "PlayerJetPack";
+
 
 	void Update()
 	{
@@ -26,16 +41,15 @@ public class MovementPlayer : MonoBehaviour
 		if (Input.GetButtonDown("Jump") && isGrounded)
 		{
 			isJumping = true;
+			changeAnimationState(JUMP);
 		}
 
 		// Check if the player presses the dash button and is not already dashing.
 		if (Input.GetButtonDown("Dash") && !isDashing)
 		{
-			jump();
 			startDash();
+			changeAnimationState(DASH);
 		}
-		// Update the player's animation.
-		animatePlayer();
 	}
 
 	void FixedUpdate()
@@ -53,13 +67,30 @@ public class MovementPlayer : MonoBehaviour
 		// Read the horizontal input from the user and move the player.
 		float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
 		movePlayer(horizontalMovement);
+		if (isGrounded)
+		{
+			if (horizontalMovement != 0)
+			{
+				changeAnimationState(RUN);
+			}
+			else
+			{
+				changeAnimationState("PlayerIdle");
+			}
+		}
+		else
+		{
+			changeAnimationState(FALLING);
+		}
+		
+		spriteRenderer.flipX = !isFacingRight;
 	}
 
     void movePlayer(float horizontalMovement)
     {
         float horizontal = Input.GetAxis("Horizontal");
 
-        rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y); // Déplacement sur X
+        rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y); // Dï¿½placement sur X
 
         // If the player is jumping, start the jump and reset the jumping state.
         if (isJumping)
@@ -113,13 +144,10 @@ public class MovementPlayer : MonoBehaviour
 			isDashing = false;
 		}
 	}
-
-	void animatePlayer()
+	
+	public void changeAnimationState(string animation)
 	{
-		// Update the animator with the player's speed.
-		animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
-		animator.SetBool("IsGrounded", isGrounded);
-		animator.SetBool("IsDashing", isDashing);
-		spriteRenderer.flipX = !isFacingRight;
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName(animation)) return;
+		animator.Play(animation);
 	}
 }

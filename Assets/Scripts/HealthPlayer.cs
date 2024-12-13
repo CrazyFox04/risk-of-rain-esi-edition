@@ -7,8 +7,8 @@ public class HealthPlayer : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
-    public MovementPlayer movementPlayer;
-    public SpriteRenderer spriteRenderer; // Ajoutez cette ligne
+    public Animator animator;
+
 
     void Start()
     {
@@ -52,6 +52,7 @@ public class HealthPlayer : MonoBehaviour
 
     public void takeDamage(int damage)
     {
+        changeAnimationState("PlayerHurt");
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
         if (currentHealth < 0)
@@ -59,18 +60,11 @@ public class HealthPlayer : MonoBehaviour
             currentHealth = 0;
             healthBar.setHealth(currentHealth);
         }
-        if (movementPlayer != null)
-        {
-            movementPlayer.weakJump();
-        }
-        StartCoroutine(ChangeColorTemporarily(new Color(1.0f, 0.3f, 0.3f), 0.3f));
     }
 
-    private IEnumerator ChangeColorTemporarily(Color color, float duration)
+    public void changeAnimationState(string animation)
     {
-        Color originalColor = spriteRenderer.color;
-        spriteRenderer.color = color;
-        yield return new WaitForSeconds(duration);
-        spriteRenderer.color = originalColor;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animation)) return;
+        animator.Play(animation);
     }
 }
