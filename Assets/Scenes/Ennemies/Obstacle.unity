@@ -820,7 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2097164755}
-  healthPlayer: {fileID: 0}
+  playerScript: {fileID: 0}
   attackRange: 3
   coolDown: 2
   canAttack: 1
@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 775455471}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2097164755}
-  healthPlayer: {fileID: 2097164763}
+  playerScript: {fileID: 0}
   attackRange: 2
   coolDown: 2
   canAttack: 1
@@ -1839,7 +1839,7 @@ Transform:
   m_GameObject: {fileID: 1299828164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.74, y: 1, z: 0}
+  m_LocalPosition: {x: 7.75, y: 1.71, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2163,8 +2163,8 @@ GameObject:
   - component: {fileID: 1739631254}
   - component: {fileID: 1739631253}
   m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2689,15 +2689,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097164755}
+  - component: {fileID: 2097164765}
   - component: {fileID: 2097164754}
-  - component: {fileID: 2097164759}
-  - component: {fileID: 2097164763}
   - component: {fileID: 2097164758}
   - component: {fileID: 2097164762}
   - component: {fileID: 2097164764}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2802,29 +2801,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2097164759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097164753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657dfb534849a8c48808be4dcb92cdcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 4
-  jumpForce: 200
-  isDashing: 0
-  dashForce: 1000
-  dashDuration: 0.4
-  isFacingRight: 1
-  rb: {fileID: 2097164758}
-  groundCheckLeft: {fileID: 1082688937}
-  groundCheckRight: {fileID: 1125021699}
-  animator: {fileID: 2097164764}
-  spriteRenderer: {fileID: 2097164754}
 --- !u!61 &2097164762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2871,22 +2847,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.06227316, y: 0.122013986}
   m_EdgeRadius: 0
---- !u!114 &2097164763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097164753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54206bfed0bb5e146a402e6783abc442, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 1390138565}
-  animator: {fileID: 2097164764}
 --- !u!95 &2097164764
 Animator:
   serializedVersion: 7
@@ -2909,6 +2869,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2097164765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097164753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657dfb534849a8c48808be4dcb92cdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2097164758}
+  groundCheckLeft: {fileID: 1082688937}
+  groundCheckRight: {fileID: 1125021699}
+  isFacingRight: 1
+  moveSpeed: 4
+  jumpForce: 200
+  dashForce: 1000
+  dashTime: 0.4
+  attack1Time: 0.6
+  attack2Time: 0.4
+  attack3Time: 1
+  jetPackTime: 1
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 1390138565}
+  animator: {fileID: 2097164764}
+  spriteRenderer: {fileID: 2097164754}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

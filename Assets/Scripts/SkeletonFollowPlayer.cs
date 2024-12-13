@@ -18,6 +18,10 @@ public class EnemyFollow : MonoBehaviour
     public Animator animator;
     private bool isFacingRight;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);

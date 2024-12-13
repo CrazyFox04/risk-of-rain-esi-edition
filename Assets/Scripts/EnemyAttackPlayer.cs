@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 
 public class EnemyAttackPlayer : MonoBehaviour
 {
     public Transform player;
-    public HealthPlayer healthPlayer;
+    [FormerlySerializedAs("healthPlayer")] public Player playerScript;
 
     public float attackRange;
     public float coolDown;
@@ -13,6 +14,13 @@ public class EnemyAttackPlayer : MonoBehaviour
     public float delayOfAttack; //to attack at the right moment with the animation
 
     public Animator animator;
+    
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerScript = player.GetComponent<Player>();
+    }
+    
     void FixedUpdate()
     {
         attack();
@@ -45,7 +53,7 @@ public class EnemyAttackPlayer : MonoBehaviour
     private IEnumerator DelayedAttack()
     {
         yield return new WaitForSeconds(delayOfAttack);
-        healthPlayer.takeDamage(damage);
+        playerScript.takeDamage(damage);
     }
     
     
