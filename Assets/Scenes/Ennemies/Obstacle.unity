@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 840079616}
   m_Layer: 0
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1839,7 +1839,7 @@ Transform:
   m_GameObject: {fileID: 1299828164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.75, y: 1.71, z: 0}
+  m_LocalPosition: {x: 6.11, y: 2.7, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2347,7 +2347,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2372,7 +2372,7 @@ Transform:
   m_GameObject: {fileID: 1872548858}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0004882635, w: 0.9999999}
-  m_LocalPosition: {x: -5.820766e-11, y: -0.09, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2835,7 +2835,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0024170578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.415, y: 0.35}
@@ -2845,7 +2845,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.06227316, y: 0.122013986}
+  m_Size: {x: 0.06227316, y: 0.11717987}
   m_EdgeRadius: 0
 --- !u!95 &2097164764
 Animator:
@@ -2884,15 +2884,25 @@ MonoBehaviour:
   rb: {fileID: 2097164758}
   groundCheckLeft: {fileID: 1082688937}
   groundCheckRight: {fileID: 1125021699}
+  isGrounded: 1
   isFacingRight: 1
+  isBussy: 0
   moveSpeed: 4
-  jumpForce: 200
+  jumpForce: 5
   dashForce: 1000
+  jetPackForce: 10
+  hurtTime: 0.5
+  landingTime: 0.2
   dashTime: 0.4
   attack1Time: 0.6
   attack2Time: 0.4
   attack3Time: 1
-  jetPackTime: 1
+  jetPackTime: 2
+  dashCooldown: 0
+  attack1Cooldown: 0
+  attack2Cooldown: 0
+  attack3Cooldown: 0
+  jetPackCooldown: 0
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1390138565}
