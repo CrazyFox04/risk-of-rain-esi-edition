@@ -100,22 +100,25 @@ public class Player : MonoBehaviour
         updateBaseAnimation();
         FlipPlayerToMouse();
     }
+    
+    //-----------------Player Movement-----------------
 
     void movePlayer()
     {
         float horizontal = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);
     }
+    
+    //-----------------Player Actions-----------------
 
     void jump()
     {
-        
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }
 
     void dash()
     {
-        StartCoroutine(BlockActionsCoroutine(dashTime));
+        StartCoroutine(BlockActions(dashTime));
         StartCoroutine(performAnimation(DASH, dashTime));
         if (isFacingRight)
             rb.AddForce(new Vector2(dashForce, 0f));
@@ -126,7 +129,7 @@ public class Player : MonoBehaviour
     void jetPack()
     {
         StartCoroutine(performAnimation(JETPACK, jetPackTime));
-        StartCoroutine(BlockActionsCoroutine(jetPackTime));
+        StartCoroutine(BlockActions(jetPackTime));
         StartCoroutine(performJetPack());
     }
     IEnumerator performJetPack()
@@ -140,52 +143,68 @@ public class Player : MonoBehaviour
 
     void attack1()
     {
-        StartCoroutine(BlockActionsCoroutine(attack1Time));
+        //Call model here
+        StartCoroutine(BlockActions(attack1Time));
         StartCoroutine(performAnimation(ATTACK1, attack1Time));
     }
 
     void attack2()
     {
-        StartCoroutine(BlockActionsCoroutine(attack2Time));
+        //Call model here
+        StartCoroutine(BlockActions(attack2Time));
         StartCoroutine(performAnimation(ATTACK2, attack2Time));
     }
 
     void attack3()
     {
-        StartCoroutine(BlockActionsCoroutine(attack3Time));
+        //Call model here
+        StartCoroutine(BlockActions(attack3Time));
         StartCoroutine(performAnimation(ATTACK3, attack3Time));
     }
 
+    //-----------------Health-----------------
+    
     public void addMaxHealth(int health)
     {
-        maxHealth += health;
-        currentHealth = maxHealth;
+        //Call model here
         healthBar.setMaxHealth(maxHealth);
     }
 
     public void addHealth(int health)
     {
-        currentHealth += health;
+        //Call model here
         healthBar.setHealth(currentHealth);
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-            healthBar.setHealth(currentHealth);
-        }
     }
 
     public void takeDamage(int damage)
     {
+        //Call model here
+        Debug.Log("Player took damage: " + damage);
         StartCoroutine(performAnimation(HURT, hurtTime));
-        currentHealth -= damage;
         healthBar.setHealth(currentHealth);
-        if (currentHealth < 0)
+    }
+    
+    
+    //-----------------Collision Behaviors-----------------
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
         {
-            currentHealth = 0;
-            healthBar.setHealth(currentHealth);
+            StartCoroutine(performAnimation(LANDING, landingTime));
         }
     }
-
+    
+    //-----------------todo - remove-----------------
+    //CAN BE REPLACED BY MODEL !!!!!!!
+    private IEnumerator BlockActions(float time)
+    {
+        isBussy = true;
+        yield return new WaitForSeconds(time);
+        isBussy = false;
+    }
+    
+    //-----------------Animations-----------------
     void updateBaseAnimation()
     {
         if (isPerformingAnimation) return;
@@ -205,27 +224,12 @@ public class Player : MonoBehaviour
         
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            StartCoroutine(performAnimation(LANDING, landingTime));
-        }
-    }
-    
     private IEnumerator performAnimation(string animation, float attackTime)
     {
         isPerformingAnimation = true;
         changeAnimationState(animation);
         yield return new WaitForSeconds(attackTime);
         isPerformingAnimation = false;
-    }
-    
-    private IEnumerator BlockActionsCoroutine(float time)
-    {
-        isBussy = true;
-        yield return new WaitForSeconds(time);
-        isBussy = false;
     }
 
     public void changeAnimationState(string animation)
@@ -234,7 +238,7 @@ public class Player : MonoBehaviour
         animator.Play(animation);
     }
 
-    void SetPlayerOrientation(bool faceRight)
+    void SetOrientation(bool faceRight)
     {
         spriteRenderer.flipX = !faceRight;
         isFacingRight = faceRight;
@@ -245,11 +249,11 @@ public class Player : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePosition.x > transform.position.x)
         {
-            SetPlayerOrientation(true);
+            SetOrientation(true);
         }
         else
         {
-            SetPlayerOrientation(false);
+            SetOrientation(false);
         }
     }
 }
