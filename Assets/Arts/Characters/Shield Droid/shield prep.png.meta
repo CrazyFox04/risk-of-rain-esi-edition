@@ -1,0 +1,456 @@
+fileFormatVersion: 2
+guid: f59df12452f94b244ae315eee2e76679
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2978100570699190456
+    second: shield prep_0
+  - first:
+      213: 6145314977833822264
+    second: shield prep_1
+  - first:
+      213: 2797315162314958499
+    second: shield prep_2
+  - first:
+      213: 7582790234845506094
+    second: shield prep_3
+  - first:
+      213: -2453259567219762635
+    second: shield prep_4
+  - first:
+      213: -7055775880885142636
+    second: shield prep_5
+  - first:
+      213: 6825957649765545583
+    second: shield prep_6
+  - first:
+      213: 2688213520126186132
+    second: shield prep_7
+  - first:
+      213: 995794716059882888
+    second: shield prep_8
+  - first:
+      213: 1554011364707846906
+    second: shield prep_9
+  - first:
+      213: 4292630436995694775
+    second: shield prep_10
+  - first:
+      213: -2282753130747014746
+    second: shield prep_11
+  - first:
+      213: -1840203661470274780
+    second: shield prep_12
+  - first:
+      213: -1477392453499678816
+    second: shield prep_13
+  - first:
+      213: 4514091078444673099
+    second: shield prep_14
+  - first:
+      213: 1299536147593509335
+    second: shield prep_15
+  - first:
+      213: 22147990724389041
+    second: shield prep_16
+  - first:
+      213: -1191851529193610502
+    second: shield prep_17
+  - first:
+      213: 1785006903276723527
+    second: shield prep_18
+  - first:
+      213: -4464891055440148809
+    second: shield prep_19
+  - first:
+      213: -6231248241973304403
+    second: shield prep_20
+  - first:
+      213: -2378549188043998939
+    second: shield prep_21
+  - first:
+      213: -6752059391828428610
+    second: shield prep_22
+  - first:
+      213: 1113006693223268283
+    second: shield prep_23
+  - first:
+      213: -4828397051859223747
+    second: shield prep_24
+  - first:
+      213: -1819923595001732260
+    second: shield prep_25
+  - first:
+      213: -1960746083719840176
+    second: shield prep_26
+  - first:
+      213: -8999204090973496193
+    second: shield prep_27
+  - first:
+      213: -1244126255626551641
+    second: shield prep_28
+  - first:
+      213: 5137198954139894987
+    second: shield prep_29
+  - first:
+      213: -3951289748125217023
+    second: shield prep_30
+  - first:
+      213: 4363342877206488927
+    second: shield prep_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shield prep_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 279
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b0d9edb0b6545920800000000000000
+      internalID: 2978100570699190456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 248
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8382caeb96b884550800000000000000
+      internalID: 6145314977833822264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 217
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a6e89eb15f02d620800000000000000
+      internalID: 2797315162314958499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2a64421b8b7b3960800000000000000
+      internalID: 7582790234845506094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 155
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a990aeb6544fdd0800000000000000
+      internalID: -2453259567219762635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b721d2839d41e90800000000000000
+      internalID: -7055775880885142636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f66b226215caabe50800000000000000
+      internalID: 6825957649765545583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 62
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 492168b24f37e4520800000000000000
+      internalID: 2688213520126186132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 31
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885d5ffa406c1dd00800000000000000
+      internalID: 995794716059882888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield prep_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 90
+        height: 31
+      alignment: 9
+      pivot: {x: 0.49, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afac45a4a15f09510800000000000000
+      internalID: 1554011364707846906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2d32245000e7bad4eaf234c70ab61ef4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      shield prep_0: 2978100570699190456
+      shield prep_1: 6145314977833822264
+      shield prep_2: 2797315162314958499
+      shield prep_3: 7582790234845506094
+      shield prep_4: -2453259567219762635
+      shield prep_5: -7055775880885142636
+      shield prep_6: 6825957649765545583
+      shield prep_7: 2688213520126186132
+      shield prep_8: 995794716059882888
+      shield prep_9: 1554011364707846906
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

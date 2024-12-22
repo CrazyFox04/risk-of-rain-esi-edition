@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 7849171485331645363}
   m_Layer: 6
   m_Name: Small Monster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +251,6 @@ MonoBehaviour:
   speed: 2
   jumpForce: 200
   followRange: 10
-  stopRange: 2.5
   rb: {fileID: 6700896921135448510}
   groundCheckLeft: {fileID: 1114298975408084946}
   groundCheckRight: {fileID: 163234133664447396}

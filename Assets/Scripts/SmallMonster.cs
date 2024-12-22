@@ -15,9 +15,6 @@ public class SmallMonster : AbstractEnemy
         }
     }
     
-    //-----------------Enemy Attack-----------------
-   
-    
     //-----------------Enemy On Collision Behaviors-----------------
     
     void OnTriggerEnter2D(Collider2D other)

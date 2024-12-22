@@ -8,7 +8,6 @@ public abstract class AbstractEnemy : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float followRange;
-    public float stopRange;
     public Rigidbody2D rb;
 
     public Transform groundCheckLeft;
@@ -27,6 +26,8 @@ public abstract class AbstractEnemy : MonoBehaviour
     public float attackTime;
     
     protected bool isPerformingAnimation = false;
+    
+    public Collider2D jumpCollider;
     
     protected bool isBusy = false;
 
@@ -58,11 +59,12 @@ public abstract class AbstractEnemy : MonoBehaviour
     {
         if (isBusy) return;
         float distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (distance < followRange && distance > stopRange)
+        if (distance < followRange && distance > attackRange)
         {
             Vector2 directionToTarget = (playerPosition.position - transform.position).normalized * speed;
             rb.linearVelocity = new Vector2(directionToTarget.x, rb.linearVelocity.y);
         }
+
         if (rb.linearVelocity.x > 0.1f)
         {
             isFacingRight = true;
@@ -72,6 +74,15 @@ public abstract class AbstractEnemy : MonoBehaviour
             isFacingRight = false;
         }
     }
+    
+    public void jump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(new Vector2(0f, jumpForce));
+        }
+    }
+    
     
     protected void flip()
     {
@@ -83,6 +94,7 @@ public abstract class AbstractEnemy : MonoBehaviour
             SetOrientation(false);
         }
     }
+    
     
     //-----------------Attack-----------------
 
