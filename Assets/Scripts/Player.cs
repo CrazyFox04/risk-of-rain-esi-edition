@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class Player : MonoBehaviour
 
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+    
+    public List<AbstractEnemy> enemies = new List<AbstractEnemy>();
 
     public const string IDLE = "PlayerIdle";
     public const string ATTACK1 = "PlayerAttack1";
@@ -146,6 +149,20 @@ public class Player : MonoBehaviour
         //Call model here
         StartCoroutine(BlockActions(attack1Time));
         StartCoroutine(performAnimation(ATTACK1, attack1Time));
+        foreach (AbstractEnemy enemy in enemies)
+        {
+            float distance = transform.position.x - enemy.transform.position.x;
+            if( isFacingRight  && distance < 0 && distance > -1)
+            {
+                Debug.Log("Player attacked enemy");
+                // enemy.takeDamage(10);
+            }
+            else if (!isFacingRight && distance > 0 && distance < 1)
+            {
+                Debug.Log("Player attacked enemy");
+                // enemy.takeDamage(10);
+            }
+        }
     }
 
     void attack2()
@@ -179,7 +196,7 @@ public class Player : MonoBehaviour
     public void takeDamage(int damage)
     {
         //Call model here
-        Debug.Log("Player took damage: " + damage);
+        // Debug.Log("Player took damage: " + damage);
         StartCoroutine(performAnimation(HURT, hurtTime));
         healthBar.setHealth(currentHealth);
     }
@@ -192,6 +209,32 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             StartCoroutine(performAnimation(LANDING, landingTime));
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            AbstractEnemy enemy = other.GetComponent<AbstractEnemy>();
+            if (enemy != null)
+            {
+                enemies.Add(enemy);
+                Debug.Log("Player collided with: " + other.name);
+            }
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            AbstractEnemy enemy = other.GetComponent<AbstractEnemy>();
+            if (enemy != null)
+            {
+                enemies.Remove(enemy);
+                Debug.Log("Player exited collision with: " + other.name);
+            }
         }
     }
     
