@@ -81,7 +81,6 @@ public class Player : MonoBehaviour
         {
             dash();
         }
-
         if (Input.GetButtonDown("JetPack"))
         {
             jetPack();
@@ -132,7 +131,8 @@ public class Player : MonoBehaviour
     void jetPack()
     {
         StartCoroutine(performAnimation(JETPACK, jetPackTime));
-        StartCoroutine(BlockActions(jetPackTime));
+        //better without
+        // StartCoroutine(BlockActions(jetPackTime));
         StartCoroutine(performJetPack());
     }
     IEnumerator performJetPack()
@@ -147,38 +147,44 @@ public class Player : MonoBehaviour
     void attack1()
     {
         //Call model here
+        doAttackByDistance(1);
         StartCoroutine(BlockActions(attack1Time));
         StartCoroutine(performAnimation(ATTACK1, attack1Time));
-        foreach (AbstractEnemy enemy in enemies)
-        {
-            float distance = transform.position.x - enemy.transform.position.x;
-            if( isFacingRight  && distance < 0 && distance > -1)
-            {
-                Debug.Log("Player attacked enemy");
-                // enemy.takeDamage(10);
-            }
-            else if (!isFacingRight && distance > 0 && distance < 1)
-            {
-                Debug.Log("Player attacked enemy");
-                // enemy.takeDamage(10);
-            }
-        }
     }
 
     void attack2()
     {
         //Call model here
+        doAttackByDistance(3);
         StartCoroutine(BlockActions(attack2Time));
         StartCoroutine(performAnimation(ATTACK2, attack2Time));
+        
     }
 
     void attack3()
     {
         //Call model here
+        doAttackByDistance(3);
         StartCoroutine(BlockActions(attack3Time));
         StartCoroutine(performAnimation(ATTACK3, attack3Time));
     }
 
+    void doAttackByDistance(float maxDistance)
+    {
+        foreach (AbstractEnemy enemy in enemies)
+        {
+            float distance = transform.position.x - enemy.transform.position.x;
+            if( isFacingRight  && distance < 0 && distance > -maxDistance)
+            {
+                enemy.takeDamage(10);
+            }
+            else if (!isFacingRight && distance > 0 && distance < maxDistance)
+            {
+                enemy.takeDamage(10);
+            }
+        }
+    }
+    
     //-----------------Health-----------------
     
     public void addMaxHealth(int health)
@@ -212,6 +218,7 @@ public class Player : MonoBehaviour
         }
     }
     
+    //Enter in hit collider
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -220,11 +227,11 @@ public class Player : MonoBehaviour
             if (enemy != null)
             {
                 enemies.Add(enemy);
-                Debug.Log("Player collided with: " + other.name);
             }
         }
     }
     
+    //Exit from hit collider
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -233,7 +240,6 @@ public class Player : MonoBehaviour
             if (enemy != null)
             {
                 enemies.Remove(enemy);
-                Debug.Log("Player exited collision with: " + other.name);
             }
         }
     }

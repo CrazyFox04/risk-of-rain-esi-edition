@@ -32,6 +32,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     protected bool isBusy = false;
 
     public float chargeTime;
+    public float hurtTime;
     
     
     public const string IDLE = "Idle";
@@ -93,6 +94,13 @@ public abstract class AbstractEnemy : MonoBehaviour
         {
             SetOrientation(false);
         }
+    }
+    
+    //-----------------Health-----------------
+    public void takeDamage(int damage)
+    {
+        //Call model here
+        StartCoroutine(performAnimation(HURT, hurtTime));
     }
     
     
