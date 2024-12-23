@@ -9,7 +9,7 @@ public class Obstacle : MonoBehaviour
     private Transform currentPoint;
 
     public GameObject player;
-    private HealthPlayer healthPlayer;
+    private Player playerScript;
 
     public int damage = 10;
     public float damageInterval = 1.0f;
@@ -18,7 +18,8 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         currentPoint = points[pointIndex];
-        healthPlayer = player.GetComponent<HealthPlayer>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
     }
 
     void FixedUpdate()
@@ -57,9 +58,9 @@ public class Obstacle : MonoBehaviour
         while (isPlayerInContact)
         {
 
-            if (healthPlayer != null)
+            if (playerScript != null)
             {
-                healthPlayer.takeDamage(damage);
+                playerScript.takeDamage(damage);
             }
             yield return new WaitForSeconds(damageInterval);
         }
