@@ -27,9 +27,9 @@ public class GameController : MonoBehaviour
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern void takePlayerDamage(IntPtr game, int damage);
-    
+
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern int get_area_guid_current_level(IntPtr game, int x, int y)
+    private static extern int get_area_guid_current_level(IntPtr game, int x, int y);
     
     static GameController()
     {
@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
         takePlayerDamage(this.game, damage);
     }
 
-    int get_area_guid_current_level(int x, int y)
+    public int get_area_guid_current_level(int x, int y)
     {
         return get_area_guid_current_level(this.game, x, y);
     }
