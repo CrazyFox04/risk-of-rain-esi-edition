@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public float dashForce;
-    public float jetPackForce;
+    public float jetPackSpeed;
     public float hurtTime;
     public float landingTime;
     
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("JetPack"))
         {
-            jetPack();
+            startJetPack();
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -105,7 +105,26 @@ public class Player : MonoBehaviour
     }
     
     //-----------------Player Movement-----------------
+    
+    public void startClimbing()
+    {
+        isClimbing = true;
+    }
+    
+    public void stopClimbing()
+    {
+        isClimbing = false;
+    }
 
+    void startJetPack()
+    {
+        isJetPacking = true;
+    }
+    void stopJetPack()
+    {
+        isJetPacking = false;
+    }
+    
     void movePlayer()
     {
         rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.linearVelocity.y);
@@ -130,22 +149,6 @@ public class Player : MonoBehaviour
             rb.AddForce(new Vector2(dashForce, 0f));
         else
             rb.AddForce(new Vector2(-dashForce, 0f));
-    }
-
-    void jetPack()
-    {
-        StartCoroutine(performAnimation(JETPACK, jetPackTime));
-        //better without
-        // StartCoroutine(BlockActions(jetPackTime));
-        StartCoroutine(performJetPack());
-    }
-    IEnumerator performJetPack()
-    {
-        isJetPacking = true;
-        rb.AddForce(new Vector2(0f, jetPackForce), ForceMode2D.Impulse);
-        yield return new WaitForSeconds(jetPackTime);
-        isJetPacking = false;
-        yield return new WaitForSeconds(jetPackCooldown);
     }
 
     void attack1()
@@ -313,15 +316,6 @@ public class Player : MonoBehaviour
             SetOrientation(false);
         }
     }
-//-----------------Externals-----------------
-    public void startClimbing()
-    {
-        isClimbing = true;
-    }
-    
-    public void stopClimbing()
-    {
-        isClimbing = false;
-    }
+
 }
 
