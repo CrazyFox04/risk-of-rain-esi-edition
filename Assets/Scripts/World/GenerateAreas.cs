@@ -8,7 +8,7 @@ public class GenerateAreas : MonoBehaviour
     [SerializeField] private GameController gameController;
     [SerializeField] private GameObject[] areaPrefabs;
     [SerializeField] private int[] areaGIDs;
-    [SerializeField] Vector2 areaSize = new(128f, 128f);
+    [SerializeField] Vector2 areaSize = new(128f, 64f);
     [SerializeField] private int rows = 2;
     [SerializeField] private int columns = 3;
     void Start()
@@ -28,7 +28,7 @@ public class GenerateAreas : MonoBehaviour
 
                 // int prefabGID = gameController.get_area_guid_current_level(column, row); // TODO: Method from the model to get the index of the prefab
                                     // getAreaID(int x, int y) -> int AreaID (index of the are in the index list ==> voir organisation)
-                                    int prefabGID = 111;
+                int prefabGID = 111;
                                     
                 int prefabIdx = getIdFromGID(prefabGID);
 
