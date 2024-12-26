@@ -128,6 +128,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 589879468261118009, guid: 23094c8f14b18d3478a0d3a9674c2eb5, type: 3}
+      propertyPath: areaSize.y
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 589879468261118009, guid: 23094c8f14b18d3478a0d3a9674c2eb5, type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 2103523831}
