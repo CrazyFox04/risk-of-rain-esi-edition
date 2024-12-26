@@ -53,14 +53,14 @@ TagManager:
   - name: Player
     uniqueID: 3953127641
     locked: 0
+  - name: Middleground
+    uniqueID: 1701650565
+    locked: 0
   - name: Shading
     uniqueID: 2277595933
     locked: 0
   - name: Lighting
     uniqueID: 711075415
-    locked: 0
-  - name: Middleground
-    uniqueID: 1701650565
     locked: 0
   - name: Forground
     uniqueID: 129552757
