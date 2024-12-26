@@ -131,6 +131,9 @@ public class Player : MonoBehaviour
         if (isClimbing)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * moveSpeed);
+        } else if (isJetPacking)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * moveSpeed);
         }
     }
     
@@ -265,19 +268,20 @@ public class Player : MonoBehaviour
     {
         if (isPerformingAnimation) return;
         
-        if (!isGrounded)
+        
+        if (isJetPacking)
         {
-            changeAnimationState(FALLING);
-        }
-        else if (Input.GetAxis("Vertical") != 0 && isClimbing)
+            changeAnimationState(JETPACK);   
+        } else if (Input.GetAxis("Vertical") != 0 && isClimbing)
         {
             changeAnimationState(CLIMB);   
-        }
-        else if (Input.GetAxis("Horizontal") != 0)
+        } else if (!isGrounded)
+        {
+            changeAnimationState(FALLING);
+        } else if (Input.GetAxis("Horizontal") != 0)
         {
             changeAnimationState(RUN);
-        }
-        else
+        } else
         {
             changeAnimationState(IDLE);
         }
