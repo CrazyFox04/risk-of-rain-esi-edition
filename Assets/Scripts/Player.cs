@@ -11,11 +11,9 @@ public class Player : MonoBehaviour
     public bool isGrounded = true;
     public bool isFacingRight = true;
 
-    private bool isFalling = false;
     private bool isDashing = false;
     private bool isJetPacking = false;
     private bool isPerformingAnimation = false;
-    private bool isHurt = false;
     public bool isBussy = false;
     
     public float moveSpeed;
