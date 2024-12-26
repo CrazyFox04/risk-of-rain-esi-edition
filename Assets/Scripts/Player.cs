@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private bool isJetPacking = false;
     private bool isPerformingAnimation = false;
     public bool isBussy = false;
+    public bool isClimbing = false;
     
     public float moveSpeed;
     public float jumpForce;
@@ -58,9 +59,11 @@ public class Player : MonoBehaviour
     public const string DASH = "PlayerDash";
     public const string JETPACK = "PlayerJetPack";
     public const string HURT = "PlayerHurt";
+    public const string CLIMB = "PlayerClimbing";
 
     void Start()
     {
+        healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<HealthBar>();
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
     }
@@ -105,8 +108,11 @@ public class Player : MonoBehaviour
 
     void movePlayer()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.linearVelocity.y);
+        if (isClimbing)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * moveSpeed);
+        }
     }
     
     //-----------------Player Actions-----------------
@@ -256,11 +262,15 @@ public class Player : MonoBehaviour
     {
         if (isPerformingAnimation) return;
         
-        float horizontalMovement = Input.GetAxis("Horizontal");
         if (!isGrounded)
         {
             changeAnimationState(FALLING);
-        } else if (horizontalMovement != 0)
+        }
+        else if (Input.GetAxis("Vertical") != 0 && isClimbing)
+        {
+            changeAnimationState(CLIMB);   
+        }
+        else if (Input.GetAxis("Horizontal") != 0)
         {
             changeAnimationState(RUN);
         }
@@ -303,4 +313,15 @@ public class Player : MonoBehaviour
             SetOrientation(false);
         }
     }
+//-----------------Externals-----------------
+    public void startClimbing()
+    {
+        isClimbing = true;
+    }
+    
+    public void stopClimbing()
+    {
+        isClimbing = false;
+    }
 }
+
