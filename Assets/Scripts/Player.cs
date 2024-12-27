@@ -229,6 +229,22 @@ public class Player : MonoBehaviour
         StartCoroutine(BlockActions(attack3Time));
         StartCoroutine(performAnimation(ATTACK3, attack3Time));
     }
+    
+    void attack4()
+    {
+        //Call model here
+        doAttackByDistance(3);
+        StartCoroutine(BlockActions(attack4Time));
+        StartCoroutine(performAnimation(ATTACK4, attack4Time));
+    }
+    
+    void attack5()
+    {
+        //Call model here
+        doAttackByDistance(3);
+        StartCoroutine(BlockActions(attack5Time));
+        StartCoroutine(performAnimation(ATTACK5, attack5Time));
+    }
 
     void doAttackByDistance(float maxDistance)
     {
