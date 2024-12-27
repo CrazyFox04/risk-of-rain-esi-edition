@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
     private static extern bool isPlayerUsingJetpack(IntPtr game)
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharatcerMove(IntPtr game, int id, const char* movementName)
+    private static extern bool canCharacterMove(IntPtr game, int id, const char* movementName)
         
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getCharacterCoolDownAttack(IntPtr game, int id, const char* attackName)
@@ -253,7 +253,7 @@ public class GameController : MonoBehaviour
     
     bool canCharacterMove(int id, const char* movementName)
     {
-        return canCharatcerMove(this.game, id, movementName);
+        return canCharacterMove(this.game, id, movementName);
     }
         
     double getCharacterCoolDownAttack(int id, const char* attackName)
