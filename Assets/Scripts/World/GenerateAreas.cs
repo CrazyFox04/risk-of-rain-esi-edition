@@ -9,7 +9,7 @@ public class GenerateAreas : MonoBehaviour
     [SerializeField] private GameObject[] areaPrefabs;
     [SerializeField] private int[] areaGIDs;
     [SerializeField] Vector2 areaSize = new(128f, 64f);
-    [SerializeField] private int rows = 2;
+    [SerializeField] private int rows = 3;
     [SerializeField] private int columns = 3;
 
     void Start() {
@@ -41,7 +41,7 @@ public class GenerateAreas : MonoBehaviour
             
                 Vector3 position = new Vector3(
                     column * areaSize.x * 0.7f, // x
-                    (rows-row) * areaSize.y * 0.7f,    // y
+                    row * areaSize.y * 0.7f,    // y
                     0f                          // z
                 );
 
