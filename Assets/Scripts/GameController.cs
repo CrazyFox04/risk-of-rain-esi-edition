@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -29,14 +30,14 @@ public class GameController : MonoBehaviour
     private static extern void takePlayerDamage(IntPtr game, int damage);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern int get_area_guid_current_level(IntPtr game, int x, int y);
+    private static extern int getAreaGuidCurrentLevel(IntPtr game, int x, int y);
     
     static GameController()
     {
         Debug.Log("Plugin name: " + dllname);
     }
 
-    void Start ()
+    public void Start ()
     {
         this.game = newGame();
     }
@@ -66,8 +67,8 @@ public class GameController : MonoBehaviour
         takePlayerDamage(this.game, damage);
     }
 
-    public int get_area_guid_current_level(int x, int y)
+    public int getAreaGuidCurrentLevel(int x, int y)
     {
-        return get_area_guid_current_level(this.game, x, y);
+        return getAreaGuidCurrentLevel(this.game, x, y);
     }
 }

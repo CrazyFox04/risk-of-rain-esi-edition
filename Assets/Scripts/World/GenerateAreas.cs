@@ -11,8 +11,9 @@ public class GenerateAreas : MonoBehaviour
     [SerializeField] Vector2 areaSize = new(128f, 64f);
     [SerializeField] private int rows = 2;
     [SerializeField] private int columns = 3;
-    void Start()
-    {
+
+    void Start() {
+        gameController.Start();
         if (areaPrefabs.Length == 0) {
             Debug.LogError("Prefabs array is empty. Please add prefabs to the array.");
             return;
@@ -22,26 +23,30 @@ public class GenerateAreas : MonoBehaviour
 
     private void PlaceAreas() {
         
+        
+
         for (int row = 0; row < rows; row++) {
             
             for (int column = 0; column < columns; column++) {
+                int prefabGID = gameController.getAreaGuidCurrentLevel(column, row);
 
-                // int prefabGID = gameController.get_area_guid_current_level(column, row); // TODO: Method from the model to get the index of the prefab
-                                    // getAreaID(int x, int y) -> int AreaID (index of the are in the index list ==> voir organisation)
-                int prefabGID = 111;
-                                    
-                int prefabIdx = getIdFromGID(prefabGID);
-
-                if (prefabIdx == -1) {
+                if (prefabGID == -1) {
                     Debug.LogError($"GID {prefabGID} not found in areaGIDs.");
                     continue; 
                 }
+                                    
+                Debug.LogError($"Prefab GID: {prefabGID}");
+                int prefabIdx = getIdFromGID(prefabGID);
 
+            
                 Vector3 position = new Vector3(
                     column * areaSize.x * 0.7f, // x
-                    row * areaSize.y * 0.7f,    // y
+                    (rows-row) * areaSize.y * 0.7f,    // y
                     0f                          // z
                 );
+
+
+                Debug.LogError($"Prefab IDX: {prefabIdx} and Length: {areaPrefabs.Length}");
 
                 Instantiate(areaPrefabs[prefabIdx], position, Quaternion.identity, transform);
             }

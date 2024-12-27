@@ -140,6 +140,10 @@ PrefabInstance:
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 589879468261118009, guid: 23094c8f14b18d3478a0d3a9674c2eb5, type: 3}
+      propertyPath: 'areaGIDs.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 589879468261118009, guid: 23094c8f14b18d3478a0d3a9674c2eb5, type: 3}
       propertyPath: 'areaGIDs.Array.data[1]'
       value: 111
       objectReference: {fileID: 0}
@@ -372,5 +376,5 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 904627258}
   - {fileID: 2103523832}
+  - {fileID: 904627258}
