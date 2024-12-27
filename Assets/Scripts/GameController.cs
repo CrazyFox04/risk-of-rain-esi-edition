@@ -116,167 +116,167 @@ public class GameController : MonoBehaviour
         this.game = newGame();
     }
 
-    int getPlayerMaxHealth()
+    int GetPlayerMaxHealth()
     {
         return getPlayerMaxHealth(this.game);
     }
 
-    int getPlayerCurrentHealth()
+    int GetPlayerCurrentHealth()
     {
         return getPlayerCurrentHealth(this.game);
     }
 
-    void addPlayerMaxHealth(int health)
+    void AddPlayerMaxHealth(int health)
     {
         addPlayerMaxHealth(this.game, health);
     }
 
-    void addPlayerHealth(int health)
+    void AddPlayerHealth(int health)
     {
         addPlayerHealth(this.game, health);
     }
 
-    void takePlayerDamage(int damage)
+    void TakePlayerDamage(int damage)
     {
         takePlayerDamage(this.game, damage);
     }
 
-    int getAreaGuidCurrentLevel(int x, int y)
+    int GetAreaGuidCurrentLevel(int x, int y)
     {
         return getAreaGuidCurrentLevel(this.game, x, y);
     }
     
-    int ifCanSpawnCurrentLevelSpawnAt(int areaX, int areaY, int spawnId)
+    int IfCanSpawnCurrentLevelSpawnAt(int areaX, int areaY, int spawnId)
     {
         return ifCanSpawnCurrentLevelSpawnAt(this.game, areaX, areaY, spawnId);
     }
     
-    const char* getType(int id)
+    const char* GetType(int id)
     {
         return getType(this.game, id);
     }
     
-    int getCharacterSpeed(int id)
+    int GetCharacterSpeed(int id)
     {
         return getCharacterSpeed(this.game, id);
     }
     
-    double getCharacterJumpForce(int id)
+    double GetCharacterJumpForce(int id)
     {
         return getCharacterJumpForce(this.game, id);
     }
     
-    double getEnemyFollowRange(int id)
+    double GetEnemyFollowRange(int id)
     {
         return getEnemyFollowRange(this.game, id);
     }
     
-    double getEnemyAttackRange(int id)
+    double GetEnemyAttackRange(int id)
     {
         return getEnemyAttackRange(this.game, id);
     }
     
-    bool canCharacterAttack(int id, const char* attackName)
+    bool CanCharacterAttack(int id, const char* attackName)
     {
         return canCharacterAttack(this.game, id, attackName);
     }
         
-    double getDamage(int id, const char* attackName)
+    double GetDamage(int id, const char* attackName)
     {
         return getDamage(this.game, id, attackName);
     }
         
-    double getChargeTime(int id, const char* attackName)
+    double GetChargeTime(int id, const char* attackName)
     {
         return getChargeTime(this.game, id, attackName);
     }
         
-    double getCharacterHurtTime(int id)
+    double GetCharacterHurtTime(int id)
     {
         return getCharacterHurtTime(this.game, id);
     }
     
-    bool isCharacterBusy(int id)
+    bool IsCharacterBusy(int id)
     {
         return isCharacterBusy(this.game, id);
     }
     
-    int getCharacterHealth(int id)
+    int GetCharacterHealth(int id)
     {
         return getCharacterHealth(this.game, id);
     }
     
-    int getCharacterMaxHealth(int id)
+    int GetCharacterMaxHealth(int id)
     {
         return getCharacterMaxHealth(this.game, id);
     }
     
-    double getPlayerDashForce()
+    double GetPlayerDashForce()
     {
         return getPlayerDashForce(this.game);
     }
     
-    double getJetPackForce()
+    double GetJetPackForce()
     {
         return getJetPackForce(this.game);
     }
     
-    double getJetPackMaxTime()
+    double GetJetPackMaxTime()
     {
         return getJetPackMaxTime(this.game);
     }
     
-    double getPlayerLandingTime()
+    double GetPlayerLandingTime()
     {
         return getPlayerLandingTime(this.game);
     }
     
-    double getPlayerDashTime()
+    double GetPlayerDashTime()
     {
         return getPlayerDashTime(this.game);
     }
     
-    double getCharacterAttackTime(int id, const char* attackName)
+    double GetCharacterAttackTime(int id, const char* attackName)
     {
         return getCharacterAttackTime(this.game, id, attackName);
     }
 
-    bool isPlayerDashing()
+    bool IsPlayerDashing()
     {
         return isPlayerDashing(this.game);
     }
     
-    bool isPlayerUsingJetpack()
+    bool IsPlayerUsingJetpack()
     {
         return isPlayerUsingJetpack(this.game);
     }
     
-    bool canCharacterMove(int id, const char* movementName)
+    bool CanCharacterMove(int id, const char* movementName)
     {
         return canCharacterMove(this.game, id, movementName);
     }
         
-    double getCharacterCoolDownAttack(int id, const char* attackName)
+    double GetCharacterCoolDownAttack(int id, const char* attackName)
     {
         return getCharacterCoolDownAttack(this.game, id, attackName);
     }
         
-    bool isAValidId(int id)
+    bool IsAValidId(int id)
     {
         return isAValidId(this.game, id);
     }
     
-    int getPlayerId()
+    int GetPlayerId()
     {
         return getPlayerId(this.game);
     }
     
-    void attack(int id, const char* attackName, int targetId)
+    void Attack(int id, const char* attackName, int targetId)
     {
         attack(id, attackName, targetId);
     }
     
-    void move(int id, const char* movementName)
+    void Move(int id, const char* movementName)
     {
         move(this.game, id, movementName);
     }
