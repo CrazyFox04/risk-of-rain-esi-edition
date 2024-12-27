@@ -115,6 +115,7 @@ public class GameController : MonoBehaviour
     public void Start ()
     {
         this.game = newGame();
+        Debug.Log("Game started");
     }
 
     public int GetPlayerMaxHealth()

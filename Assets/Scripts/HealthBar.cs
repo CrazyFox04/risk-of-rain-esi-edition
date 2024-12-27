@@ -8,7 +8,19 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
     public TextMeshProUGUI text;
+    GameController gameController;
 
+    private void Start()
+    {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+    }
+    
+    private void Update()
+    {
+        setMaxHealth(gameController.GetPlayerMaxHealth());
+        setHealth(gameController.GetPlayerCurrentHealth());
+    }
+    
     public void setMaxHealth(int health)
     {
         slider.maxValue = health;

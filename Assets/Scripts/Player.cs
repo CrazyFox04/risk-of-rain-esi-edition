@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
+
+    public int id;
+    
     public Rigidbody2D rb;
     public Transform groundCheckLeft;
     public Transform groundCheckRight;
@@ -29,18 +32,28 @@ public class Player : MonoBehaviour
     public float attack1Time;
     public float attack2Time;
     public float attack3Time;
+    public float attack4Time;
+    public float attack5Time;
+    
+    public float attack1ChargeTime;
+    public float attack2ChargeTime;
+    public float attack3ChargeTime;
+    public float attack4ChargeTime;
+    public float attack5ChargeTime;
     
     public float jetPackTime;
 
-    public float dashCooldown;
-    public float attack1Cooldown;
-    public float attack2Cooldown;
-    public float attack3Cooldown;
-    public float jetPackCooldown;
+    public bool canAttack1;
+    public bool canAttack2;
+    public bool canAttack3;
+    public bool canAttack4;
+    public bool canAttack5;
+    public bool canDash;
+    public bool canJetPack;
+    public bool canRun;
     
     public int maxHealth = 100;
     public int currentHealth;
-    public HealthBar healthBar;
 
     public Animator animator;
     public SpriteRenderer spriteRenderer;
@@ -60,12 +73,50 @@ public class Player : MonoBehaviour
     public const string JETPACK = "PlayerJetPack";
     public const string HURT = "PlayerHurt";
     public const string CLIMB = "PlayerClimbing";
+    
+    GameController gameController;
 
     void Start()
     {
-        healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<HealthBar>();
-        currentHealth = maxHealth;
-        healthBar.setMaxHealth(maxHealth);
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gameController.TakePlayerDamage(10);
+
+        
+        id = gameController.GetPlayerId();
+        maxHealth = gameController.GetCharacterMaxHealth(id);
+        Debug.Log("Player max health: " + maxHealth);
+        currentHealth = gameController.GetCharacterHealth(id);
+        Debug.Log("Player current health: " + currentHealth);
+        dashForce = (float)gameController.GetPlayerDashForce();
+        jetPackSpeed = (float)gameController.GetJetPackForce();
+        
+        isBussy = gameController.IsCharacterBusy(id);
+        hurtTime = (float)gameController.GetCharacterHurtTime(id);
+        landingTime = (float)gameController.GetPlayerLandingTime();
+        dashTime = (float)gameController.GetPlayerDashTime();
+        // attack1Time = (float)gameController.GetCharacterAttackTime(id, "ATTACK1");
+        // attack2Time = (float)gameController.GetCharacterAttackTime(id, "ATTACK2");
+        // attack3Time = (float)gameController.GetCharacterAttackTime(id, "ATTACK3");
+        // attack4Time = (float)gameController.GetCharacterAttackTime(id, "ATTACK4");
+        // attack5Time = (float)gameController.GetCharacterAttackTime(id, "ATTACK5");
+        
+        jetPackTime = (float)gameController.GetJetPackMaxTime();
+        
+        moveSpeed = (float)gameController.GetCharacterSpeed(id);
+        jumpForce = (float)gameController.GetCharacterJumpForce(id);
+        
+        isBussy = gameController.IsCharacterBusy(id);
+        isJetPacking = gameController.IsPlayerUsingJetpack();
+        isDashing = gameController.IsPlayerDashing();
+        
+        // canAttack1 = gameController.CanCharacterAttack(id, "ATTACK1");
+        // canAttack2 = gameController.CanCharacterAttack(id, "ATTACK2");
+        // canAttack3 = gameController.CanCharacterAttack(id, "ATTACK3");
+        // canAttack4 = gameController.CanCharacterAttack(id, "ATTACK4");
+        // canAttack5 = gameController.CanCharacterAttack(id, "ATTACK5");
+        // canDash = gameController.CanCharacterMove(id, "DASH");
+        // canJetPack = gameController.CanCharacterMove(id, "JETPACK");
+        // canRun = gameController.CanCharacterMove(id, "RUN");
     }
 
     void Update()
@@ -200,13 +251,13 @@ public class Player : MonoBehaviour
     public void addMaxHealth(int health)
     {
         //Call model here
-        healthBar.setMaxHealth(maxHealth);
+        // healthBar.setMaxHealth(maxHealth);
     }
 
     public void addHealth(int health)
     {
         //Call model here
-        healthBar.setHealth(currentHealth);
+        // healthBar.setHealth(currentHealth);
     }
 
     public void takeDamage(int damage)
@@ -214,7 +265,7 @@ public class Player : MonoBehaviour
         //Call model here
         // Debug.Log("Player took damage: " + damage);
         StartCoroutine(performAnimation(HURT, hurtTime));
-        healthBar.setHealth(currentHealth);
+        // healthBar.setHealth(currentHealth);
     }
     
     
@@ -322,4 +373,3 @@ public class Player : MonoBehaviour
     }
 
 }
-
