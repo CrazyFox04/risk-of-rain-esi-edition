@@ -28,7 +28,7 @@ public class GenerateAreas : MonoBehaviour
         for (int row = 0; row < rows; row++) {
             
             for (int column = 0; column < columns; column++) {
-                int prefabGID = gameController.getAreaGuidCurrentLevel(column, row);
+                int prefabGID = gameController.GetAreaGuidCurrentLevel(column, row);
 
                 if (prefabGID == -1) {
                     Debug.LogError($"GID {prefabGID} not found in areaGIDs.");
