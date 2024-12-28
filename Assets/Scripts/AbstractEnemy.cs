@@ -3,36 +3,24 @@ using System.Collections;
 
 public abstract class AbstractEnemy : MonoBehaviour
 {
+    public int id;
+    
     public Transform playerPosition;
-    public Player playerScript;
-    public float speed;
-    public float jumpForce;
-    public float followRange;
     public Rigidbody2D rb;
 
     public Transform groundCheckLeft;
     public Transform groundCheckRight;
-    public bool isGrounded = true;
-
+    public bool isGrounded;
+    
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     protected bool isFacingRight;
-
-    public float attackRange;
-    public float coolDown;
-    public bool canAttack = true;
-    public int damage;
-    public float delayOfAttack;
-    public float attackTime;
     
     protected bool isPerformingAnimation = false;
     
     public Collider2D jumpCollider;
-    
-    protected bool isBusy = false;
 
-    public float chargeTime;
-    public float hurtTime;
+    private GameController gameController;
     
     
     public const string IDLE = "Idle";
@@ -42,8 +30,11 @@ public abstract class AbstractEnemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-        playerScript = playerPosition.GetComponent<Player>();
+        // playerScript = playerPosition.GetComponent<Player>();
+        id = gameController.IfCanSpawnCurrentLevelSpawnAt(0,0,1);
+        Debug.Log("Enemy id: " + id);
     }
 
     protected virtual void FixedUpdate()
@@ -54,33 +45,40 @@ public abstract class AbstractEnemy : MonoBehaviour
         flip();
         updateBaseAnimation();
     }
+    
+    private void updateModel()
+    {
+        
+        
+    }
 
     //-----------------Movement-----------------
     protected virtual void move()
     {
-        if (isBusy) return;
-        float distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (distance < followRange && distance > attackRange)
+        if (gameController.CanCharacterMove_RUN(id))
         {
-            Vector2 directionToTarget = (playerPosition.position - transform.position).normalized * speed;
-            rb.linearVelocity = new Vector2(directionToTarget.x, rb.linearVelocity.y);
-        }
-
-        if (rb.linearVelocity.x > 0.1f)
-        {
-            isFacingRight = true;
-        }
-        else if (rb.linearVelocity.x < -0.1f)
-        {
-            isFacingRight = false;
+            float distance = Vector2.Distance(transform.position, playerPosition.position);
+            if (distance < gameController.GetEnemyFollowRange(id) && distance > gameController.GetEnemyFollowRange(id))
+            {
+                Vector2 directionToTarget = (playerPosition.position - transform.position).normalized * (float)gameController.GetCharacterSpeed(id);
+                rb.linearVelocity = new Vector2(directionToTarget.x, rb.linearVelocity.y);
+            }
+            if (rb.linearVelocity.x > 0.1f)
+            {
+                isFacingRight = true;
+            }
+            else if (rb.linearVelocity.x < -0.1f)
+            {
+                isFacingRight = false;
+            }
         }
     }
     
     public void jump()
     {
-        if (isGrounded)
+        if (gameController.CanCharacterMove_JUMP(id))
         {
-            rb.AddForce(new Vector2(0f, jumpForce));
+            rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)));
         }
     }
     
@@ -97,60 +95,55 @@ public abstract class AbstractEnemy : MonoBehaviour
     }
     
     //-----------------Health-----------------
-    public void takeDamage(int damage)
-    {
-        //Call model here
-        StartCoroutine(performAnimation(HURT, hurtTime));
-    }
+    //CAN BE REPLACED BY MODEL ?
+    // public void takeDamage(int damage)
+    // {
+    //     //Call model here
+    //     StartCoroutine(performAnimation(HURT, hurtTime));
+    // }
     
     
     //-----------------Attack-----------------
 
     protected void tryAttack()
     {
-        if(isBusy) return;
         float distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (distance < attackRange && canAttack)
+        //TODO
+        //can attack
+        if (distance < gameController.GetEnemyAttackRange(id) && false)
         {
-            StartCoroutine(BlockActions(chargeTime));
+            // StartCoroutine(BlockActions(chargeTime));
             StartCoroutine(chargeAttack());
         }
     }
     
     protected IEnumerator chargeAttack()
     {
-        StartCoroutine(performAnimation(ATTACK, attackTime));
-        StartCoroutine(BlockActions(attackTime));
-        yield return new WaitForSeconds(chargeTime);
+        StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime_ATTACK1(id)));
+        // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
+        yield return new WaitForSeconds((float)gameController.GetChargeTime_ATTACK1(id));
         attack();
     }
     
     protected void attack()
     {
         float distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (distance < attackRange && canAttack)
+        //TODO
+        //can attack
+        if (distance < gameController.GetEnemyAttackRange(id) && false)
         {
-            playerScript.takeDamage(damage);
-            StartCoroutine(coolDownWait());
+            // playerScript.takeDamage(damage);
         }
     }
     
-    //-----------------todo - remove-----------------
-    //CAN BE REPLACED BY MODEL !!!!!!!
-    protected IEnumerator BlockActions(float time)
-    {
-        isBusy = true;
-        yield return new WaitForSeconds(time);
-        isBusy = false;
-    }
     
 //CAN BE REPLACED BY MODEL !!!!!!!
-    protected IEnumerator coolDownWait()
-    {
-        canAttack = false;
-        yield return new WaitForSeconds(coolDown);
-        canAttack = true;
-    }
+    // protected IEnumerator coolDownWait()
+    // {
+    //     canAttack = false;
+    //     yield return new WaitForSeconds(coolDown);
+    //     canAttack = true;
+    // }
     
     //-----------------Animation-----------------
     
