@@ -35,7 +35,6 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 7457016618473715350}
   - {fileID: 526894437289937419}
   - {fileID: 7790193360398010252}
   - {fileID: 4654834110958842429}
@@ -54,32 +53,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657dfb534849a8c48808be4dcb92cdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   rb: {fileID: 4009061523616557759}
-  groundCheckLeft: {fileID: 7457016618473715350}
-  groundCheckRight: {fileID: 526894437289937419}
+  groundCheck: {fileID: 526894437289937419}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  checkRadius: 0.1
   isGrounded: 1
   isFacingRight: 1
   isBussy: 0
   isClimbing: 0
-  moveSpeed: 4
-  jumpForce: 5
-  dashForce: 1000
-  jetPackSpeed: 0
-  hurtTime: 0.5
-  landingTime: 0.2
-  dashTime: 0.4
-  attack1Time: 0.42
-  attack2Time: 0.4
-  attack3Time: 1
-  jetPackTime: 2
-  dashCooldown: 0
-  attack1Cooldown: 0
-  attack2Cooldown: 0
-  attack3Cooldown: 0
-  jetPackCooldown: 0
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 0}
+  attack1Range: 1
+  attack2Range: 3
+  attack3Range: 3
+  attack4Range: 3
+  attack5Range: 3
+  canClimb: 0
   animator: {fileID: 1068892474076559229}
   spriteRenderer: {fileID: 8668471363201641994}
   enemies: []
@@ -347,37 +337,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9500216, y: 0.09357389}
   m_EdgeRadius: 0
---- !u!1 &2522177547350605936
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7457016618473715350}
-  m_Layer: 3
-  m_Name: GroundCheckLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7457016618473715350
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522177547350605936}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0193, y: -0.07029998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 942050684276385650}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2589734134894681719
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526894437289937419}
   m_Layer: 3
-  m_Name: GroundCheckRight
+  m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -403,7 +362,7 @@ Transform:
   m_GameObject: {fileID: 2589734134894681719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.024, y: -0.0703, z: 0}
+  m_LocalPosition: {x: 0.0026, y: -0.0703, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

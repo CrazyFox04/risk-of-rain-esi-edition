@@ -60,7 +60,7 @@ public class Obstacle : MonoBehaviour
 
             if (playerScript != null)
             {
-                playerScript.takeDamage(damage);
+                // playerScript.takeDamage(damage);
             }
             yield return new WaitForSeconds(damageInterval);
         }
