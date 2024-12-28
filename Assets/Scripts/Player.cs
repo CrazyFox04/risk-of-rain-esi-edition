@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
         {
             doAttackByDistance(0);
             // StartCoroutine(BlockActions(attack1Time));
-            StartCoroutine(performAnimation(ATTACK1, (float)gameController.GetCharacterAttackTime(id, 0)));
+            StartCoroutine(performAnimation(ATTACK1, (float)gameController.GetCharacterAttackTime(id, 0), true));
         }
     }
 
@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
         {
             doAttackByDistance(1);
             // StartCoroutine(BlockActions(attack2Time));
-            StartCoroutine(performAnimation(ATTACK2, (float)gameController.GetCharacterAttackTime(id, 1)));
+            StartCoroutine(performAnimation(ATTACK2, (float)gameController.GetCharacterAttackTime(id, 1), true));
         }
     }
 
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
         {
             doAttackByDistance(2);
             // StartCoroutine(BlockActions(attack3Time));
-            StartCoroutine(performAnimation(ATTACK3, (float)gameController.GetCharacterAttackTime(id, 2)));
+            StartCoroutine(performAnimation(ATTACK3, (float)gameController.GetCharacterAttackTime(id, 2), true));
         }
     }
     
@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
         {
             doAttackByDistance(3);
             // StartCoroutine(BlockActions(attack4Time));
-            StartCoroutine(performAnimation(ATTACK4, (float)gameController.GetCharacterAttackTime(id, 3)));
+            StartCoroutine(performAnimation(ATTACK4, (float)gameController.GetCharacterAttackTime(id, 3), true));
         }
     }
     
@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
         {
             doAttackByDistance(4);
             // StartCoroutine(BlockActions(attack5Time));
-            StartCoroutine(performAnimation(ATTACK5, (float)gameController.GetCharacterAttackTime(id, 4)));
+            StartCoroutine(performAnimation(ATTACK5, (float)gameController.GetCharacterAttackTime(id, 4), true));
         }
     }
 
@@ -361,9 +361,9 @@ public class Player : MonoBehaviour
         
     }
     
-    private IEnumerator performAnimation(string animation, float attackTime)
+    private IEnumerator performAnimation(string animation, float attackTime, bool force = false)
     {
-        if (!isPerformingAnimation)
+        if (!isPerformingAnimation || force)
         {
             isPerformingAnimation = true;
             changeAnimationState(animation);

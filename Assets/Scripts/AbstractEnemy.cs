@@ -45,12 +45,6 @@ public abstract class AbstractEnemy : MonoBehaviour
         flip();
         updateBaseAnimation();
     }
-    
-    private void updateModel()
-    {
-        
-        
-    }
 
     //-----------------Movement-----------------
     protected virtual void move()
