@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private bool isPerformingAnimation = false;
     public bool isBussy = false;
     public bool isClimbing = false;
+    public bool isJetPacking = false;
     
     //TODO
     //Move to model
@@ -26,7 +27,6 @@ public class Player : MonoBehaviour
     public float attack3Range = 3;
     public float attack4Range = 3;
     public float attack5Range = 3;
-    public bool canClimb;
     
     public Animator animator;
     public SpriteRenderer spriteRenderer;
@@ -121,16 +121,15 @@ public class Player : MonoBehaviour
 
     void movePlayer()
     {
-        if (gameController.CanCharacterMove_RUN(id))
+        if (gameController.CanCharacterMove(id, 0))
         {
             rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * (float)gameController.GetCharacterSpeed(id), rb.linearVelocity.y);
         }
-        if (isClimbing && canClimb)
+        if (isClimbing)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * (float)gameController.GetCharacterSpeed(id));
-        }//TODO
-         //jetpack 
-        else if (false)
+        }
+        else if (gameController.IsPlayerUsingJetpack())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * (float)gameController.GetJetPackForce());
         }
@@ -140,9 +139,9 @@ public class Player : MonoBehaviour
 
     void jump()
     {
-        if (gameController.CanCharacterMove_JUMP(id))
+        if (gameController.CanCharacterMove(id, 1))
         {
-            gameController.Move_JUMP(id);
+            gameController.Move(id, 1);
             rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)), ForceMode2D.Impulse);
         }
     }
@@ -150,17 +149,20 @@ public class Player : MonoBehaviour
     //TODO
     void jetPack()
     {
-        // if (gameController.CanCharacterMove_JETPACK(id))
-        // {
-        //     gameController.Move_JETPACK(id);
-        // }
+        
+        if (gameController.CanCharacterMove(id, 3))
+        {
+            isJetPacking = true;
+            gameController.Move(id, 3);
+        }
     }
 
     void dash()
     {
-        if (gameController.CanCharacterMove_DASH(id))
+        if (gameController.CanCharacterMove(id, 2))
         {
-            gameController.Move_DASH(id);
+            gameController.Move(id, 2);
+            
             StartCoroutine(performAnimation(DASH, (float)gameController.GetPlayerDashTime()));
             
             float dashForce = (float)gameController.GetPlayerDashForce();
@@ -168,77 +170,78 @@ public class Player : MonoBehaviour
                 rb.AddForce(new Vector2(dashForce, 0f));
             else
                 rb.AddForce(new Vector2(-dashForce, 0f));
+            Debug.Log(gameController.CanCharacterMove(id, 2));
         }
     }
 
     void attack1()
     {
-        if (gameController.CanCharacterAttack_ATTACK1(id))
+        if (gameController.CanCharacterAttack(id, 0))
         {
-            doAttackByDistance(1);
+            doAttackByDistance(0);
             // StartCoroutine(BlockActions(attack1Time));
-            StartCoroutine(performAnimation(ATTACK1, (float)gameController.GetCharacterAttackTime_ATTACK1(id)));
+            StartCoroutine(performAnimation(ATTACK1, (float)gameController.GetCharacterAttackTime(id, 0)));
         }
     }
 
     void attack2()
     {
-        if (gameController.CanCharacterAttack_ATTACK2(id))
+        if (gameController.CanCharacterAttack(id, 1))
         {
-            doAttackByDistance(2);
+            doAttackByDistance(1);
             // StartCoroutine(BlockActions(attack2Time));
-            StartCoroutine(performAnimation(ATTACK2, (float)gameController.GetCharacterAttackTime_ATTACK2(id)));
+            StartCoroutine(performAnimation(ATTACK2, (float)gameController.GetCharacterAttackTime(id, 1)));
         }
     }
 
     void attack3()
     {
-        if (gameController.CanCharacterAttack_ATTACK3(id))
+        if (gameController.CanCharacterAttack(id, 2))
         {
-            doAttackByDistance(3);
+            doAttackByDistance(2);
             // StartCoroutine(BlockActions(attack3Time));
-            StartCoroutine(performAnimation(ATTACK3, (float)gameController.GetCharacterAttackTime_ATTACK3(id)));
+            StartCoroutine(performAnimation(ATTACK3, (float)gameController.GetCharacterAttackTime(id, 2)));
         }
     }
     
     void attack4()
     {
-        if (gameController.CanCharacterAttack_ATTACK4(id))
+        if (gameController.CanCharacterAttack(id, 3))
         {
-            doAttackByDistance(4);
+            doAttackByDistance(3);
             // StartCoroutine(BlockActions(attack4Time));
-            StartCoroutine(performAnimation(ATTACK4, (float)gameController.GetCharacterAttackTime_ATTACK4(id)));
+            StartCoroutine(performAnimation(ATTACK4, (float)gameController.GetCharacterAttackTime(id, 3)));
         }
     }
     
     void attack5()
     {
-        if (gameController.CanCharacterAttack_ATTACK5(id))
+        if (gameController.CanCharacterAttack(id, 4))
         {
-            doAttackByDistance(5);
+            doAttackByDistance(4);
             // StartCoroutine(BlockActions(attack5Time));
-            StartCoroutine(performAnimation(ATTACK5, (float)gameController.GetCharacterAttackTime_ATTACK5(id)));
+            StartCoroutine(performAnimation(ATTACK5, (float)gameController.GetCharacterAttackTime(id, 4)));
         }
     }
 
-    void doAttackByDistance(float attackType)
+    void doAttackByDistance(int attackType)
     {
         float maxDistance = 0;
         switch (attackType)
         {
-            case 1:
+            case 0:
                 maxDistance = attack1Range;
                 break;
-            case 2:
+            case 1:
                 maxDistance = attack2Range;
                 break;
-            case 3:
+            case 2:
                 maxDistance = attack3Range;
                 break;
-            case 4:
+            case 3:
                 maxDistance = attack4Range;
                 break;
-            case 5:
+            case 4:
                 maxDistance = attack5Range;
                 break;
         }
@@ -250,14 +253,17 @@ public class Player : MonoBehaviour
             //simplify this
             if( isFacingRight  && distance < 0 && distance > -maxDistance)
             {
-                // gameController.Attack_ATTACK(id, attackType);
+                // gameController.Attack(id, attackType, enemy.getId());
             }
             else if (!isFacingRight && distance > 0 && distance < maxDistance)
             {
-                // gameController.Attack_ATTACK(id, attackType);
+                // gameController.Attack(id, attackType, enemy.getId());
                 // enemy.takeDamage(10);
             }
         }
+        
+        gameController.Attack(id, attackType, -1);
+        
     }
     
     //-----------------Health-----------------
@@ -289,8 +295,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            //TODO
-            //inform model
+            gameController.LandCharacter(id);
             StartCoroutine(performAnimation(LANDING, (float)gameController.GetPlayerLandingTime()));
         }
     }
@@ -358,10 +363,13 @@ public class Player : MonoBehaviour
     
     private IEnumerator performAnimation(string animation, float attackTime)
     {
-        isPerformingAnimation = true;
-        changeAnimationState(animation);
-        yield return new WaitForSeconds(attackTime);
-        isPerformingAnimation = false;
+        if (!isPerformingAnimation)
+        {
+            isPerformingAnimation = true;
+            changeAnimationState(animation);
+            yield return new WaitForSeconds(attackTime);
+            isPerformingAnimation = false;
+        }
     }
 
     public void changeAnimationState(string animation)

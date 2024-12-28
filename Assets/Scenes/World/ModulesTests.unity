@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 5438329769754769205, guid: 18811a77d6e0f5143bddc1e5381f2cd4, type: 3}
+  - {fileID: 4126133315880670200, guid: 4b124a1db8225a74f8a16fe4d8e516fa, type: 3}
   - {fileID: 359841406287658979, guid: a383dfeb61f51fb40a6d6234d7d3a82a, type: 3}
 --- !u!4 &163513133
 Transform:

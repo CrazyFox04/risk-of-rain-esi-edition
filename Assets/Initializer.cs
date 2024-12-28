@@ -7,10 +7,15 @@ public class Initializer : MonoBehaviour
         
     void Start()
     {
-        foreach (var prefab in prefabs)
-        {
-            Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
-        }
+        
+        // foreach (var prefab in prefabs)
+        // {
+        //     Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        // }
+        
+        Instantiate(prefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(prefabs[1], new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(prefabs[2], new Vector3(60,10,0), Quaternion.identity);
         
     }
 

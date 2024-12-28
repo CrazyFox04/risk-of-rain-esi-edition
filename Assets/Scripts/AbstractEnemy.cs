@@ -55,7 +55,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     //-----------------Movement-----------------
     protected virtual void move()
     {
-        if (gameController.CanCharacterMove_RUN(id))
+        // if (gameController.CanCharacterMove_RUN(id))
         {
             float distance = Vector2.Distance(transform.position, playerPosition.position);
             if (distance < gameController.GetEnemyFollowRange(id) && distance > gameController.GetEnemyFollowRange(id))
@@ -76,7 +76,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     
     public void jump()
     {
-        if (gameController.CanCharacterMove_JUMP(id))
+        // if (gameController.CanCharacterMove_JUMP(id))
         {
             rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)));
         }
@@ -119,9 +119,10 @@ public abstract class AbstractEnemy : MonoBehaviour
     
     protected IEnumerator chargeAttack()
     {
-        StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime_ATTACK1(id)));
+        // StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime_ATTACK(id, 0)));
         // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
-        yield return new WaitForSeconds((float)gameController.GetChargeTime_ATTACK1(id));
+        // (float)gameController.GetChargeTime_ATTACK1(id)
+        yield return new WaitForSeconds(0);
         attack();
     }
     

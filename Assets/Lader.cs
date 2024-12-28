@@ -1,17 +1,23 @@
 using UnityEngine;
 
-public class Lader : MonoBehaviour
+public class Ladder : MonoBehaviour
 {
-    private Player player;
+    public Player player;
+    private GameController gameController;
+    private int playerId;
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        playerId = gameController.GetPlayerId();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && gameController.CanCharacterMove(playerId, 4))
         {
+            gameController.Move(playerId, 4);
             player.startClimbing();
         }
     }
@@ -20,6 +26,7 @@ public class Lader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            gameController.StopMoving(playerId, 4);
             player.stopClimbing();
         }
     }
