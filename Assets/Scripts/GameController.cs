@@ -45,76 +45,13 @@ public class GameController : MonoBehaviour
     private static extern double getEnemyAttackRange(IntPtr game, int id);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK1(IntPtr game, int id);
+    private static extern bool canCharacterAttack(IntPtr game, int id, int attackIndex);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK2(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK3(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK4(IntPtr game, int id); 
+    private static extern double getAttackDamage(IntPtr game, int id, int attackIndex);
         
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK5(IntPtr game, int id); 
-        
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK_SPECTRUM(IntPtr game, int id); 
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK_MONSTER(IntPtr game, int id); 
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack_ATTACK_DROID(IntPtr game, int id); 
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK1(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK2(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK3(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK4(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK5(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK_SPECTRUM(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK1_MONSTER(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getDamage_ATTACK1_DROID(IntPtr game, int id);
-        
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK1(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK2(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK3(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK4(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK5(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK_SPECTRUM(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK_MONSTER(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getChargeTime_ATTACK_DROID(IntPtr game, int id);
+    private static extern double getAttackChargeTime(IntPtr game, int id, int attackIndex);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getCharacterHurtTime(IntPtr game, int id);
@@ -144,28 +81,7 @@ public class GameController : MonoBehaviour
     private static extern double getPlayerDashTime(IntPtr game);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK1(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK2(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK3(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK4(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK5(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK_SPECTRUM(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK_MONSTER(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterAttackTime_ATTACK_DROID(IntPtr game, int id);
+    private static extern double getCharacterAttackTime(IntPtr game, int id, int attackIndex);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool isPlayerDashing(IntPtr game);
@@ -174,37 +90,10 @@ public class GameController : MonoBehaviour
     private static extern bool isPlayerUsingJetpack(IntPtr game);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterMove_RUN(IntPtr game, int id);
+    private static extern bool canCharacterMove(IntPtr game, int id, int moveIndex);
         
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterMove_JUMP(IntPtr game, int id);
-        
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterMove_DASH(IntPtr game, int id);
-        
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK1(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK2(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK3(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK4(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK5(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK_SPECTRUM(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK_MONTER(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern double getCharacterCoolDownAttackTime_ATTACK_DROID(IntPtr game, int id);
+    private static extern double getCharacterCoolDownAttackTime(IntPtr game, int id, int attackIndex);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool isAValidId(IntPtr game, int id);
@@ -213,37 +102,11 @@ public class GameController : MonoBehaviour
     private static extern int getPlayerId(IntPtr game);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK1(int id, int targetId);
+    private static extern void attack(IntPtr game, int id, int attackIndex, int targetId);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK2(int id, int targetId);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK3(int id, int targetId);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK4(int id, int targetId);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK5(int id, int targetId);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK_SPECTRUM(int id, int targetId);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK_MONSTER(int id, int targetId);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void attack_ATTACK_DROID(int id, int targetId);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void move_RUN(IntPtr game, int id);
-        
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void move_JUMP(IntPtr game, int id);
-        
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void move_DASH(IntPtr game, int id);
+    private static extern void move(IntPtr game, int id, int moveIndex);
+
         
     static GameController()
     {
@@ -305,124 +168,19 @@ public class GameController : MonoBehaviour
         return getEnemyAttackRange(this.game, id);
     }
     
-    public bool CanCharacterAttack_ATTACK1(int id)
+    public bool CanCharacterAttack(int id, int attackIndex)
     {
-        return canCharacterAttack_ATTACK1(this.game, id);
-    }
-    
-    public bool CanCharacterAttack_ATTACK2(int id)
-    {
-        return canCharacterAttack_ATTACK2(this.game, id);
-    }
-    
-    public bool CanCharacterAttack_ATTACK3(int id)
-    {
-        return canCharacterAttack_ATTACK3(this.game, id);
-    }
-    
-    public bool CanCharacterAttack_ATTACK4(int id)
-    {
-        return canCharacterAttack_ATTACK4(this.game, id);
-    }
-    
-    public bool CanCharacterAttack_ATTACK5(int id)
-    {
-        return canCharacterAttack_ATTACK5(this.game, id);
-    }
-    
-    public bool CanCharacterAttack_ATTACK_SPECTRUM(int id)
-    {
-        return canCharacterAttack_ATTACK_SPECTRUM(this.game, id);
-    }
-    
-    public bool CanCharacterAttack_ATTACK_MONSTER(int id)
-    {
-        return canCharacterAttack_ATTACK_MONSTER(this.game, id);
-    }
-    
-    public bool CanCharacterAttack_ATTACK_DROID(int id)
-    {
-        return canCharacterAttack_ATTACK_DROID(this.game, id);
+        return canCharacterAttack(this.game, id, attackIndex);
     }
         
-    public double GetDamage_ATTACK1(int id)
+    public double GetAttackDamage(int id, int attackIndex)
     {
-        return getDamage_ATTACK1(this.game, id);
+        return getAttackDamage(this.game, id, attackIndex);
     }
     
-    public double GetDamage_ATTACK2(int id)
+    public double GetAttackChargeTime(int id, int attackIndex)
     {
-        return getDamage_ATTACK2(this.game, id);
-    }
-    
-    public double GetDamage_ATTACK3(int id)
-    {
-        return getDamage_ATTACK3(this.game, id);
-    }
-    
-    public double GetDamage_ATTACK4(int id)
-    {
-        return getDamage_ATTACK4(this.game, id);
-    }
-    
-    public double GetDamage_ATTACK5(int id)
-    {
-        return getDamage_ATTACK5(this.game, id);
-    }
-    
-    public double GetDamage_ATTACK_SPECTRUM(int id)
-    {
-        return getDamage_ATTACK_SPECTRUM(this.game, id);
-    }
-    
-    public double GetDamage_ATTACK1_MONSTER(int id)
-    {
-        return getDamage_ATTACK1_MONSTER(this.game, id);
-    }
-    
-    public double GetDamage_ATTACK1_DROID(int id)
-    {
-        return getDamage_ATTACK1_DROID(this.game, id);
-    }
-        
-    public double GetChargeTime_ATTACK1(int id)
-    {
-        return getChargeTime_ATTACK1(this.game, ide);
-    }
-    
-    public double GetChargeTime_ATTACK2(int id)
-    {
-        return getChargeTime_ATTACK2(this.game, id);
-    }
-    
-    public double GetChargeTime_ATTACK3(int id)
-    {
-        return getChargeTime_ATTACK3(this.game, id);
-    }
-    
-    public double GetChargeTime_ATTACK4(int id)
-    {
-        return getChargeTime_ATTACK4(this.game, id);
-    }
-    
-    public double GetChargeTime_ATTACK5(int id)
-    {
-        return getChargeTime_ATTACK5(this.game, id);
-    }
-    
-    public double GetChargeTime_ATTACK_SPECTRUM(int id)
-    {
-        return getChargeTime_ATTACK_SPECTRUM(this.game, id);
-    }
-    
-    public double GetChargeTime_ATTACK_MONSTER(int id)
-    {
-        return getChargeTime_ATTACK_MONSTER(this.game, id);
-    }
-    
-    public double GetChargeTime_ATTACK_DROID(int id)
-    {
-        return getChargeTime_ATTACK_DROID(this.game, id);
+        return getAttackChargeTime(this.game, id, attackIndex);
     }
         
     public double GetCharacterHurtTime(int id)
@@ -470,44 +228,9 @@ public class GameController : MonoBehaviour
         return getPlayerDashTime(this.game);
     }
     
-    public double GetCharacterAttackTime_ATTACK1(int id)
+    public double GetCharacterAttackTime(int id, int attackIndex)
     {
-        return getCharacterAttackTime_ATTACK1(this.game, id);
-    }
-    
-    public double GetCharacterAttackTime_ATTACK2(int id)
-    {
-        return getCharacterAttackTime_ATTACK2(this.game, id);
-    }
-    
-    public double GetCharacterAttackTime_ATTACK3(int id)
-    {
-        return getCharacterAttackTime_ATTACK3(this.game, id);
-    }
-    
-    public double GetCharacterAttackTime_ATTACK4(int id)
-    {
-        return getCharacterAttackTime_ATTACK4(this.game, id);
-    }
-    
-    public double GetCharacterAttackTime_ATTACK5(int id)
-    {
-        return getCharacterAttackTime_ATTACK5(this.game, id);
-    }
-    
-    public double GetCharacterAttackTime_ATTACK_SPECTRUM(int id)
-    {
-        return getCharacterAttackTime_ATTACK_SPECTRUM(this.game, id);
-    }
-    
-    public double GetCharacterAttackTime_ATTACK_MONSTER(int id)
-    {
-        return getCharacterAttackTime_ATTACK_MONSTER(this.game, id);
-    }
-    
-    public double GetCharacterAttackTime_ATTACK_DROID(int id)
-    {
-        return getCharacterAttackTime_ATTACK_DROID(this.game, id);
+        return getCharacterAttackTime1(this.game, id, attackIndex);
     }
 
     public bool IsPlayerDashing()
@@ -520,59 +243,14 @@ public class GameController : MonoBehaviour
         return isPlayerUsingJetpack(this.game);
     }
     
-    public bool CanCharacterMove_RUN(int id)
+    public bool CanCharacterMove(int id, int moveIndex)
     {
-        return canCharacterMove_RUN(this.game, id);
+        return canCharacterMove(this.game, id, moveIndex);
     }
-    
-    public bool CanCharacterMove_JUMP(int id)
+
+    public double GetCharacterCoolDownAttack(int id, int attackIndex)
     {
-        return canCharacterMove_JUMP(this.game, id);
-    }
-    
-    public bool CanCharacterMove_DASH(int id)
-    {
-        return canCharacterMove_DASH(this.game, id);
-    }
-        
-    public double GetCharacterCoolDownAttack_ATTACK1(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK1(this.game, id);
-    }
-    
-    public double GetCharacterCoolDownAttack_ATTACK2(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK2(this.game, id);
-    }
-    
-    public double GetCharacterCoolDownAttack_ATTACK3(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK3(this.game, id);
-    }
-    
-    public double GetCharacterCoolDownAttack_ATTACK4(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK4(this.game, id);
-    }
-    
-    public double GetCharacterCoolDownAttack_ATTACK5(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK5(this.game, id);
-    }
-    
-    public double GetCharacterCoolDownAttack_ATTACK_SPECTRUM(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK_SPECTRUM(this.game, id);
-    }
-    
-    public double GetCharacterCoolDownAttack_ATTACK_MONSTER(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK_MONSTER(this.game, id);
-    }
-    
-    public double GetCharacterCoolDownAttack_ATTACK_DROID(int id)
-    {
-        return getCharacterCoolDownAttack_ATTACK_DROID(this.game, id);
+        return getCharacterCoolDownAttack(this.game, id, attackIndex);
     }
         
     public bool IsAValidId(int id)
@@ -585,58 +263,12 @@ public class GameController : MonoBehaviour
         return getPlayerId(this.game);
     }
     
-    public void Attack_ATTACK1(int id, int targetId)
+    public void Attack(int id, int attackIndex, int targetId)
     {
-        attack_ATTACK1(id, attackName, targetId);
+        attack_ATTACK1(id, attackIndex, targetId);
     }
     
-    public void Attack_ATTACK2(int id, int targetId)
+   public void Move(int id, int moveName)
     {
-        attack_ATTACK2(id, attackName, targetId);
-    }
-    
-    public void Attack_ATTACK3(int id, int targetId)
-    {
-        attack_ATTACK3(id, attackName, targetId);
-    }
-    
-    public void Attack_ATTACK4(int id, int targetId)
-    {
-        attack_ATTACK4(id, attackName, targetId);
-    }
-    
-    public void Attack_ATTACK5(int id, int targetId)
-    {
-        attack_ATTACK5(id, attackName, targetId);
-    }
-    
-    public void Attack_ATTACK_SPECTRUM(int id, int targetId)
-    {
-        attack_ATTACK_SPECTRUM(id, attackName, targetId);
-    }
-    
-    public void Attack_ATTACK_MONSTER(int id, int targetId)
-    {
-        attack_ATTACK_MONSTER(id, attackName, targetId);
-    }
-    
-    public void Attack_ATTACK_DROID(int id, int targetId)
-    {
-        attack_ATTACK_DROID(id, attackName, targetId);
-    }
-    
-    public void Move_RUN(int id)
-    {
-        move_RUN(this.game, id);
-    }
-    
-    public void Move_JUMP(int id)
-    {
-        move_JUMP(this.game, id);
-    }
-    
-    public void Move_DASH(int id)
-    {
-        move_DASH(this.game, id);
     }
 }
