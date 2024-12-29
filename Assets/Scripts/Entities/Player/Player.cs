@@ -165,7 +165,6 @@ public class Player : MonoBehaviour
                 rb.AddForce(new Vector2(dashForce, 0f));
             else
                 rb.AddForce(new Vector2(-dashForce, 0f));
-            Debug.Log(gameController.CanCharacterMove(id, 2));
         }
     }
 

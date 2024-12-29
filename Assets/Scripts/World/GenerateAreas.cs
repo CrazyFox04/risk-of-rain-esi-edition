@@ -22,11 +22,7 @@ public class GenerateAreas : MonoBehaviour
     }
 
     private void PlaceAreas() {
-        
-        
-
         for (int row = 0; row < rows; row++) {
-            
             for (int column = 0; column < columns; column++) {
                 int prefabGID = gameController.GetAreaGuidCurrentLevel(column, row);
 
@@ -34,21 +30,22 @@ public class GenerateAreas : MonoBehaviour
                     Debug.LogError($"GID {prefabGID} not found in areaGIDs.");
                     continue; 
                 }
-                                    
-                // Debug.LogError($"Prefab GID: {prefabGID}");
+
                 int prefabIdx = getIdFromGID(prefabGID);
 
-            
                 Vector3 position = new Vector3(
                     column * areaSize.x * 0.5f, // x
                     row * areaSize.y * 0.5f,    // y
                     0f                          // z
                 );
 
-
-                // Debug.LogError($"Prefab IDX: {prefabIdx} and Length: {areaPrefabs.Length}");
-
-                Instantiate(areaPrefabs[prefabIdx], position, Quaternion.identity, transform);
+                GameObject area = Instantiate(areaPrefabs[prefabIdx], position, Quaternion.identity, transform);
+                
+                EnemySpawner[] spawners = area.GetComponentsInChildren<EnemySpawner>();
+                // Debug.Log("Spawner found: " + spawners.Length);
+                for (int i = 0; i < spawners.Length; i++) {
+                    spawners[i].set(row, column, i+1);
+                }
             }
         }
     }

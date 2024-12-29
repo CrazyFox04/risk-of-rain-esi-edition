@@ -19,22 +19,28 @@ public class EnemySpawner : MonoBehaviour
         this.row = row;
         this.column = column;
         this.id = id;
+        Debug.Log("Set spawner at " + row + ", " + column + " with id " + id);
     }
     
     void Update()
     {
-        
         if (id != -1)
         {
            useSpawner();
+           
         }
     }
     
     private void useSpawner()
     {
-        if (Vector2.Distance(player.position, transform.position) < 10)
+        if (Vector2.Distance(player.position, transform.position) < 15)
         {
-            gameController.IfCanSpawnCurrentLevelSpawnAt(row, column, id);
+            int tempId = gameController.IfCanSpawnCurrentLevelSpawnAt(row, column, id);
+            if (tempId != -1)
+            {
+                Debug.Log(gameController.GetType(tempId));
+            }
+            
         }
     }
 }
