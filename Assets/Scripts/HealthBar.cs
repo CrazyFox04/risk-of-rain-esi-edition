@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour
         setHealth(gameController.GetPlayerCurrentHealth());
     }
     
-    public void setMaxHealth(int health)
+    private void setMaxHealth(int health)
     {
         slider.maxValue = health;
         slider.value = health;

@@ -15,7 +15,8 @@ public class Initializer : MonoBehaviour
         
         Instantiate(prefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
         Instantiate(prefabs[1], new Vector3(0, 0, 0), Quaternion.identity);
-        Instantiate(prefabs[2], new Vector3(60,10,0), Quaternion.identity);
+        Instantiate(prefabs[2], new Vector3(0,0,0), Quaternion.identity);
+        Instantiate(prefabs[3], new Vector3(60,10), Quaternion.identity);
         
     }
 
