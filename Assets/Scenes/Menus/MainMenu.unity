@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentSceneName: 
-  playConfigurationSceneName: PlayConfiguration
+  playConfigurationSceneName: GenerateAreaTEST
   settingsLevelSceneName: SettingsMenu
 --- !u!1 &1714975950
 GameObject:
