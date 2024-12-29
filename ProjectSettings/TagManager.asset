@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - PlayerHealthBar
+  - EnemySpawner
+  - BossSpawner
   layers:
   - Default
   - TransparentFX
