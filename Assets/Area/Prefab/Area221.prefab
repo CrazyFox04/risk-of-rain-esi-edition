@@ -64055,7 +64055,7 @@ GameObject:
   - component: {fileID: 2654451399031910149}
   - component: {fileID: 1595735408143240160}
   m_Layer: 0
-  m_Name: Ladder
+  m_Name: Ladder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64118,11 +64118,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 28.340199, y: 25.829386}
+  m_Offset: {x: 40.750183, y: 14.18694}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -64132,7 +64132,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.72898865, y: 6.2875404}
+  m_Size: {x: 0.503067, y: 12.061419}
   m_EdgeRadius: 0
 --- !u!1 &7420166922593829556
 GameObject:
@@ -64177,7 +64177,7 @@ GameObject:
   - component: {fileID: 7486590756550621326}
   - component: {fileID: 6236790662028800686}
   m_Layer: 0
-  m_Name: Ladder
+  m_Name: Ladder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64240,11 +64240,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.0329819, y: 0.017332077}
+  m_Offset: {x: -37.834694, y: -1.3506479}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -64254,5 +64254,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.69659424, y: 17.133652}
+  m_Size: {x: 0.500412, y: 4.564665}
   m_EdgeRadius: 0

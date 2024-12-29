@@ -2567,7 +2567,7 @@ GameObject:
   - component: {fileID: 6215786515013082625}
   - component: {fileID: 367223636759709757}
   m_Layer: 0
-  m_Name: Lader
+  m_Name: Ladder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2634,7 +2634,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 8.931505, y: 9.751976}
+  m_Offset: {x: -3.1634865, y: 3.1153786}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2644,7 +2644,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7069588, y: 27.646477}
+  m_Size: {x: 0.5032692, y: 19.474405}
   m_EdgeRadius: 0
 --- !u!1 &4126133315880670200
 GameObject:
@@ -2710,7 +2710,7 @@ GameObject:
   - component: {fileID: 7152486933916903061}
   - component: {fileID: 8305660752566230773}
   m_Layer: 0
-  m_Name: Lader
+  m_Name: Ladder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2777,7 +2777,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 37.61, y: 16.825714}
+  m_Offset: {x: 17.335588, y: 8.053059}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2787,7 +2787,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7069626, y: 26.315048}
+  m_Size: {x: 0.5094185, y: 18.599586}
   m_EdgeRadius: 0
 --- !u!1 &6656230788178685565
 GameObject:
