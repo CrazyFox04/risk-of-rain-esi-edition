@@ -64,12 +64,12 @@ MonoBehaviour:
   isFacingRight: 1
   isBussy: 0
   isClimbing: 0
+  isJetPacking: 0
   attack1Range: 1
   attack2Range: 3
   attack3Range: 3
   attack4Range: 3
   attack5Range: 3
-  canClimb: 0
   animator: {fileID: 1068892474076559229}
   spriteRenderer: {fileID: 8668471363201641994}
   enemies: []
@@ -153,7 +153,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7012059995671364279
 BoxCollider2D:
@@ -515,7 +515,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

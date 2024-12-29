@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
+        gameController.TakePlayerDamage(70);
+        
         
         id = gameController.GetPlayerId();
         updateModel();

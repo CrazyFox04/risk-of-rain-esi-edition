@@ -167,26 +167,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dad6545aaf32344ba0205dafe194d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   playerPosition: {fileID: 0}
-  playerScript: {fileID: 0}
-  speed: 2
-  jumpForce: 200
-  followRange: 10
   rb: {fileID: 6700896921135448510}
   groundCheckLeft: {fileID: 1114298975408084946}
   groundCheckRight: {fileID: 163234133664447396}
   isGrounded: 1
   spriteRenderer: {fileID: 2508930213287764885}
   animator: {fileID: 7849171485331645363}
-  attackRange: 3
-  coolDown: 4
-  canAttack: 1
-  damage: 10
-  delayOfAttack: 0.3
-  attackTime: 0.8
   jumpCollider: {fileID: 0}
-  chargeTime: 0.3
-  hurtTime: 0
 --- !u!50 &6700896921135448510
 Rigidbody2D:
   serializedVersion: 5
@@ -212,7 +201,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &1673130811501341233
 BoxCollider2D:

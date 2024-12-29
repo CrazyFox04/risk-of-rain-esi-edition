@@ -13,7 +13,7 @@ public class GenerateAreas : MonoBehaviour
     [SerializeField] private int columns = 3;
 
     void Start() {
-        gameController.Start();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         if (areaPrefabs.Length == 0) {
             Debug.LogError("Prefabs array is empty. Please add prefabs to the array.");
             return;
@@ -35,18 +35,18 @@ public class GenerateAreas : MonoBehaviour
                     continue; 
                 }
                                     
-                Debug.LogError($"Prefab GID: {prefabGID}");
+                // Debug.LogError($"Prefab GID: {prefabGID}");
                 int prefabIdx = getIdFromGID(prefabGID);
 
             
                 Vector3 position = new Vector3(
-                    column * areaSize.x * 0.7f, // x
-                    row * areaSize.y * 0.7f,    // y
+                    column * areaSize.x * 0.5f, // x
+                    row * areaSize.y * 0.5f,    // y
                     0f                          // z
                 );
 
 
-                Debug.LogError($"Prefab IDX: {prefabIdx} and Length: {areaPrefabs.Length}");
+                // Debug.LogError($"Prefab IDX: {prefabIdx} and Length: {areaPrefabs.Length}");
 
                 Instantiate(areaPrefabs[prefabIdx], position, Quaternion.identity, transform);
             }
