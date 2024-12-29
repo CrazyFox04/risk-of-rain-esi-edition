@@ -106,7 +106,34 @@ public class GameController : MonoBehaviour
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern void move(IntPtr game, int id, int moveIndex);
-
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool isCharacterBusy(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool isCharacterOnGround(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void landCharacter(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void takeOffCharacter(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int isMoving(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void stopMoving(IntPtr game, int id, int moveIndex);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int activateBossSpawn(IntPtr game, int areaX, int areaY, int spawnId);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool canActivateBossSpawn(IntPtr game, int areaX, int areaY, int spawnId);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern double getCharacterCoolDownMovementTime(IntPtr game, int id, int moveIndex);
+    
         
     static GameController()
     {
@@ -148,7 +175,7 @@ public class GameController : MonoBehaviour
         return getType(this.game, id);
     }
     
-    public int GetCharacterSpeed(int id)
+    public double GetCharacterSpeed(int id)
     {
         return getCharacterSpeed(this.game, id);
     }
@@ -230,7 +257,7 @@ public class GameController : MonoBehaviour
     
     public double GetCharacterAttackTime(int id, int attackIndex)
     {
-        return getCharacterAttackTime1(this.game, id, attackIndex);
+        return getCharacterAttackTime(this.game, id, attackIndex);
     }
 
     public bool IsPlayerDashing()
@@ -248,9 +275,9 @@ public class GameController : MonoBehaviour
         return canCharacterMove(this.game, id, moveIndex);
     }
 
-    public double GetCharacterCoolDownAttack(int id, int attackIndex)
+    public double GetCharacterCoolDownAttackTime(int id, int attackIndex)
     {
-        return getCharacterCoolDownAttack(this.game, id, attackIndex);
+        return getCharacterCoolDownAttackTime(this.game, id, attackIndex);
     }
         
     public bool IsAValidId(int id)
@@ -265,10 +292,51 @@ public class GameController : MonoBehaviour
     
     public void Attack(int id, int attackIndex, int targetId)
     {
-        attack_ATTACK1(id, attackIndex, targetId);
+        attack(this.game, id, attackIndex, targetId);
     }
     
    public void Move(int id, int moveName)
     {
+        move(this.game, id, moveName);
+    }
+   
+    public void StopMoving(int id, int moveName)
+    {
+        stopMoving(this.game, id, moveName);
+    } 
+   
+    public void LandCharacter(int id)
+    {
+        landCharacter(this.game, id);
+    }
+    
+    public void TakeOffCharacter(int id)
+    {
+        takeOffCharacter(this.game, id);
+    }
+    
+    public int IsMoving(int id)
+    {
+        return isMoving(this.game, id);
+    }
+    
+    public bool IsCharacterOnGround(int id)
+    {
+        return isCharacterOnGround(this.game, id);
+    }
+    
+    public int ActivateBossSpawn(int areaX, int areaY, int spawnId)
+    {
+        return activateBossSpawn(this.game, areaX, areaY, spawnId);
+    }
+    
+    public bool CanActivateBossSpawn(int areaX, int areaY, int spawnId)
+    {
+        return canActivateBossSpawn(this.game, areaX, areaY, spawnId);
+    }
+    
+    public double GetCharacterCoolDownMovementTime(int id, int moveIndex)
+    {
+        return getCharacterCoolDownMovementTime(this.game, id, moveIndex);
     }
 }
