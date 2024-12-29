@@ -57,9 +57,6 @@ public class GameController : MonoBehaviour
     private static extern double getCharacterHurtTime(IntPtr game, int id);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool isCharacterBusy(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern int getCharacterHealth(IntPtr game, int id);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
