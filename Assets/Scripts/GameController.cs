@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     private static extern int ifCanSpawnCurrentLevelSpawnAt(IntPtr game, int areaX, int areaY, int spawnId);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern string getType(IntPtr game, int id);
+    private static extern int getCharacterType(IntPtr game, int id);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getCharacterSpeed(IntPtr game, int id);
@@ -175,9 +175,9 @@ public class GameController : MonoBehaviour
         return ifCanSpawnCurrentLevelSpawnAt(this.game, areaX, areaY, spawnId);
     }
     
-    public string GetType(int id)
+    public int GetCharacterType(int id)
     {
-        return getType(this.game, id);
+        return getCharacterType(this.game, id);
     }
     
     public double GetCharacterSpeed(int id)
@@ -343,5 +343,20 @@ public class GameController : MonoBehaviour
     public double GetCharacterCoolDownMovementTime(int id, int moveIndex)
     {
         return getCharacterCoolDownMovementTime(this.game, id, moveIndex);
+    }
+
+	public bool isChestEmpty(int areaX, int areaY, int chestId)
+    {
+        return isChestEmpty(this.game, areaX, areaY, chestId);
+    }
+
+	public int openChest(int areaX, int areaY, int chestId)
+    {
+        return openChest(this.game, areaX, areaY, chestId);
+    }
+
+	public int getNumberOfItem(int id, int itemId)
+    {
+        return getNumberOfItem(this.game, id, itemId);
     }
 }
