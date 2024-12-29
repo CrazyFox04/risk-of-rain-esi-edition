@@ -42,7 +42,6 @@ public class GenerateAreas : MonoBehaviour
                 GameObject area = Instantiate(areaPrefabs[prefabIdx], position, Quaternion.identity, transform);
                 
                 EnemySpawner[] spawners = area.GetComponentsInChildren<EnemySpawner>();
-                // Debug.Log("Spawner found: " + spawners.Length);
                 for (int i = 0; i < spawners.Length; i++) {
                     spawners[i].set(row, column, i+1);
                 }

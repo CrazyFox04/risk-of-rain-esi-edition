@@ -55,8 +55,6 @@ public class Player : MonoBehaviour
         
         id = gameController.GetPlayerId();
         updateModel();
-
-        Debug.Log(gameController.IfCanSpawnCurrentLevelSpawnAt(1, 1, 1));
     }
 
     void Update()

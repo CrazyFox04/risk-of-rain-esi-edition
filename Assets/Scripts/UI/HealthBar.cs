@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     public Slider slider;
     public TextMeshProUGUI text;
     GameController gameController;
+    
 
     private void Start()
     {

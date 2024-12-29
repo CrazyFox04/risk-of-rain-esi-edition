@@ -4,6 +4,7 @@ using System.Collections;
 public abstract class AbstractEnemy : MonoBehaviour
 {
     public int id;
+    public int attackIndex;
     
     public Transform playerPosition;
     public Rigidbody2D rb;
@@ -32,18 +33,22 @@ public abstract class AbstractEnemy : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-        // playerScript = playerPosition.GetComponent<Player>();
-        id = gameController.IfCanSpawnCurrentLevelSpawnAt(0,0,1);
-        Debug.Log("Enemy id: " + id);
     }
 
     protected virtual void FixedUpdate()
     {
+        if (id == -1) return;
         isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
         move();
         tryAttack();
         flip();
         updateBaseAnimation();
+    }
+    
+    public void set(int id, int attackIndex)
+    {
+        this.id = id;
+        this.attackIndex = attackIndex;
     }
 
     //-----------------Movement-----------------
@@ -52,10 +57,15 @@ public abstract class AbstractEnemy : MonoBehaviour
         // if (gameController.CanCharacterMove_RUN(id))
         {
             float distance = Vector2.Distance(transform.position, playerPosition.position);
-            if (distance < gameController.GetEnemyFollowRange(id) && distance > gameController.GetEnemyFollowRange(id))
+            float followRange = (float)gameController.GetEnemyFollowRange(id);
+            float stopRange = 1f;
+            if (distance < followRange && distance > stopRange)
             {
                 Vector2 directionToTarget = (playerPosition.position - transform.position).normalized * (float)gameController.GetCharacterSpeed(id);
                 rb.linearVelocity = new Vector2(directionToTarget.x, rb.linearVelocity.y);
+            }else
+            {
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             }
             if (rb.linearVelocity.x > 0.1f)
             {
@@ -68,13 +78,14 @@ public abstract class AbstractEnemy : MonoBehaviour
         }
     }
     
-    public void jump()
-    {
-        // if (gameController.CanCharacterMove_JUMP(id))
-        {
-            rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)));
-        }
-    }
+    // public void jump()
+    // {
+    //     Debug.Log("Jump");
+    //     if (gameController.CanCharacterMove(id, 1) && rb.velocity.x == 0)
+    //     {
+    //         rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)));
+    //     }
+    // }
     
     
     protected void flip()
@@ -102,9 +113,8 @@ public abstract class AbstractEnemy : MonoBehaviour
     protected void tryAttack()
     {
         float distance = Vector2.Distance(transform.position, playerPosition.position);
-        //TODO
-        //can attack
-        if (distance < gameController.GetEnemyAttackRange(id) && false)
+        Debug.Log(gameController.CanCharacterAttack(id,attackIndex));
+        if (distance < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id, attackIndex))
         {
             // StartCoroutine(BlockActions(chargeTime));
             StartCoroutine(chargeAttack());
@@ -113,10 +123,9 @@ public abstract class AbstractEnemy : MonoBehaviour
     
     protected IEnumerator chargeAttack()
     {
-        // StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime_ATTACK(id, 0)));
+        StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime(id, attackIndex)));
         // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
-        // (float)gameController.GetChargeTime_ATTACK1(id)
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds((float)gameController.GetAttackChargeTime(id,attackIndex));
         attack();
     }
     
@@ -125,9 +134,9 @@ public abstract class AbstractEnemy : MonoBehaviour
         float distance = Vector2.Distance(transform.position, playerPosition.position);
         //TODO
         //can attack
-        if (distance < gameController.GetEnemyAttackRange(id) && false)
+        if (distance < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex))
         {
-            // playerScript.takeDamage(damage);
+            gameController.Attack(id, attackIndex, gameController.GetPlayerId());
         }
     }
     
