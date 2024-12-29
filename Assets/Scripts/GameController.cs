@@ -130,7 +130,15 @@ public class GameController : MonoBehaviour
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getCharacterCoolDownMovementTime(IntPtr game, int id, int moveIndex);
-    
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool isChestEmpty(IntPtr game, int areaX, int areaY, int chestId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int openChest(IntPtr game, int areaX, int areaY, int chestId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int getNumberOfItem(IntPtr game, int id, int itemId);
         
     static GameController()
     {
