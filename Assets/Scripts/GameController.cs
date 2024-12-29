@@ -83,8 +83,8 @@ public class GameController : MonoBehaviour
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool isPlayerDashing(IntPtr game);
 
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool isPlayerUsingJetpack(IntPtr game);
+    // [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    // private static extern bool isPlayerUsingJetpack(IntPtr game);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool canCharacterMove(IntPtr game, int id, int moveIndex);
@@ -262,10 +262,10 @@ public class GameController : MonoBehaviour
         return isPlayerDashing(this.game);
     }
     
-    public bool IsPlayerUsingJetpack()
-    {
-        return isPlayerUsingJetpack(this.game);
-    }
+    // public bool IsPlayerUsingJetpack()
+    // {
+    //     return isPlayerUsingJetpack(this.game);
+    // }
     
     public bool CanCharacterMove(int id, int moveIndex)
     {

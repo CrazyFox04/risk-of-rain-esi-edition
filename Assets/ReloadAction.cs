@@ -45,34 +45,31 @@ public class ReloadActions : MonoBehaviour
         //IsReloading
         if (!gameController.CanCharacterAttack(playerId, index))
         {
-            if (!isMovementType && (3 == gameController.IsMoving(playerId))|| 2 == gameController.IsMoving(playerId))
-            {
-                StartCoroutine(ReloadAction());
-            }
-            {
-                StartCoroutine(ReloadAction());
-            }
-
+            // if (!isMovementType && (3 == gameController.IsMoving(playerId))|| 2 == gameController.IsMoving(playerId))
+            // {
+            //     StartCoroutine(ReloadAction());
+            // }
+            
             StartCoroutine(setColor());
         }
     }
 
-    private IEnumerator ReloadAction()
-    {
-        isReloading = true;
-        int targetTime = (int)gameController.GetCharacterCoolDownAttackTime(playerId, 2) + 1;
-        float elapsed = 0f;
-
-        while (elapsed < targetTime)
-        {
-            elapsed += Time.deltaTime;
-            slider.value = (elapsed / targetTime) * 100;
-            yield return null; // Wait next frame
-        }
-
-        slider.value = 100;
-        isReloading = false;
-    }
+    // private IEnumerator ReloadAction()
+    // {
+    //     isReloading = true;
+    //     int targetTime = (int)gameController.GetCharacterCoolDownAttackTime(playerId, 2) + 1;
+    //     float elapsed = 0f;
+    //
+    //     while (elapsed < targetTime)
+    //     {
+    //         elapsed += Time.deltaTime;
+    //         slider.value = (elapsed / targetTime) * 100;
+    //         yield return null; // Wait next frame
+    //     }
+    //
+    //     slider.value = 100;
+    //     isReloading = false;
+    // }
 
     private IEnumerator setColor()
     {

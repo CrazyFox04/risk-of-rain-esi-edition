@@ -106,18 +106,11 @@ public class Player : MonoBehaviour
     void CheckIfGrounded()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        if (!isGrounded)
+        {
+            gameController.TakeOffCharacter(id);
+        }
     }
-    
-    public void startClimbing()
-    {
-        isClimbing = true;
-    }
-    
-    public void stopClimbing()
-    {
-        isClimbing = false;
-    }
-    
 
     void movePlayer()
     {
@@ -125,12 +118,13 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * (float)gameController.GetCharacterSpeed(id), rb.linearVelocity.y);
         }
-        if (isClimbing)
+        if (gameController.IsMoving(id) == 4)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * (float)gameController.GetCharacterSpeed(id));
         }
-        else if (gameController.IsPlayerUsingJetpack())
+        else if (gameController.IsMoving(id) == 3 && isJetPacking)
         {
+            Debug.Log(gameController.IsMoving(id));
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * (float)gameController.GetJetPackForce());
         }
     }
@@ -149,11 +143,14 @@ public class Player : MonoBehaviour
     //TODO
     void jetPack()
     {
-        if (gameController.CanCharacterMove(id, 3))
+        if (gameController.IsMoving(id) == 3)
+        {
+            gameController.StopMoving(id, 3);
+            isJetPacking = false;
+        } else if (gameController.CanCharacterMove(id, 3))
         {
             gameController.Move(id,3);
             isJetPacking = true;
-            gameController.Move(id, 3);
         }
     }
 
@@ -338,14 +335,14 @@ public class Player : MonoBehaviour
     //-----------------Animations-----------------
     void updateBaseAnimation()
     {
+        int move = gameController.IsMoving(id);
+        
         if (isPerformingAnimation) return;
         
-        //TODO
-        //jetpack
-        if (false)
+        if (move == 3)
         {
             changeAnimationState(JETPACK);   
-        } else if (Input.GetAxis("Vertical") != 0 && isClimbing)
+        } else if (move == 4)
         {
             changeAnimationState(CLIMB);
         } else if (!isGrounded)
