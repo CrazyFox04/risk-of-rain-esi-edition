@@ -57,9 +57,6 @@ public class GameController : MonoBehaviour
     private static extern double getCharacterHurtTime(IntPtr game, int id);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool isCharacterBusy(IntPtr game, int id);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern int getCharacterHealth(IntPtr game, int id);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
@@ -108,11 +105,32 @@ public class GameController : MonoBehaviour
     private static extern void move(IntPtr game, int id, int moveIndex);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool isCharacterBusy(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool isCharacterOnGround(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern void landCharacter(IntPtr game, int id);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void takeOffCharacter(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int isMoving(IntPtr game, int id);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern void stopMoving(IntPtr game, int id, int moveIndex);
-
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int activateBossSpawn(IntPtr game, int areaX, int areaY, int spawnId);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool canActivateBossSpawn(IntPtr game, int areaX, int areaY, int spawnId);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern double getCharacterCoolDownMovementTime(IntPtr game, int id, int moveIndex);
+    
         
     static GameController()
     {
@@ -287,5 +305,35 @@ public class GameController : MonoBehaviour
     public void LandCharacter(int id)
     {
         landCharacter(this.game, id);
+    }
+    
+    public void TakeOffCharacter(int id)
+    {
+        takeOffCharacter(this.game, id);
+    }
+    
+    public int IsMoving(int id)
+    {
+        return isMoving(this.game, id);
+    }
+    
+    public bool IsCharacterOnGround(int id)
+    {
+        return isCharacterOnGround(this.game, id);
+    }
+    
+    public int ActivateBossSpawn(int areaX, int areaY, int spawnId)
+    {
+        return activateBossSpawn(this.game, areaX, areaY, spawnId);
+    }
+    
+    public bool CanActivateBossSpawn(int areaX, int areaY, int spawnId)
+    {
+        return canActivateBossSpawn(this.game, areaX, areaY, spawnId);
+    }
+    
+    public double GetCharacterCoolDownMovementTime(int id, int moveIndex)
+    {
+        return getCharacterCoolDownMovementTime(this.game, id, moveIndex);
     }
 }

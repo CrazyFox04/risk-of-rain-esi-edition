@@ -149,9 +149,9 @@ public class Player : MonoBehaviour
     //TODO
     void jetPack()
     {
-        
         if (gameController.CanCharacterMove(id, 3))
         {
+            gameController.Move(id,3);
             isJetPacking = true;
             gameController.Move(id, 3);
         }

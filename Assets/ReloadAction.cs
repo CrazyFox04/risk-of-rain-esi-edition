@@ -6,70 +6,93 @@ using System;
 
 public class ReloadActions : MonoBehaviour
 {
-    
     public Slider slider;
     public Image fill;
     private int playerId;
     private bool isReloading = false;
+    private bool isMovementType = false;
     GameController gameController;
 
-    private int actionIndex = -1;
-    
+    private int index = -1;
+
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         playerId = gameController.GetPlayerId();
     }
-    
+
     private void Update()
     {
-        if (actionIndex != -1)
+        if (index != -1)
         {
             setStatus();
-        }    
+        }
     }
-    
-    public void setAttackIndex(int index)
+
+    public void setIndex(int index)
     {
-        actionIndex = index;
+        this.index = index;
     }
-    
+
+    public void setMovementType(bool isMovement)
+    {
+        isMovementType = isMovement;
+    }
+
 
     private void setStatus()
     {
         //IsReloading
-        if (!gameController.CanCharacterAttack(playerId, actionIndex))
+        if (!gameController.CanCharacterAttack(playerId, index))
         {
-            // StartCoroutine(ReloadAction());
+            if (!isMovementType && (3 == gameController.IsMoving(playerId))|| 2 == gameController.IsMoving(playerId))
+            {
+                StartCoroutine(ReloadAction());
+            }
+            {
+                StartCoroutine(ReloadAction());
+            }
+
             StartCoroutine(setColor());
         }
-        
     }
-    
-    // private IEnumerator ReloadAction()
-    // {
-    //     isReloading = true;
-    //     int targetTime = (int)gameController.GetCharacterCoolDownAttackTime(playerId, 2) + 1;
-    //     float elapsed = 0f;
-    //
-    //     while (elapsed < targetTime)
-    //     {
-    //         elapsed += Time.deltaTime;
-    //         slider.value =  (elapsed / targetTime) * 100;
-    //         yield return null; // Wait next frame
-    //         
-    //     }
-    //     slider.value = 100;
-    //     isReloading = false;
-    // }
-    
+
+    private IEnumerator ReloadAction()
+    {
+        isReloading = true;
+        int targetTime = (int)gameController.GetCharacterCoolDownAttackTime(playerId, 2) + 1;
+        float elapsed = 0f;
+
+        while (elapsed < targetTime)
+        {
+            elapsed += Time.deltaTime;
+            slider.value = (elapsed / targetTime) * 100;
+            yield return null; // Wait next frame
+        }
+
+        slider.value = 100;
+        isReloading = false;
+    }
+
     private IEnumerator setColor()
     {
-        while (!gameController.CanCharacterAttack(playerId, actionIndex))
+        if (isMovementType)
         {
-            fill.color = Color.gray;
-            yield return null;    
+            while (!gameController.CanCharacterMove(playerId, index))
+            {
+                fill.color = Color.gray;
+                yield return null;
+            }
         }
+        else
+        {
+            while (!gameController.CanCharacterAttack(playerId, index))
+            {
+                fill.color = Color.gray;
+                yield return null;
+            }
+        }
+
         fill.color = new Color32(0x6B, 0xBE, 0x38, 0xFF);
     }
 }
