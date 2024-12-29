@@ -52,15 +52,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-
-        gameController.TakePlayerDamage(70);
-        
         
         id = gameController.GetPlayerId();
         updateModel();
 
         Debug.Log(gameController.IfCanSpawnCurrentLevelSpawnAt(1, 1, 1));
-
     }
 
     void Update()
