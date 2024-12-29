@@ -168,9 +168,10 @@ public class Player : MonoBehaviour
 
     void attack1()
     {
-        if (gameController.CanCharacterAttack(id, 0))
+        if (gameController.CanCharacterAttack(id , 0))
         {
-            doAttackByDistance(0);
+            StartCoroutine(chargeAttack(0));
+            // doAttackByDistance(0);
             // StartCoroutine(BlockActions(attack1Time));
             StartCoroutine(performAnimation(ATTACK1, (float)gameController.GetCharacterAttackTime(id, 0), true));
         }
@@ -178,9 +179,10 @@ public class Player : MonoBehaviour
 
     void attack2()
     {
-        if (gameController.CanCharacterAttack(id, 1))
+        
+        if (gameController.CanCharacterAttack(id ,1))
         {
-            doAttackByDistance(1);
+            StartCoroutine(chargeAttack(1));
             // StartCoroutine(BlockActions(attack2Time));
             StartCoroutine(performAnimation(ATTACK2, (float)gameController.GetCharacterAttackTime(id, 1), true));
         }
@@ -188,9 +190,10 @@ public class Player : MonoBehaviour
 
     void attack3()
     {
-        if (gameController.CanCharacterAttack(id, 2))
+        if (gameController.CanCharacterAttack(id ,2))
         {
-            doAttackByDistance(2);
+            StartCoroutine(chargeAttack(2));
+            // doAttackByDistance(2);
             // StartCoroutine(BlockActions(attack3Time));
             StartCoroutine(performAnimation(ATTACK3, (float)gameController.GetCharacterAttackTime(id, 2), true));
         }
@@ -200,7 +203,8 @@ public class Player : MonoBehaviour
     {
         if (gameController.CanCharacterAttack(id, 3))
         {
-            doAttackByDistance(3);
+            StartCoroutine(chargeAttack(3));
+            // doAttackByDistance(3);
             // StartCoroutine(BlockActions(attack4Time));
             StartCoroutine(performAnimation(ATTACK4, (float)gameController.GetCharacterAttackTime(id, 3), true));
         }
@@ -210,10 +214,19 @@ public class Player : MonoBehaviour
     {
         if (gameController.CanCharacterAttack(id, 4))
         {
-            doAttackByDistance(4);
+            StartCoroutine(chargeAttack(4));
             // StartCoroutine(BlockActions(attack5Time));
             StartCoroutine(performAnimation(ATTACK5, (float)gameController.GetCharacterAttackTime(id, 4), true));
         }
+    }
+    
+    protected IEnumerator chargeAttack(int attackType)
+    {
+        // StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime(id, attackIndex)));
+        // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
+        yield return new WaitForSeconds((float)gameController.GetAttackChargeTime(id, attackType));
+        Debug.Log("Attack");
+        doAttackByDistance(attackType);
     }
 
     void doAttackByDistance(int attackType)
@@ -237,25 +250,22 @@ public class Player : MonoBehaviour
                 maxDistance = attack5Range;
                 break;
         }
-        
         foreach (AbstractEnemy enemy in enemies)
         {
             float distance = transform.position.x - enemy.transform.position.x;
-            //TODO
-            //simplify this
+            
             if( isFacingRight  && distance < 0 && distance > -maxDistance)
             {
-                // gameController.Attack(id, attackType, enemy.getId());
+                gameController.Attack(id, attackType, enemy.getId());
+                return;
             }
-            else if (!isFacingRight && distance > 0 && distance < maxDistance)
+            if (!isFacingRight && distance > 0 && distance < maxDistance)
             {
-                // gameController.Attack(id, attackType, enemy.getId());
-                // enemy.takeDamage(10);
+                gameController.Attack(id, attackType, enemy.getId());
+                return;
             }
         }
-        
         gameController.Attack(id, attackType, -1);
-        
     }
     
     //-----------------Health-----------------

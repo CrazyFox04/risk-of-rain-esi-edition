@@ -43,12 +43,18 @@ public abstract class AbstractEnemy : MonoBehaviour
         tryAttack();
         flip();
         updateBaseAnimation();
+        Debug.Log(gameController.GetCharacterHealth(id));
     }
     
     public void set(int id, int attackIndex)
     {
         this.id = id;
         this.attackIndex = attackIndex;
+    }
+    
+    public int getId()
+    {
+       return this.id;
     }
 
     //-----------------Movement-----------------
@@ -113,7 +119,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     protected void tryAttack()
     {
         float distance = Vector2.Distance(transform.position, playerPosition.position);
-        Debug.Log(gameController.CanCharacterAttack(id,attackIndex));
+        // Debug.Log(gameController.CanCharacterAttack(id,attackIndex));
         if (distance < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id, attackIndex))
         {
             // StartCoroutine(BlockActions(chargeTime));
@@ -136,7 +142,7 @@ public abstract class AbstractEnemy : MonoBehaviour
         //can attack
         if (distance < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex))
         {
-            gameController.Attack(id, attackIndex, gameController.GetPlayerId());
+            // gameController.Attack(id, attackIndex, gameController.GetPlayerId());
         }
     }
     
