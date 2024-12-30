@@ -33,6 +33,12 @@ public abstract class AbstractEnemy : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        EnemyHealthBar healthBar = GetComponentInChildren<EnemyHealthBar>();
+        if (healthBar != null)
+        {
+            healthBar.setEnemyId(id);
+        }
+        
     }
 
     protected virtual void FixedUpdate()
@@ -142,7 +148,7 @@ public abstract class AbstractEnemy : MonoBehaviour
         //can attack
         if (distance < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex))
         {
-            // gameController.Attack(id, attackIndex, gameController.GetPlayerId());
+            gameController.Attack(id, attackIndex, gameController.GetPlayerId());
         }
     }
     
