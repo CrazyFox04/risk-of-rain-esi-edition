@@ -226,10 +226,20 @@ public class Player : MonoBehaviour
         // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
         yield return new WaitForSeconds((float)gameController.GetAttackChargeTime(id, attackType));
         Debug.Log("Attack");
-        doAttackByDistance(attackType);
+        attackMele(attackType);
     }
+    
+    // void attackDistance()
+    // {
+    //     GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+    //     Projectile projScript = projectile.GetComponent<Projectile>();
+    //     if (projScript != null)
+    //     {
+    //         projScript.Initialize(id, 10, isFacingRight); // Ajustez les valeurs selon vos besoins
+    //     }
+    // }
 
-    void doAttackByDistance(int attackType)
+    void attackMele(int attackType)
     {
         float maxDistance = 0;
         switch (attackType)
