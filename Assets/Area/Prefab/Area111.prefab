@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.049260616, y: 6.8645525}
+  m_Offset: {x: -12.750097, y: 1.77179}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.68578625, y: 14.729105}
+  m_Size: {x: 0.49917984, y: 10.556497}
   m_EdgeRadius: 0
 --- !u!114 &3942743971363092532
 MonoBehaviour:
@@ -5312,7 +5312,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.05929184, y: 9.646039}
+  m_Offset: {x: -21.560007, y: 0.5695238}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5322,7 +5322,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.67949677, y: 20.292097}
+  m_Size: {x: 0.50006485, y: 14.50757}
   m_EdgeRadius: 0
 --- !u!114 &6332241853140429373
 MonoBehaviour:
@@ -38925,7 +38925,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 66
-      m_TileSpriteIndex: 40
+      m_TileSpriteIndex: 68
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -53034,8 +53034,8 @@ Tilemap:
     m_Data: {fileID: 2074805331, guid: b2f44511cd5a6d447a0166b07339663a, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 2139428521, guid: b2f44511cd5a6d447a0166b07339663a, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1817815811, guid: b2f44511cd5a6d447a0166b07339663a, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 8
     m_Data: {fileID: 504715748, guid: b2f44511cd5a6d447a0166b07339663a, type: 3}
   - m_RefCount: 2
@@ -53090,8 +53090,8 @@ Tilemap:
     m_Data: {fileID: -1226614443, guid: b2f44511cd5a6d447a0166b07339663a, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -7568449251786254984, guid: d6c5fce117904e24d8b1588bd3ccfb12, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1817815811, guid: b2f44511cd5a6d447a0166b07339663a, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 792039002, guid: d6c5fce117904e24d8b1588bd3ccfb12, type: 3}
   - m_RefCount: 2
