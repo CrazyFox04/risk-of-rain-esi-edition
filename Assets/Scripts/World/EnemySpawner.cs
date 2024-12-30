@@ -41,10 +41,10 @@ public class EnemySpawner : MonoBehaviour
                 switch (type)
                 {
                     case 1:
-                        Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<AbstractEnemy>().set(tempId, 5);
+                        Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 5);
                         break;
                     case 2:
-                        Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<AbstractEnemy>().set(tempId, 6);
+                        Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 6);
                         break;
                 }
                 

@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     
-    public List<AbstractEnemy> enemies = new List<AbstractEnemy>();
+    public List<Enemy> enemies = new List<Enemy>();
 
     private int lastHealthValue;
 
@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
                 maxDistance = attack5Range;
                 break;
         }
-        foreach (AbstractEnemy enemy in enemies)
+        foreach (Enemy enemy in enemies)
         {
             float distance = transform.position.x - enemy.transform.position.x;
             
@@ -306,7 +306,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            AbstractEnemy enemy = other.GetComponent<AbstractEnemy>();
+            Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemies.Add(enemy);
@@ -319,7 +319,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            AbstractEnemy enemy = other.GetComponent<AbstractEnemy>();
+            Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemies.Remove(enemy);

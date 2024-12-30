@@ -29,7 +29,7 @@ public class BossSpawner : MonoBehaviour
         {
             isActive = true;
             int tempId = gameController.ActivateBossSpawn(row, column, id);
-            Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<AbstractEnemy>().set(tempId, 7);
+            Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 7);
         }
 
         if (id != -1 && isActive)
@@ -49,10 +49,10 @@ public class BossSpawner : MonoBehaviour
                 switch (type)
                 {
                     case 1:
-                        Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<AbstractEnemy>().set(tempId, 5);
+                        Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 5);
                         break;
                     case 2:
-                        Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<AbstractEnemy>().set(tempId, 6);
+                        Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 6);
                         break;
                 }
                 

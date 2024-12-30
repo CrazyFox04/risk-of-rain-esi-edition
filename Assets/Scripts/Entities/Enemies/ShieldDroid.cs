@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Serialization;
 
-public class ShieldDroid : AbstractEnemy
+public class ShieldDroid : Enemy
 {
     //-----------------Enemy Movement-----------------
     

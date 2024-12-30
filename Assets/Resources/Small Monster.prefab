@@ -571,10 +571,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8529978949509010752}
   - component: {fileID: 2508930213287764885}
-  - component: {fileID: 271344963249567395}
   - component: {fileID: 6700896921135448510}
   - component: {fileID: 1673130811501341233}
   - component: {fileID: 7849171485331645363}
+  - component: {fileID: 5961975883994986267}
   m_Layer: 6
   m_Name: Small Monster
   m_TagString: Enemy
@@ -655,28 +655,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &271344963249567395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934443711124851847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dad6545aaf32344ba0205dafe194d1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  attackIndex: 0
-  playerPosition: {fileID: 0}
-  rb: {fileID: 6700896921135448510}
-  groundCheckLeft: {fileID: 1114298975408084946}
-  groundCheckRight: {fileID: 163234133664447396}
-  isGrounded: 1
-  spriteRenderer: {fileID: 2508930213287764885}
-  animator: {fileID: 7849171485331645363}
-  jumpCollider: {fileID: 0}
 --- !u!50 &6700896921135448510
 Rigidbody2D:
   serializedVersion: 5
@@ -772,6 +750,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5961975883994986267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934443711124851847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ce42d824df1e949919cd5cd74d8b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  attackIndex: 0
+  playerPosition: {fileID: 0}
+  rb: {fileID: 6700896921135448510}
+  groundCheckLeft: {fileID: 1114298975408084946}
+  groundCheckRight: {fileID: 163234133664447396}
+  isGrounded: 0
+  spriteRenderer: {fileID: 2508930213287764885}
+  animator: {fileID: 7849171485331645363}
+  jumpCollider: {fileID: 1673130811501341233}
 --- !u!1 &5937051934639361739
 GameObject:
   m_ObjectHideFlags: 0

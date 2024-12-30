@@ -221,8 +221,8 @@ GameObject:
   - component: {fileID: 1669378297036110975}
   - component: {fileID: 4679483857492475080}
   - component: {fileID: 4899275744611816401}
-  - component: {fileID: 2253417472132433569}
   - component: {fileID: 3102473425756995385}
+  - component: {fileID: 4771186269126419899}
   m_Layer: 6
   m_Name: ShieldDroid
   m_TagString: Enemy
@@ -376,28 +376,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.19937669, y: 0.21573344}
   m_EdgeRadius: 0
---- !u!114 &2253417472132433569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2178813143346321999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce116418a440c6847bef696492a06a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  attackIndex: 0
-  playerPosition: {fileID: 0}
-  rb: {fileID: 4679483857492475080}
-  groundCheckLeft: {fileID: 8586544254866322220}
-  groundCheckRight: {fileID: 8185592498334166678}
-  isGrounded: 1
-  spriteRenderer: {fileID: 1669378297036110975}
-  animator: {fileID: 3102473425756995385}
-  jumpCollider: {fileID: 0}
 --- !u!95 &3102473425756995385
 Animator:
   serializedVersion: 7
@@ -420,6 +398,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4771186269126419899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178813143346321999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ce42d824df1e949919cd5cd74d8b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  attackIndex: 0
+  playerPosition: {fileID: 0}
+  rb: {fileID: 4679483857492475080}
+  groundCheckLeft: {fileID: 8586544254866322220}
+  groundCheckRight: {fileID: 8185592498334166678}
+  isGrounded: 0
+  spriteRenderer: {fileID: 1669378297036110975}
+  animator: {fileID: 3102473425756995385}
+  jumpCollider: {fileID: 4899275744611816401}
 --- !u!1 &3006028969981143455
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public int id;
     public int attackIndex;
@@ -31,7 +31,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     public const string RUN = "Run";
     public const string HURT = "Hurt";
 
-    protected virtual void Start()
+    protected void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
@@ -40,7 +40,7 @@ public abstract class AbstractEnemy : MonoBehaviour
         lastHealthValue = gameController.GetCharacterHealth(id);
     }
 
-    protected virtual void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (id == -1) return;
         isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
@@ -80,7 +80,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     }
 
     //-----------------Movement-----------------
-    protected virtual void move()
+    protected void move()
     {
         // if (gameController.CanCharacterMove_RUN(id))
         {

@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
             return;
         } else if (other.CompareTag("Enemy"))
         {
-            AbstractEnemy enemy = other.GetComponent<AbstractEnemy>();
+            Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 gameController.Attack(playerId, attackType, enemy.getId());
