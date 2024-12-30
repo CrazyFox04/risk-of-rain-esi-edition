@@ -119,7 +119,6 @@ public class Player : MonoBehaviour
         }
         else if (gameController.IsMoving(id) == 3 && isJetPacking)
         {
-            Debug.Log(gameController.IsMoving(id));
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Input.GetAxis("Vertical") * (float)gameController.GetJetPackForce());
         }
     }

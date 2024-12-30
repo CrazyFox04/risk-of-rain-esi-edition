@@ -45,6 +45,11 @@ public class GenerateAreas : MonoBehaviour
                 for (int i = 0; i < spawners.Length; i++) {
                     spawners[i].set(row, column, i+1);
                 }
+                BossSpawner[] bossSpawners = area.GetComponentsInChildren<BossSpawner>();
+                for (int i = 0; i < bossSpawners.Length; i++) {
+                    bossSpawners[i].set(row, column, 3);
+                    Debug.Log("Boss Spawner set");
+                }
             }
         }
     }

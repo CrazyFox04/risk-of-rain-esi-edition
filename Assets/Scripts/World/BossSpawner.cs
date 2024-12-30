@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class BossSpawner : MonoBehaviour
 {
     private GameController gameController;
     private Transform player;
     private int row;
     private int column;
     private int id = -1;
+    public bool isActive = false;
     public GameObject[] enemies;
     
     void Start()
@@ -24,9 +25,16 @@ public class EnemySpawner : MonoBehaviour
     
     void Update()
     {
-        if (id != -1)
+        if (Vector2.Distance(player.position, transform.position) < 15 && Input.GetButtonDown("Use") && gameController.CanActivateBossSpawn(row, column, id))
         {
-           useSpawner();
+            isActive = true;
+            int tempId = gameController.ActivateBossSpawn(row, column, id);
+            Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<AbstractEnemy>().set(tempId, 7);
+        }
+
+        if (id != -1 && isActive)
+        {
+            useSpawner();
         }
     }
     

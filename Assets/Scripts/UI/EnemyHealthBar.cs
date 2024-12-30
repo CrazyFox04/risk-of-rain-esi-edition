@@ -27,7 +27,6 @@ public class EnemyHealthBar : MonoBehaviour
 
     public void setEnemyId(int id)
     {
-        Debug.Log("Setting enemy id to " + id);
         enemyId = id;
     }
 }
