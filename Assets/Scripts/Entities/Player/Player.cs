@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     
     public List<AbstractEnemy> enemies = new List<AbstractEnemy>();
 
+    private int lastHealthValue;
+
     public const string IDLE = "PlayerIdle";
     public const string ATTACK1 = "PlayerAttack1";
     public const string ATTACK2 = "PlayerAttack2";
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         
         id = gameController.GetPlayerId();
+        lastHealthValue = gameController.GetCharacterHealth(id);
         updateModel();
     }
 
@@ -89,6 +92,7 @@ public class Player : MonoBehaviour
         }
         movePlayer();
         updateBaseAnimation();
+        checkForDamageAnimation();
         FlipPlayerToMouse();
     }
     
@@ -220,8 +224,6 @@ public class Player : MonoBehaviour
     
     protected IEnumerator chargeAttack(int attackType, bool melee = true)
     {
-        // StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime(id, attackIndex)));
-        // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
         yield return new WaitForSeconds((float)gameController.GetAttackChargeTime(id, attackType));
         if (melee)
         {
@@ -287,28 +289,6 @@ public class Player : MonoBehaviour
         gameController.Attack(id, attackType, -1);
     }
     
-    //-----------------Health-----------------
-    
-    public void addMaxHealth(int health)
-    {
-        //Call model here
-        // healthBar.setMaxHealth(maxHealth);
-    }
-
-    public void addHealth(int health)
-    {
-        //Call model here
-        // healthBar.setHealth(currentHealth);
-    }
-
-    // public void takeDamage(int damage)
-    // {
-    //     //Call model here
-    //     // Debug.Log("Player took damage: " + damage);
-    //     StartCoroutine(performAnimation(HURT, hurtTime));
-    //     // healthBar.setHealth(currentHealth);
-    // }
-    
     
     //-----------------Collision Behaviors-----------------
     
@@ -347,23 +327,15 @@ public class Player : MonoBehaviour
         }
     }
     
-    //-----------------todo - remove-----------------
-    //CAN BE REPLACED BY MODEL !!!!!!!
-    // private IEnumerator BlockActions(float time)
-    // {
-    //     isBussy = true;
-    //     yield return new WaitForSeconds(time);
-    //     isBussy = false;
-    // }
     
     //-----------------Animations-----------------
+    
     void updateBaseAnimation()
     {
         int move = gameController.IsMoving(id);
         
         if (isPerformingAnimation) return;
-        
-        if (move == 3)
+        else if (move == 3)
         {
             changeAnimationState(JETPACK);   
         } else if (move == 4)
@@ -415,6 +387,15 @@ public class Player : MonoBehaviour
         else
         {
             SetOrientation(false);
+        }
+    }
+    
+    private void checkForDamageAnimation()
+    {
+        if (gameController.GetCharacterHealth(id) < lastHealthValue)
+        {
+            StartCoroutine(performAnimation(HURT, (float)gameController.GetCharacterHurtTime(id)));
+            lastHealthValue = gameController.GetCharacterHealth(id);
         }
     }
 

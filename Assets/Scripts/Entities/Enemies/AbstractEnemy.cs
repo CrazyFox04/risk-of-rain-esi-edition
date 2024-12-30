@@ -23,6 +23,8 @@ public abstract class AbstractEnemy : MonoBehaviour
 
     private GameController gameController;
     
+    private int lastHealthValue;
+    
     
     public const string IDLE = "Idle";
     public const string ATTACK = "Attack";
@@ -34,11 +36,8 @@ public abstract class AbstractEnemy : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         EnemyHealthBar healthBar = GetComponentInChildren<EnemyHealthBar>();
-        if (healthBar != null)
-        {
-            healthBar.setEnemyId(id);
-        }
-        
+        healthBar.setEnemyId(id);
+        lastHealthValue = gameController.GetCharacterHealth(id);
     }
 
     protected virtual void FixedUpdate()
@@ -49,6 +48,8 @@ public abstract class AbstractEnemy : MonoBehaviour
         tryAttack();
         flip();
         updateBaseAnimation();
+        checkForDamageAnimation();
+        isDeath();
     }
     
     public void set(int id, int attackIndex)
@@ -60,6 +61,22 @@ public abstract class AbstractEnemy : MonoBehaviour
     public int getId()
     {
        return this.id;
+    }
+    
+    private void isDeath()
+    {
+        if (gameController.GetCharacterHealth(id) <= 0)
+        {
+            //TODO
+            StartCoroutine(performAnimation("Death", 0.3f));
+            StartCoroutine(death());
+        }
+    }
+    
+    private IEnumerator death()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 
     //-----------------Movement-----------------
@@ -194,5 +211,13 @@ public abstract class AbstractEnemy : MonoBehaviour
     {
         spriteRenderer.flipX = !faceRight;
         isFacingRight = faceRight;
+    }
+    private void checkForDamageAnimation()
+    {
+        if (gameController.GetCharacterHealth(id) < lastHealthValue)
+        {
+            StartCoroutine(performAnimation(HURT, (float)gameController.GetCharacterHurtTime(id)));
+            lastHealthValue = gameController.GetCharacterHealth(id);
+        }
     }
 }
