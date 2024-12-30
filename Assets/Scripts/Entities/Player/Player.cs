@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
 
     private bool isPerformingAnimation = false;
-    public bool isBussy = false;
+    public bool canShoot = true;
     public bool isClimbing = false;
     public bool isJetPacking = false;
     
@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     public const string HURT = "PlayerHurt";
     public const string CLIMB = "PlayerClimbing";
     
+    public GameObject projectilePrefab;
     GameController gameController;
 
     void Start()
@@ -61,8 +62,6 @@ public class Player : MonoBehaviour
     {
         updateModel();
         CheckIfGrounded();
-
-        if (isBussy) return;
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -180,9 +179,9 @@ public class Player : MonoBehaviour
     void attack2()
     {
         
-        if (gameController.CanCharacterAttack(id ,1))
+        if (gameController.CanCharacterAttack(id ,1) && canShoot)
         {
-            StartCoroutine(chargeAttack(1));
+            StartCoroutine(chargeAttack(1, false));
             // StartCoroutine(BlockActions(attack2Time));
             StartCoroutine(performAnimation(ATTACK2, (float)gameController.GetCharacterAttackTime(id, 1), true));
         }
@@ -190,9 +189,9 @@ public class Player : MonoBehaviour
 
     void attack3()
     {
-        if (gameController.CanCharacterAttack(id ,2))
+        if (gameController.CanCharacterAttack(id ,2) && canShoot)
         {
-            StartCoroutine(chargeAttack(2));
+            StartCoroutine(chargeAttack(2, false));
             // doAttackByDistance(2);
             // StartCoroutine(BlockActions(attack3Time));
             StartCoroutine(performAnimation(ATTACK3, (float)gameController.GetCharacterAttackTime(id, 2), true));
@@ -220,26 +219,37 @@ public class Player : MonoBehaviour
         }
     }
     
-    protected IEnumerator chargeAttack(int attackType)
+    protected IEnumerator chargeAttack(int attackType, bool melee = true)
     {
         // StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime(id, attackIndex)));
         // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
         yield return new WaitForSeconds((float)gameController.GetAttackChargeTime(id, attackType));
-        Debug.Log("Attack");
-        attackMele(attackType);
+        if (melee)
+        {
+            attackMelee(attackType);
+        }
+        else
+        {
+            attackProjectile(attackType);
+        }
     }
     
-    // void attackDistance()
-    // {
-    //     GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-    //     Projectile projScript = projectile.GetComponent<Projectile>();
-    //     if (projScript != null)
-    //     {
-    //         projScript.Initialize(id, 10, isFacingRight); // Ajustez les valeurs selon vos besoins
-    //     }
-    // }
+    private IEnumerator blockShoot(int attackType)
+    {
+        canShoot = false;
+        yield return new WaitForSeconds((float)gameController.GetCharacterAttackTime(id, attackType));
+        canShoot = true;
+    }
+    
+    void attackProjectile(int attackType)
+    {
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Projectile projScript = projectile.GetComponent<Projectile>();
+        projScript.Initialize(id, attackType, isFacingRight);
+        StartCoroutine(blockShoot(attackType));
+    }
 
-    void attackMele(int attackType)
+    void attackMelee(int attackType)
     {
         float maxDistance = 0;
         switch (attackType)

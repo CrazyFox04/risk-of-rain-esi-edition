@@ -49,7 +49,6 @@ public abstract class AbstractEnemy : MonoBehaviour
         tryAttack();
         flip();
         updateBaseAnimation();
-        Debug.Log(gameController.GetCharacterHealth(id));
     }
     
     public void set(int id, int attackIndex)

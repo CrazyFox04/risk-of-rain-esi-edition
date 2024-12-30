@@ -72,6 +72,7 @@ MonoBehaviour:
   animator: {fileID: 1068892474076559229}
   spriteRenderer: {fileID: 8668471363201641994}
   enemies: []
+  projectilePrefab: {fileID: 7412134826149268929, guid: 30f67739136a6f44b89819c0d0da882b, type: 3}
 --- !u!212 &8668471363201641994
 SpriteRenderer:
   m_ObjectHideFlags: 0
