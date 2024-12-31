@@ -3189,7 +3189,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 129552757
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3210,7 +3210,7 @@ GameObject:
   - component: {fileID: 6004251805755019271}
   - component: {fileID: 4815447299469201002}
   - component: {fileID: 299218769451465865}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44108,7 +44108,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1701650565
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

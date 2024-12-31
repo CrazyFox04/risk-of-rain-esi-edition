@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5084241324835410918}
   - component: {fileID: 1583923592140182195}
   - component: {fileID: 3942738658747871401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5533900026042059356}
   - component: {fileID: 1602251261920239215}
   - component: {fileID: 6213744090470802549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 3883487225920810036}
   - component: {fileID: 4002663293424952468}
   - component: {fileID: 7506340787001078475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6529,7 +6529,7 @@ GameObject:
   - component: {fileID: 8142107116811571945}
   - component: {fileID: 8592615030882471235}
   - component: {fileID: 4440892688397669496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6620,7 +6620,7 @@ GameObject:
   - component: {fileID: 3406552305659697733}
   - component: {fileID: 477466959077923969}
   - component: {fileID: 5342418337547468210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6711,7 +6711,7 @@ GameObject:
   - component: {fileID: 5858439237430260324}
   - component: {fileID: 6268098358912104663}
   - component: {fileID: 3902722446011944248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51921,7 +51921,7 @@ GameObject:
   - component: {fileID: 249662990839327060}
   - component: {fileID: 7452787934311939508}
   - component: {fileID: 4437761724286810507}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52012,7 +52012,7 @@ GameObject:
   - component: {fileID: 1908135753696698223}
   - component: {fileID: 9037110288335982596}
   - component: {fileID: 297169341705307734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52101,7 +52101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1954881469566300211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladders
   m_TagString: Untagged
   m_Icon: {fileID: 0}

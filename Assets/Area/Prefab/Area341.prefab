@@ -857,7 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1996345270134130680}
   - component: {fileID: 315756107800665631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1664,7 +1664,7 @@ GameObject:
   - component: {fileID: 2629600938215107213}
   - component: {fileID: 8168160275765530390}
   - component: {fileID: 8777322631410255947}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1806,7 @@ GameObject:
   - component: {fileID: 5219672625815532193}
   - component: {fileID: 3242119493263869391}
   - component: {fileID: 6734896547462937388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 5041220615329720283}
   - component: {fileID: 8418411512734629912}
   - component: {fileID: 1533209217194899867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladder03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
