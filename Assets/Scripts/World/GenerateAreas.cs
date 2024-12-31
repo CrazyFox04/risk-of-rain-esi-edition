@@ -23,13 +23,23 @@ public class GenerateAreas : MonoBehaviour
     }
 
     private void PlaceAreas() {
-        for (int row = 0; row < rows; row++) {
-            for (int column = 0; column < columns; column++) {
+    for (int row = -1; row <= rows; row++) {
+        for (int column = -1; column <= columns; column++) {
+            if (row == -1 || row == rows || column == -1 || column == columns) {
+                // Place the border prefab
+                Vector3 position = new Vector3(
+                    column * areaSize.x * 0.5f, // x
+                    row * areaSize.y * 0.5f,    // y
+                    0f                          // z
+                );
+                Instantiate(areaPrefabs[0], position, Quaternion.identity, transform);
+            } else {
+                // Place the regular area prefab
                 int prefabGID = gameController.GetAreaGuidCurrentLevel(column, row);
 
                 if (prefabGID == -1) {
                     Debug.LogError($"GID {prefabGID} not found in areaGIDs.");
-                    continue; 
+                    continue;
                 }
 
                 int prefabIdx = getIdFromGID(prefabGID);
@@ -41,14 +51,12 @@ public class GenerateAreas : MonoBehaviour
                 );
 
                 GameObject area = Instantiate(areaPrefabs[prefabIdx], position, Quaternion.identity, transform);
-                
-                
+
                 if (row == 0 && column == 0) {
                     Transform playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
                     Instantiate(player, playerSpawn.position, Quaternion.identity);
                 }
-                
-                
+
                 EnemySpawner[] spawners = area.GetComponentsInChildren<EnemySpawner>();
                 for (int i = 0; i < spawners.Length; i++) {
                     spawners[i].set(row, column, i+1);
@@ -64,6 +72,7 @@ public class GenerateAreas : MonoBehaviour
             }
         }
     }
+}
 
     private int getIdFromGID(int gid) {
         int index = 0;
