@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerConfig", menuName = "MenuObj/PlayerConfig")]
+[CreateAssetMenu(fileName = "PlayerConfig", menuName = "Game/PlayerConfig")]
 public class PlayerConfig: ScriptableObject
 {
     public int attack1;

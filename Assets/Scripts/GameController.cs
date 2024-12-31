@@ -9,8 +9,6 @@ public class GameController : MonoBehaviour
     public PlayerConfig playerConfig;
     private IntPtr game;
 
-    
-
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern IntPtr newGame(int primaryAttack, int secondaryAttack, int tertiaryAttack);
     

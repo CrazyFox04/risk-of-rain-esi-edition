@@ -12,7 +12,7 @@ public class PlayConfiguration : MenuScene
 
     public PlayerConfig playerConfig;
 
-    private List<string> allAttacks = new List<string>();
+    private List<string> allAttacks = new List<string>() {"Attack1", "Attack2", "Attack3", "Attack4", "Attack5"};
 
     void Start() 
     {
@@ -64,11 +64,10 @@ public class PlayConfiguration : MenuScene
     
     public void PlayGame()
     {
-
         // save and play
-        playerConfig.attack1 = attack1Dpd.value;
-        playerConfig.attack2 = attack2Dpd.value;
-        playerConfig.attack3 = attack3Dpd.value;
+        playerConfig.attack1 = 0; //attack1Dpd.value;
+        playerConfig.attack2 = 1; //attack2Dpd.value;
+        playerConfig.attack3 = 2; //attack3Dpd.value;
 
         SceneLoader.LoadSceneIfExists(initializerScene);
     }
