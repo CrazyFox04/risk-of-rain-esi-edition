@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
     void attack2()
     {
         
-        if (gameController.CanCharacterAttack(id ,1) && canShoot)
+        if (gameController.CanCharacterAttack(id ,1))
         {
             StartCoroutine(chargeAttack(1, false));
             // StartCoroutine(BlockActions(attack2Time));
@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
 
     void attack3()
     {
-        if (gameController.CanCharacterAttack(id ,2) && canShoot)
+        if (gameController.CanCharacterAttack(id ,2))
         {
             StartCoroutine(chargeAttack(2, false));
             // doAttackByDistance(2);
@@ -229,17 +229,19 @@ public class Player : MonoBehaviour
         {
             attackMelee(attackType);
         }
-        else
+        else if (canShoot)
         {
-            attackProjectile(attackType);
+                attackProjectile(attackType);
         }
     }
     
     private IEnumerator blockShoot(int attackType)
     {
         canShoot = false;
+        Debug.Log("Blocking shoot");
         yield return new WaitForSeconds((float)gameController.GetCharacterAttackTime(id, attackType));
         canShoot = true;
+        Debug.Log("Unblocking shoot");
     }
     
     void attackProjectile(int attackType)

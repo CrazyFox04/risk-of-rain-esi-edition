@@ -42,12 +42,12 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && gameController.CanCharacterAttack(playerId, attackType))
             {
                 gameController.Attack(playerId, attackType, enemy.getId());
             }
         }
-        else
+        else if(gameController.CanCharacterAttack(playerId, attackType))
         {
             gameController.Attack(playerId, attackType, -1);
         }

@@ -141,11 +141,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 448
         width: 128
         height: 64
       alignment: 9
-      pivot: {x: 0.415, y: 0.35}
+      pivot: {x: 0.415, y: 0.336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -163,11 +163,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 384
         width: 128
         height: 64
       alignment: 9
-      pivot: {x: 0.415, y: 0.35}
+      pivot: {x: 0.415, y: 0.336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -185,11 +185,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 320
         width: 128
         height: 64
       alignment: 9
-      pivot: {x: 0.415, y: 0.35}
+      pivot: {x: 0.415, y: 0.336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -207,11 +207,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 256
         width: 128
         height: 64
       alignment: 9
-      pivot: {x: 0.415, y: 0.35}
+      pivot: {x: 0.415, y: 0.336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,11 +229,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 192
         width: 128
         height: 64
       alignment: 9
-      pivot: {x: 0.415, y: 0.35}
+      pivot: {x: 0.415, y: 0.336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,11 +251,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 128
         width: 128
         height: 64
       alignment: 9
-      pivot: {x: 0.415, y: 0.35}
+      pivot: {x: 0.415, y: 0.336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -273,11 +273,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 128
         height: 64
       alignment: 9
-      pivot: {x: 0.415, y: 0.35}
+      pivot: {x: 0.415, y: 0.336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -286,6 +286,28 @@ TextureImporter:
       bones: []
       spriteID: 059e5a4164fcf18b0800000000000000
       internalID: -5179193146551703216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blaster heavy_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.415, y: 0.336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9aa1bf7388544a288be0ed263243d7
+      internalID: -1286329359
       vertices: []
       indices: 
       edges: []
@@ -311,6 +333,7 @@ TextureImporter:
       blaster heavy_4: -3808210855057627807
       blaster heavy_5: -6707462153369182807
       blaster heavy_6: -5179193146551703216
+      blaster heavy_7: -1286329359
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
