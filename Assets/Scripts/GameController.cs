@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     private IntPtr game;
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern IntPtr newGame();
+    private static extern IntPtr newGame(int primaryAttack, int secondaryAttack, int tertiaryAttack);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern void destroyGame();
@@ -139,7 +139,7 @@ public class GameController : MonoBehaviour
 
     public void Start ()
     {
-        this.game = newGame();
+        this.game = newGame(0,1,2);
     }
 
     public int GetPlayerMaxHealth()
