@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     
     void Update()
     {
-        if (id != -1)
+        if (id != -1 && Vector2.Distance(player.position, transform.position) < 15)
         {
            useSpawner();
         }
@@ -32,24 +32,21 @@ public class EnemySpawner : MonoBehaviour
     
     private void useSpawner()
     {
-        if (Vector2.Distance(player.position, transform.position) < 15)
+        int tempId = gameController.IfCanSpawnCurrentLevelSpawnAt(row, column, id);
+        if (tempId != -1)
         {
-            int tempId = gameController.IfCanSpawnCurrentLevelSpawnAt(row, column, id);
-            if (tempId != -1)
+            int type = gameController.GetCharacterType(tempId);
+            switch (type)
             {
-                int type = gameController.GetCharacterType(tempId);
-                switch (type)
-                {
-                    case 1:
-                        Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 5);
-                        break;
-                    case 2:
-                        Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 6);
-                        break;
-                }
-                
+                case 1:
+                    Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<Enemy>()
+                        .set(tempId, 5);
+                    break;
+                case 2:
+                    Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<Enemy>()
+                        .set(tempId, 6);
+                    break;
             }
-            
         }
     }
 }

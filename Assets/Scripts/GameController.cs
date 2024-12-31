@@ -140,9 +140,6 @@ public class GameController : MonoBehaviour
 
     public void Start ()
     {
-
-        Debug.Log($"Attaque 2: {playerConfig.attack2}, Attaque 3: {playerConfig.attack3}");
-
         this.game = newGame(playerConfig.attack1, playerConfig.attack2, playerConfig.attack3);
     }
 

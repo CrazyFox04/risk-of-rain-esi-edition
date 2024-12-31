@@ -9,9 +9,9 @@ public class Enemy : MonoBehaviour
     public Transform playerPosition;
     public Rigidbody2D rb;
 
-    public Transform groundCheckLeft;
-    public Transform groundCheckRight;
-    public bool isGrounded;
+    // public Transform groundCheckLeft;
+    // public Transform groundCheckRight;
+    // public bool isGrounded;
     
     public SpriteRenderer spriteRenderer;
     public Animator animator;
@@ -43,13 +43,17 @@ public class Enemy : MonoBehaviour
     protected void FixedUpdate()
     {
         if (id == -1) return;
-        isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
-        move();
-        tryAttack();
-        flip();
-        updateBaseAnimation();
-        checkForDamageAnimation();
-        isDeath();
+        //enemy too far from player -> do nothing (not visible on the screen)
+        if (Vector2.Distance(playerPosition.position, transform.position) < 25)
+        {
+            // isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
+            move();
+            tryAttack();
+            flip();
+            updateBaseAnimation();
+            checkForDamageAnimation();
+            isDeath();
+        }
     }
     
     public void set(int id, int attackIndex)
@@ -82,8 +86,10 @@ public class Enemy : MonoBehaviour
     //-----------------Movement-----------------
     protected void move()
     {
-        // if (gameController.CanCharacterMove_RUN(id))
+       
+        if (gameController.CanCharacterMove(id, 0))
         {
+            
             float distance = Vector2.Distance(transform.position, playerPosition.position);
             float followRange = (float)gameController.GetEnemyFollowRange(id);
             float stopRange = 1f;
@@ -127,13 +133,6 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    //-----------------Health-----------------
-    //CAN BE REPLACED BY MODEL ?
-    // public void takeDamage(int damage)
-    // {
-    //     //Call model here
-    //     StartCoroutine(performAnimation(HURT, hurtTime));
-    // }
     
     
     //-----------------Attack-----------------
@@ -141,10 +140,8 @@ public class Enemy : MonoBehaviour
     protected void tryAttack()
     {
         float distance = Vector2.Distance(transform.position, playerPosition.position);
-        // Debug.Log(gameController.CanCharacterAttack(id,attackIndex));
         if (distance < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id, attackIndex))
         {
-            // StartCoroutine(BlockActions(chargeTime));
             StartCoroutine(chargeAttack());
         }
     }
@@ -159,23 +156,15 @@ public class Enemy : MonoBehaviour
     
     protected void attack()
     {
-        float distance = Vector2.Distance(transform.position, playerPosition.position);
-        //TODO
-        //can attack
-        if (distance < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex))
+        float distanceX = Mathf.Abs(transform.position.x - playerPosition.position.x);
+        float distanceY = Mathf.Abs(transform.position.y - playerPosition.position.y);
+
+        if (distanceX < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex) && distanceY < 1)
         {
             gameController.Attack(id, attackIndex, gameController.GetPlayerId());
         }
     }
     
-    
-//CAN BE REPLACED BY MODEL !!!!!!!
-    // protected IEnumerator coolDownWait()
-    // {
-    //     canAttack = false;
-    //     yield return new WaitForSeconds(coolDown);
-    //     canAttack = true;
-    // }
     
     //-----------------Animation-----------------
     

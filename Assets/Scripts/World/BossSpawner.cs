@@ -8,12 +8,14 @@ public class BossSpawner : MonoBehaviour
     private int column;
     private int id = -1;
     public bool isActive = false;
+    public Animator animator;
     public GameObject[] enemies;
     
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator.Play("BossSpawner");
     }
     
     public void set(int row, int column, int id)
@@ -25,11 +27,16 @@ public class BossSpawner : MonoBehaviour
     
     void Update()
     {
-        if (Vector2.Distance(player.position, transform.position) < 15 && Input.GetButtonDown("Use") && gameController.CanActivateBossSpawn(row, column, id))
+        if (Vector2.Distance(player.position, transform.position) < 3)
         {
-            isActive = true;
-            int tempId = gameController.ActivateBossSpawn(row, column, id);
-            Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 7);
+            if (Input.GetButtonDown("Use") && gameController.CanActivateBossSpawn(row, column, id))
+            {
+                isActive = true;
+                animator.Play("BossSpawnerActivated");
+                // animator.Play("BossSpawnerEndGame");
+                int tempId = gameController.ActivateBossSpawn(row, column, id);
+                Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 7);
+            }
         }
 
         if (id != -1 && isActive)
