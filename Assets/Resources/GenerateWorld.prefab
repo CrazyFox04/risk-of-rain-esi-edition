@@ -67,3 +67,4 @@ MonoBehaviour:
   areaSize: {x: 128, y: 64}
   rows: 3
   columns: 3
+  player: {fileID: 359841406287658979, guid: a383dfeb61f51fb40a6d6234d7d3a82a, type: 3}

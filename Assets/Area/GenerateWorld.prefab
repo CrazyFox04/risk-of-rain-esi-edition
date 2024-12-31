@@ -44,10 +44,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8364531ddddd6584aa2f1d54ec1ae59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   areaPrefabs:
-  - {fileID: 6407286665711526447, guid: 782ffe637f578e046ba18ceabf6ffe18, type: 3}
-  - {fileID: 6407286665711526447, guid: b4922ccea06f4f049bca74bf63bab099, type: 3}
-  - {fileID: 6407286665711526447, guid: 3f7b9d98421a9634a9b80178224a288e, type: 3}
-  areaSize: {x: 128, y: 128}
+  - {fileID: 4126133315880670200, guid: 782ffe637f578e046ba18ceabf6ffe18, type: 3}
+  - {fileID: 4126133315880670200, guid: 4b124a1db8225a74f8a16fe4d8e516fa, type: 3}
+  - {fileID: 4126133315880670200, guid: 467b9c9cc0109a240917d717e4494d9a, type: 3}
+  - {fileID: 4126133315880670200, guid: e8c63b1901c616142a802391916f2231, type: 3}
+  - {fileID: 4126133315880670200, guid: 6307d68e84b38eb4a923048a951d0146, type: 3}
+  - {fileID: 4126133315880670200, guid: b6b3596a5d86a7746bb16362caf8d26d, type: 3}
+  - {fileID: 4126133315880670200, guid: b5fd7e2e6a0ac8246aa9ea77c089d3cd, type: 3}
+  - {fileID: 4126133315880670200, guid: b5fd7e2e6a0ac8246aa9ea77c089d3cd, type: 3}
+  - {fileID: 4126133315880670200, guid: 5d252b6dcb6b89046ad8de7ca3a4e358, type: 3}
+  - {fileID: 4126133315880670200, guid: 8ec37b6df39ead54299cb76d9ede5871, type: 3}
+  - {fileID: 4126133315880670200, guid: f92eadd1e6c09454f9d744392047f517, type: 3}
+  - {fileID: 4126133315880670200, guid: a54f2faf25791cb44acf92cb39a8e279, type: 3}
+  - {fileID: 4126133315880670200, guid: bcc81c2569718ef448b41ae334f7d95b, type: 3}
+  - {fileID: 4126133315880670200, guid: b6842a8d55c344d40b01f4b71f5b282f, type: 3}
+  - {fileID: 4126133315880670200, guid: 3067b0a06027d2c49acdf62aa21c3f8a, type: 3}
+  - {fileID: 4126133315880670200, guid: e94de712bb6561c4d964e87d8d25a334, type: 3}
+  - {fileID: 4126133315880670200, guid: b8a96a1f0722531499d815f3692f68c2, type: 3}
+  - {fileID: 4126133315880670200, guid: f4a5034fb0ec01a49a318c8bb59633c4, type: 3}
+  areaGIDs: 
+  areaSize: {x: 128, y: 64}
   rows: 2
   columns: 3
+  player: {fileID: 359841406287658979, guid: a383dfeb61f51fb40a6d6234d7d3a82a, type: 3}

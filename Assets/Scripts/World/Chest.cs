@@ -1,19 +1,21 @@
-using System;
 using UnityEngine;
+using System;
 
-public class EnemySpawner : MonoBehaviour
+public class Chest : MonoBehaviour
 {
     private GameController gameController;
     private Transform player;
     private int row;
     private int column;
     private int id = -1;
-    public GameObject[] enemies;
+    public bool isOpen = false;
+    public Animator animator;
     
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         // player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator.Play("ChestReady");
     }
     
     public void set(int row, int column, int id)
@@ -29,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
         if (player == null)
         {
             try
-            {
+            { 
                 player = GameObject.FindGameObjectWithTag("Player").transform;
             }
             catch (Exception e)
@@ -37,29 +39,21 @@ public class EnemySpawner : MonoBehaviour
                 return;
             }
         }
-        if (Vector2.Distance(player.position, transform.position) < 15)
+        if (!isOpen)
         {
-           useSpawner();
+            openChest();
         }
     }
     
-    private void useSpawner()
+    private void openChest()
     {
-        int enemyId = gameController.IfCanSpawnCurrentLevelSpawnAt(row, column, id);
-        if (enemyId != -1)
+        //TODO
+        //can open chest
+        if (Input.GetButtonDown("Use") && true && Vector2.Distance(player.position, transform.position) < 0.5)
         {
-            int type = gameController.GetCharacterType(enemyId);
-            switch (type)
-            {
-                case 1:
-                    Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<Enemy>()
-                        .set(enemyId, 5);
-                    break;
-                case 2:
-                    Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<Enemy>()
-                        .set(enemyId, 6);
-                    break;
-            }
+            //OPEN CHEST IN MODEL
+            isOpen = true;
+            animator.Play("ChestOpen");
         }
     }
 }

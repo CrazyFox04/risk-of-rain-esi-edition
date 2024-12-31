@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Initializer : MonoBehaviour
@@ -8,17 +9,9 @@ public class Initializer : MonoBehaviour
     void Start()
     {
         
-        foreach (var prefab in prefabs)
+        foreach (GameObject prefab in prefabs)
         {
-            
-            if (prefab.name == "Player")
-            {
-                Instantiate(prefab, new Vector3(60, 20, 0), Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
-            }
+            Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
             
         }
         
@@ -27,6 +20,13 @@ public class Initializer : MonoBehaviour
         // Instantiate(prefabs[2], new Vector3(0,0,0), Quaternion.identity);
         // Instantiate(prefabs[3], new Vector3(60,10), Quaternion.identity);
         
+    }
+
+    private IEnumerator spawnPlayer(GameObject prefab)
+    {
+        yield return new WaitForSeconds(0);
+        // Transform playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+        // Instantiate(prefab, playerSpawn.position, Quaternion.identity);
     }
 
     // Update is called once per frame

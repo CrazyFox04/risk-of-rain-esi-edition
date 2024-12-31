@@ -238,10 +238,8 @@ public class Player : MonoBehaviour
     private IEnumerator blockShoot(int attackType)
     {
         canShoot = false;
-        Debug.Log("Blocking shoot");
         yield return new WaitForSeconds((float)gameController.GetCharacterAttackTime(id, attackType));
         canShoot = true;
-        Debug.Log("Unblocking shoot");
     }
     
     void attackProjectile(int attackType)

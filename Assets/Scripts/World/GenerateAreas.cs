@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class GenerateAreas : MonoBehaviour
 {
-    [SerializeField] private GameController gameController;
-    [SerializeField] private GameObject[] areaPrefabs;
-    [SerializeField] private int[] areaGIDs;
-    [SerializeField] Vector2 areaSize = new(128f, 64f);
-    [SerializeField] private int rows = 3;
-    [SerializeField] private int columns = 3;
+    public GameController gameController;
+    public GameObject[] areaPrefabs;
+    public int[] areaGIDs;
+    public Vector2 areaSize = new(128f, 64f);
+    public int rows = 3;
+    public int columns = 3;
+    public GameObject player;
 
     void Start() {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -41,6 +42,13 @@ public class GenerateAreas : MonoBehaviour
 
                 GameObject area = Instantiate(areaPrefabs[prefabIdx], position, Quaternion.identity, transform);
                 
+                
+                if (row == 0 && column == 0) {
+                    Transform playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+                    Instantiate(player, playerSpawn.position, Quaternion.identity);
+                }
+                
+                
                 EnemySpawner[] spawners = area.GetComponentsInChildren<EnemySpawner>();
                 for (int i = 0; i < spawners.Length; i++) {
                     spawners[i].set(row, column, i+1);
@@ -48,6 +56,10 @@ public class GenerateAreas : MonoBehaviour
                 BossSpawner[] bossSpawners = area.GetComponentsInChildren<BossSpawner>();
                 for (int i = 0; i < bossSpawners.Length; i++) {
                     bossSpawners[i].set(row, column, 3);
+                }
+                Chest[] chests = area.GetComponentsInChildren<Chest>();
+                for (int i = 0; i < chests.Length; i++) {
+                    chests[i].set(row, column, i+1);
                 }
             }
         }

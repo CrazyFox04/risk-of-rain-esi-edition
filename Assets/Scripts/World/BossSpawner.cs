@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class BossSpawner : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class BossSpawner : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // player = GameObject.FindGameObjectWithTag("Player").transform;
         animator.Play("BossSpawner");
     }
     
@@ -27,6 +28,18 @@ public class BossSpawner : MonoBehaviour
     
     void Update()
     {
+        if (id == -1) return;
+        if (player == null)
+        {
+            try
+            {
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            catch (Exception e)
+            {
+                return;
+            }
+        }
         if (Vector2.Distance(player.position, transform.position) < 3)
         {
             if (Input.GetButtonDown("Use") && gameController.CanActivateBossSpawn(row, column, id))
@@ -39,7 +52,7 @@ public class BossSpawner : MonoBehaviour
             }
         }
 
-        if (id != -1 && isActive)
+        if (isActive)
         {
             useSpawner();
         }
@@ -49,17 +62,17 @@ public class BossSpawner : MonoBehaviour
     {
         if (Vector2.Distance(player.position, transform.position) < 15)
         {
-            int tempId = gameController.IfCanSpawnCurrentLevelSpawnAt(row, column, id);
-            if (tempId != -1)
+            int enemyId = gameController.IfCanSpawnCurrentLevelSpawnAt(row, column, id);
+            if (enemyId != -1)
             {
-                int type = gameController.GetCharacterType(tempId);
+                int type = gameController.GetCharacterType(enemyId);
                 switch (type)
                 {
                     case 1:
-                        Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 5);
+                        Instantiate(enemies[0], transform.position, Quaternion.identity).GetComponent<Enemy>().set(enemyId, 5);
                         break;
                     case 2:
-                        Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 6);
+                        Instantiate(enemies[1], transform.position, Quaternion.identity).GetComponent<Enemy>().set(enemyId, 6);
                         break;
                 }
                 
