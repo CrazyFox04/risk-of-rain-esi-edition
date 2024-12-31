@@ -6,7 +6,10 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     private const string dllname = "librisk-of-rain-esi-edition-cpp";
+    public PlayerConfig playerConfig;
     private IntPtr game;
+
+    
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern IntPtr newGame(int primaryAttack, int secondaryAttack, int tertiaryAttack);
@@ -139,7 +142,7 @@ public class GameController : MonoBehaviour
 
     public void Start ()
     {
-        this.game = newGame(0,1,2);
+        this.game = newGame(playerConfig.attack1, playerConfig.attack2, playerConfig.attack3);
     }
 
     public int GetPlayerMaxHealth()
