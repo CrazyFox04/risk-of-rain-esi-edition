@@ -161,6 +161,7 @@ public class Enemy : MonoBehaviour
 
         if (distanceX < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex) && distanceY < 1)
         {
+            Debug.Log("id: " + id + " attackIndex: " + attackIndex + " playerId: " + gameController.GetPlayerId());
             gameController.Attack(id, attackIndex, gameController.GetPlayerId());
         }
     }

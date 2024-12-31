@@ -15,10 +15,6 @@ public class GenerateAreas : MonoBehaviour
 
     void Start() {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        if (areaPrefabs.Length == 0) {
-            Debug.LogError("Prefabs array is empty. Please add prefabs to the array.");
-            return;
-        }
         PlaceAreas();
     }
 

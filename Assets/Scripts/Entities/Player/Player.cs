@@ -252,6 +252,7 @@ public class Player : MonoBehaviour
 
     void attackMelee(int attackType)
     {
+        if (!gameController.CanCharacterAttack(id, attackType)) return;
         float maxDistance = 0;
         switch (attackType)
         {

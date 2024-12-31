@@ -40,7 +40,7 @@ public class BossSpawner : MonoBehaviour
                 return;
             }
         }
-        if (Vector2.Distance(player.position, transform.position) < 3)
+        if (Vector2.Distance(player.position, transform.position) < 7)
         {
             if (Input.GetButtonDown("Use") && gameController.CanActivateBossSpawn(row, column, id))
             {
