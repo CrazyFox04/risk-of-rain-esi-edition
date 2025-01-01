@@ -50,11 +50,7 @@ public class Enemy : MonoBehaviour
         //enemy too far from player -> do nothing (not visible on the screen)
         if (Vector2.Distance(playerPosition.position, transform.position) < 25)
         {
-            isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, obstacleLayer);
-            if (isGrounded)
-            {
-                gameController.LandCharacter(id);
-            }
+            CheckIfGrounded();
             move();
             checkForObstacleAndJump();
             tryAttack();
@@ -121,6 +117,18 @@ public class Enemy : MonoBehaviour
         }
     }
     
+    void CheckIfGrounded()
+    {
+        isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, obstacleLayer);
+        if (!isGrounded)
+        {
+            gameController.TakeOffCharacter(id);
+        } else
+        {
+            gameController.LandCharacter(id);
+        }
+    }
+    
     private void checkForObstacleAndJump()
     {
         RaycastHit2D hit = Physics2D.Raycast(obstacleCheck.position, isFacingRight ? Vector2.right : Vector2.left, 1f, obstacleLayer);
@@ -132,10 +140,8 @@ public class Enemy : MonoBehaviour
     
     public void jump()
     {
-        // if (gameController.CanCharacterMove(id, 1) && rb.velocity.x == 0)
-        if (gameController.CanCharacterMove(id, 1) && isGrounded)
+        if (gameController.CanCharacterMove(id, 1))
         {
-            Debug.Log("Jump");
             rb.AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
             gameController.Move(id, 1);
         }
