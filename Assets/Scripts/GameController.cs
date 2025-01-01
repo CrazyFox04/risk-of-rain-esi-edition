@@ -83,9 +83,7 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool isPlayerDashing(IntPtr game);
-
-    // [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    // private static extern bool isPlayerUsingJetpack(IntPtr game);
+    
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool canCharacterMove(IntPtr game, int id, int moveIndex);
@@ -131,7 +129,15 @@ public class GameController : MonoBehaviour
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getCharacterCoolDownMovementTime(IntPtr game, int id, int moveIndex);
-    
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool isChestEmpty(IntPtr game, int areaX, int areaY, int chestId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int openChest(IntPtr game, int areaX, int areaY, int chestId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int getNumberOfItem(IntPtr game, int id, int itemId);
         
     static GameController()
     {
@@ -263,10 +269,6 @@ public class GameController : MonoBehaviour
         return isPlayerDashing(this.game);
     }
     
-    // public bool IsPlayerUsingJetpack()
-    // {
-    //     return isPlayerUsingJetpack(this.game);
-    // }
     
     public bool CanCharacterMove(int id, int moveIndex)
     {
@@ -336,5 +338,20 @@ public class GameController : MonoBehaviour
     public double GetCharacterCoolDownMovementTime(int id, int moveIndex)
     {
         return getCharacterCoolDownMovementTime(this.game, id, moveIndex);
+    }
+
+	public bool isChestEmpty(int areaX, int areaY, int chestId)
+    {
+        return isChestEmpty(this.game, areaX, areaY, chestId);
+    }
+
+	public int openChest(int areaX, int areaY, int chestId)
+    {
+        return openChest(this.game, areaX, areaY, chestId);
+    }
+
+	public int getNumberOfItem(int id, int itemId)
+    {
+        return getNumberOfItem(this.game, id, itemId);
     }
 }
