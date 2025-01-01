@@ -148,6 +148,14 @@ public class GameController : MonoBehaviour
     {
         this.game = newGame(playerConfig.attack1, playerConfig.attack2, playerConfig.attack3);
     }
+    
+    void FixedUpdate()
+    {
+        if (GetPlayerCurrentHealth() <= 0)
+        {
+            SceneLoader.LoadSceneIfExists("GameOver");
+        }
+    }
 
     public int GetPlayerMaxHealth()
     {

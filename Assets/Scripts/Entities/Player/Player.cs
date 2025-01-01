@@ -13,27 +13,26 @@ public class Player : MonoBehaviour
     public float checkRadius = 0.1f;
     public bool isGrounded;
     public bool isFacingRight = true;
-
-
     private bool isPerformingAnimation = false;
-    public bool canShoot = true;
-    public bool isClimbing = false;
-    public bool isJetPacking = false;
+    private bool isClimbing = false;
+    private bool isJetPacking = false;
+    private bool canShoot = true;
+    private int lastHealthValue;
     
-    //TODO
-    //Move to model
-    public float attack1Range = 1;
-    public float attack2Range = 3;
-    public float attack3Range = 3;
-    public float attack4Range = 3;
-    public float attack5Range = 3;
+    private float attack1Range = 1;
+    private float attack2Range = 3;
+    private float attack3Range = 3;
+    private float attack4Range = 3;
+    private float attack5Range = 3;
     
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     
-    public List<Enemy> enemies = new List<Enemy>();
-
-    private int lastHealthValue;
+    private List<Enemy> enemies = new List<Enemy>();
+    
+    public GameObject projectilePrefab;
+    GameController gameController;
+    
 
     public const string IDLE = "PlayerIdle";
     public const string ATTACK1 = "PlayerAttack1";
@@ -48,9 +47,6 @@ public class Player : MonoBehaviour
     public const string JETPACK = "PlayerJetPack";
     public const string HURT = "PlayerHurt";
     public const string CLIMB = "PlayerClimbing";
-    
-    public GameObject projectilePrefab;
-    GameController gameController;
 
     void Start()
     {
@@ -58,12 +54,10 @@ public class Player : MonoBehaviour
         
         id = gameController.GetPlayerId();
         lastHealthValue = gameController.GetCharacterHealth(id);
-        updateModel();
     }
 
     void Update()
     {
-        updateModel();
         CheckIfGrounded();
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -96,13 +90,9 @@ public class Player : MonoBehaviour
         FlipPlayerToMouse();
     }
     
-    //-----------------Update model-----------------
-    private void updateModel()
-    {
-    }
     
     //-----------------Player Movement-----------------
-    void CheckIfGrounded()
+    private void CheckIfGrounded()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
         if (!isGrounded)
@@ -111,7 +101,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void movePlayer()
+    private void movePlayer()
     {
         if (gameController.CanCharacterMove(id, 0))
         {
@@ -129,17 +119,22 @@ public class Player : MonoBehaviour
     
     //-----------------Player Actions-----------------
 
-    void jump()
+    private void jump()
     {
         if (gameController.CanCharacterMove(id, 1))
         {
             gameController.Move(id, 1);
             rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)), ForceMode2D.Impulse);
         }
+
+        // for (int i = 0; i <= 5; i++)
+        // {
+        //     Debug.Log("item " + i + " : " + gameController.getNumberOfItem(id, i));
+        // }
+        // Debug.Log("item " + 0 + " : " + gameController.getNumberOfItem(id, 0));
     }
     
-    //TODO
-    void jetPack()
+    private void jetPack()
     {
         if (gameController.IsMoving(id) == 3)
         {
@@ -152,7 +147,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void dash()
+    private void dash()
     {
         if (gameController.CanCharacterMove(id, 2))
         {
@@ -168,7 +163,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void attack1()
+    private void attack1()
     {
         if (gameController.CanCharacterAttack(id , 0))
         {
@@ -179,7 +174,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void attack2()
+    private void attack2()
     {
         
         if (gameController.CanCharacterAttack(id ,1))
@@ -190,7 +185,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void attack3()
+    private void attack3()
     {
         if (gameController.CanCharacterAttack(id ,2))
         {
@@ -201,7 +196,7 @@ public class Player : MonoBehaviour
         }
     }
     
-    void attack4()
+    private void attack4()
     {
         if (gameController.CanCharacterAttack(id, 3))
         {
@@ -212,7 +207,7 @@ public class Player : MonoBehaviour
         }
     }
     
-    void attack5()
+    private void attack5()
     {
         if (gameController.CanCharacterAttack(id, 4))
         {
@@ -222,7 +217,7 @@ public class Player : MonoBehaviour
         }
     }
     
-    protected IEnumerator chargeAttack(int attackType, bool melee = true)
+    private IEnumerator chargeAttack(int attackType, bool melee = true)
     {
         yield return new WaitForSeconds((float)gameController.GetAttackChargeTime(id, attackType));
         if (melee)
@@ -242,7 +237,7 @@ public class Player : MonoBehaviour
         canShoot = true;
     }
     
-    void attackProjectile(int attackType)
+    private void attackProjectile(int attackType)
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Projectile projScript = projectile.GetComponent<Projectile>();
@@ -250,7 +245,7 @@ public class Player : MonoBehaviour
         StartCoroutine(blockShoot(attackType));
     }
 
-    void attackMelee(int attackType)
+    private void attackMelee(int attackType)
     {
         if (!gameController.CanCharacterAttack(id, attackType)) return;
         float maxDistance = 0;
@@ -331,7 +326,7 @@ public class Player : MonoBehaviour
     
     //-----------------Animations-----------------
     
-    void updateBaseAnimation()
+    private void updateBaseAnimation()
     {
         int move = gameController.IsMoving(id);
         
@@ -366,19 +361,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void changeAnimationState(string animation)
+    private void changeAnimationState(string animation)
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(animation)) return;
         animator.Play(animation);
     }
 
-    void SetOrientation(bool faceRight)
+    private void SetOrientation(bool faceRight)
     {
         spriteRenderer.flipX = !faceRight;
         isFacingRight = faceRight;
     }
 
-    void FlipPlayerToMouse()
+    private void FlipPlayerToMouse()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePosition.x > transform.position.x)
