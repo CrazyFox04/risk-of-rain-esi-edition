@@ -1525,7 +1525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7325489942493537103, guid: 1a2a190081299b44581787ccff5bbae9, type: 3}
       propertyPath: m_Name
-      value: MusicPlayerMenu
+      value: MusicMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
