@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
 
     public int id;
-    
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -18,35 +17,34 @@ public class Player : MonoBehaviour
     private bool isJetPacking = false;
     private bool canShoot = true;
     private int lastHealthValue;
-    
     private float attack1Range = 1;
     private float attack2Range = 3;
     private float attack3Range = 3;
     private float attack4Range = 3;
     private float attack5Range = 3;
-    
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-    
     private List<Enemy> enemies = new List<Enemy>();
-    
-    public GameObject projectilePrefab;
-    GameController gameController;
+    [SerializeField] private GameObject projectilePrefab;
+    private GameController gameController;
+    private int primaryAttack;
+    private int secondaryAttack;
+    private int tertiaryAttack;
     
 
-    public const string IDLE = "PlayerIdle";
-    public const string ATTACK1 = "PlayerAttack1";
-    public const string ATTACK2 = "PlayerAttack2";
-    public const string ATTACK3 = "PlayerAttack3";
-    public const string ATTACK4 = "PlayerAttack4";
-    public const string ATTACK5 = "PlayerAttack5";
-    public const string RUN = "PlayerRun";
-    public const string FALLING = "PlayerFalling";
-    public const string LANDING = "PlayerLanding";
-    public const string DASH = "PlayerDash";
-    public const string JETPACK = "PlayerJetPack";
-    public const string HURT = "PlayerHurt";
-    public const string CLIMB = "PlayerClimbing";
+    private const string IDLE = "PlayerIdle";
+    private const string ATTACK1 = "PlayerAttack1";
+    private const string ATTACK2 = "PlayerAttack2";
+    private const string ATTACK3 = "PlayerAttack3";
+    private const string ATTACK4 = "PlayerAttack4";
+    private const string ATTACK5 = "PlayerAttack5";
+    private const string RUN = "PlayerRun";
+    private const string FALLING = "PlayerFalling";
+    private const string LANDING = "PlayerLanding";
+    private const string DASH = "PlayerDash";
+    private const string JETPACK = "PlayerJetPack";
+    private const string HURT = "PlayerHurt";
+    private const string CLIMB = "PlayerClimbing";
 
     void Start()
     {
@@ -54,6 +52,9 @@ public class Player : MonoBehaviour
         
         id = gameController.GetPlayerId();
         lastHealthValue = gameController.GetCharacterHealth(id);
+        primaryAttack = gameController.GetPrimaryPlayerAttack();
+        secondaryAttack = gameController.GetSecondaryPlayerAttack();
+        tertiaryAttack = gameController.GetTertiaryPlayerAttack();
     }
 
     void Update()
@@ -78,11 +79,23 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire2"))
         {
-            attack2();
+            if (secondaryAttack == 1)
+            {
+                attack2();
+            } else if (secondaryAttack == 3)
+            {
+                attack4();
+            }
         }
         if (Input.GetButtonDown("Fire3"))
         {
-            attack3();
+            if (tertiaryAttack == 2)
+            {
+                attack3();
+            } else if (tertiaryAttack == 4)
+            {
+                attack5();
+            }
         }
         if (Input.GetButtonDown("Health"))
         {
