@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayConfiguration : MenuScene
 {
-    public string initializerScene;
-    public Dropdown lightAttackDpd;
-    public Dropdown strongAttackDpd;
+    [SerializeField] private string initializerScene;
+    [SerializeField] private Dropdown lightAttackDpd;
+    [SerializeField] private Dropdown strongAttackDpd;
 
     public PlayerConfig playerConfig;
 
