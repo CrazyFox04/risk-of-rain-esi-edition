@@ -3,16 +3,15 @@ using UnityEngine;
 public class Initializer : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject[] prefabs;
+    [SerializeField] private GameObject gameController;
+    [SerializeField] private GameObject generateWorld;
+    [SerializeField] private GameObject gameUi;
+    private int currentLevel;
         
     void Start()
     {
-        
-        foreach (GameObject prefab in prefabs)
-        {
-            Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
-            
-        }
-
+        Instantiate(gameController, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(generateWorld, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(gameUi, new Vector3(0, 0, 0), Quaternion.identity);
     }
 }

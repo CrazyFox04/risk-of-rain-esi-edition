@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     private const string dllname = "librisk-of-rain-esi-edition-cpp";
     public PlayerConfig playerConfig;
     private IntPtr game;
+    [SerializeField] private GameObject generateWorld;
+    [SerializeField] private GameObject gameUi;
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern IntPtr newGame(int primaryAttack, int secondaryAttack, int tertiaryAttack);
@@ -164,6 +166,8 @@ public class GameController : MonoBehaviour
     public void Start ()
     {
         this.game = newGame(playerConfig.attack1, playerConfig.attack2, playerConfig.attack3);
+        Instantiate(generateWorld, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(gameUi, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     public void DestroyGame() {
@@ -402,6 +406,15 @@ public class GameController : MonoBehaviour
 
     public void NextLevel(int bossId) {
         nextLevel(this.game, bossId);
+        foreach (GameObject obj in FindObjectsOfType<GameObject>())
+        {
+            if (obj != this.gameObject)
+            {
+                Destroy(obj);
+            }
+        }
+        Instantiate(generateWorld, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(gameUi, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     public void UseHealthPotionIfAvailable() {
