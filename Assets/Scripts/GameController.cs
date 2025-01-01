@@ -138,6 +138,9 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern int getNumberOfItem(IntPtr game, int id, int itemId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void destroyGame(IntPtr game);
         
     static GameController()
     {
@@ -361,5 +364,9 @@ public class GameController : MonoBehaviour
 	public int getNumberOfItem(int id, int itemId)
     {
         return getNumberOfItem(this.game, id, itemId);
+    }
+
+    public void DestroyGame() {
+        destroyGame(this.game);
     }
 }
