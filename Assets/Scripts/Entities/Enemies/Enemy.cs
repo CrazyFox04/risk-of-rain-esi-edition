@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
     
     protected bool isPerformingAnimation = false;
     
+    private bool isDead = false;
+    
     public Collider2D jumpCollider;
 
     private GameController gameController;
@@ -46,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (id == -1) return;
+        if (id == -1 || isDead) return;
         //enemy too far from player -> do nothing (not visible on the screen)
         if (Vector2.Distance(playerPosition.position, transform.position) < 25)
         {
@@ -76,7 +78,7 @@ public class Enemy : MonoBehaviour
     {
         if (gameController.GetCharacterHealth(id) <= 0)
         {
-            //TODO
+            isDead = true;
             StartCoroutine(performAnimation("Death", 0.3f));
             StartCoroutine(death());
         }
@@ -195,7 +197,7 @@ public class Enemy : MonoBehaviour
             float distanceX = Mathf.Abs(transform.position.x - playerPosition.position.x);
             float distanceY = Mathf.Abs(transform.position.y - playerPosition.position.y);
 
-            if (distanceX < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex) && distanceY < 1)
+            if (distanceX < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex) && distanceY < 1 && !isDead)
             {
                 gameController.Attack(id, attackIndex, gameController.GetPlayerId());
             }

@@ -94,6 +94,7 @@ public class BossSpawner : MonoBehaviour
     {
         if (gameController.CanEndCurrentLevel(bossId))
         {
+            isEndGame = true;
             animator.Play("BossSpawnerEndGame");
         }
     }

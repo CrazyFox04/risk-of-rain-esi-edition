@@ -155,12 +155,7 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern void useHealthPotionIfAvailable(IntPtr game);
-
-
-
-
-
-        
+    
     static GameController()
     {
         Debug.Log("Plugin name: " + dllname);
