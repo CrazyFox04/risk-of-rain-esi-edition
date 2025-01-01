@@ -11,12 +11,22 @@ public class Ladder : MonoBehaviour
         playerId = gameController.GetPlayerId();
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private async void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && gameController.CanCharacterMove(playerId, 4))
+        if (other.CompareTag("Player"))
         {
-            gameController.Move(playerId, 4);
-            
+            await SemaphoreManager.Semaphore.WaitAsync();
+            try
+            {
+                if (gameController.CanCharacterMove(playerId, 4))
+                {
+                    gameController.Move(playerId, 4);
+                }
+            }
+            finally
+            {
+                SemaphoreManager.Semaphore.Release();
+            }
         }
     }
     

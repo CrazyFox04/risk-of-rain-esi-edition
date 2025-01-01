@@ -102,6 +102,7 @@ public class BossSpawner : MonoBehaviour
     {
         if (Input.GetButtonDown("Use"))
         {
+            Debug.Log("Next Level");
             gameController.NextLevel(bossId);
         }
     }

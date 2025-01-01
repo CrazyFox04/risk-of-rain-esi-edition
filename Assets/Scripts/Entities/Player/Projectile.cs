@@ -37,20 +37,28 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private async void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null && gameController.CanCharacterAttack(playerId, attackType))
+            if (other.CompareTag("Enemy"))
             {
-                gameController.Attack(playerId, attackType, enemy.getId());
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null && gameController.CanCharacterAttack(playerId, attackType))
+                {
+                    gameController.Attack(playerId, attackType, enemy.getId());
+                }
             }
+            else if(gameController.CanCharacterAttack(playerId, attackType))
+            {
+                gameController.Attack(playerId, attackType, -1);
+            }
+            Destroy(gameObject);
         }
-        else if(gameController.CanCharacterAttack(playerId, attackType))
+        finally
         {
-            gameController.Attack(playerId, attackType, -1);
+            SemaphoreManager.Semaphore.Release();
         }
-        Destroy(gameObject);
     }
 }

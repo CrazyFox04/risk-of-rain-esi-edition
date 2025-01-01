@@ -123,42 +123,67 @@ public class Player : MonoBehaviour
     
     //-----------------Player Actions-----------------
 
-    private void jump()
+    private async void jump()
     {
-        if (gameController.CanCharacterMove(id, 1))
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            gameController.Move(id, 1);
-            rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)), ForceMode2D.Impulse);
+            if (gameController.CanCharacterMove(id, 1))
+            {
+                gameController.Move(id, 1);
+                rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)), ForceMode2D.Impulse);
+            }  
+        }
+        finally
+        {
+            SemaphoreManager.Semaphore.Release();
         }
     }
     
-    private void jetPack()
+    private async void jetPack()
     {
-        if (gameController.IsMoving(id) == 3)
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            gameController.StopMoving(id, 3);
-            isJetPacking = false;
-        } else if (gameController.CanCharacterMove(id, 3))
+            if (gameController.IsMoving(id) == 3)
+            {
+                gameController.StopMoving(id, 3);
+                isJetPacking = false;
+            } else if (gameController.CanCharacterMove(id, 3))
+            {
+                gameController.Move(id,3);
+                isJetPacking = true;
+            }
+        }
+        finally
         {
-            gameController.Move(id,3);
-            isJetPacking = true;
+            SemaphoreManager.Semaphore.Release();
         }
     }
 
-    private void dash()
+    private async void dash()
     {
-        if (gameController.CanCharacterMove(id, 2))
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            gameController.Move(id, 2);
-            
-            StartCoroutine(performAnimation(DASH, (float)gameController.GetPlayerDashTime()));
-            
-            float dashForce = (float)gameController.GetPlayerDashForce();
-            if (isFacingRight)
-                rb.AddForce(new Vector2(dashForce, 0f));
-            else
-                rb.AddForce(new Vector2(-dashForce, 0f));
+           if (gameController.CanCharacterMove(id, 2))
+           {
+               gameController.Move(id, 2);
+               
+               StartCoroutine(performAnimation(DASH, (float)gameController.GetPlayerDashTime()));
+               
+               float dashForce = (float)gameController.GetPlayerDashForce();
+               if (isFacingRight)
+                   rb.AddForce(new Vector2(dashForce, 0f));
+               else
+                   rb.AddForce(new Vector2(-dashForce, 0f));
+           }     
         }
+        finally
+        {
+            SemaphoreManager.Semaphore.Release();
+        }
+        
     }
 
     private void attack1()
@@ -243,44 +268,52 @@ public class Player : MonoBehaviour
         StartCoroutine(blockShoot(attackType));
     }
 
-    private void attackMelee(int attackType)
+    private async void attackMelee(int attackType)
     {
-        if (!gameController.CanCharacterAttack(id, attackType)) return;
-        float maxDistance = 0;
-        switch (attackType)
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            case 0:
-                maxDistance = attack1Range;
-                break;
-            case 1:
-                maxDistance = attack2Range;
-                break;
-            case 2:
-                maxDistance = attack3Range;
-                break;
-            case 3:
-                maxDistance = attack4Range;
-                break;
-            case 4:
-                maxDistance = attack5Range;
-                break;
-        }
-        foreach (Enemy enemy in enemies)
-        {
-            float distance = transform.position.x - enemy.transform.position.x;
+            if (!gameController.CanCharacterAttack(id, attackType)) return;
+            float maxDistance = 0;
+            switch (attackType)
+            {
+                case 0:
+                    maxDistance = attack1Range;
+                    break;
+                case 1:
+                    maxDistance = attack2Range;
+                    break;
+                case 2:
+                    maxDistance = attack3Range;
+                    break;
+                case 3:
+                    maxDistance = attack4Range;
+                    break;
+                case 4:
+                    maxDistance = attack5Range;
+                    break;
+            }
+            foreach (Enemy enemy in enemies)
+            {
+                float distance = transform.position.x - enemy.transform.position.x;
             
-            if( isFacingRight  && distance < 0 && distance > -maxDistance)
-            {
-                gameController.Attack(id, attackType, enemy.getId());
-                return;
+                if( isFacingRight  && distance < 0 && distance > -maxDistance)
+                {
+                    gameController.Attack(id, attackType, enemy.getId());
+                    return;
+                }
+                if (!isFacingRight && distance > 0 && distance < maxDistance)
+                {
+                    gameController.Attack(id, attackType, enemy.getId());
+                    return;
+                }
             }
-            if (!isFacingRight && distance > 0 && distance < maxDistance)
-            {
-                gameController.Attack(id, attackType, enemy.getId());
-                return;
-            }
+            gameController.Attack(id, attackType, -1);
         }
-        gameController.Attack(id, attackType, -1);
+        finally
+        {
+            SemaphoreManager.Semaphore.Release();
+        }
     }
     
     private void useHealthPotion()

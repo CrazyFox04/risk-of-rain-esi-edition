@@ -138,12 +138,20 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    public void jump()
+    public async void jump()
     {
-        if (gameController.CanCharacterMove(id, 1))
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            rb.AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
-            gameController.Move(id, 1);
+            if (gameController.CanCharacterMove(id, 1))
+            {
+                rb.AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
+                gameController.Move(id, 1);
+            } 
+        }
+        finally
+        {
+            SemaphoreManager.Semaphore.Release();
         }
     }
 
@@ -175,20 +183,26 @@ public class Enemy : MonoBehaviour
     protected IEnumerator chargeAttack()
     {
         StartCoroutine(performAnimation(ATTACK, (float)gameController.GetCharacterAttackTime(id, attackIndex)));
-        // StartCoroutine(BlockActions((float)gameController.GetCharacterAttackTime_ATTACK1(id)));
         yield return new WaitForSeconds((float)gameController.GetAttackChargeTime(id,attackIndex));
         attack();
     }
     
-    protected void attack()
+    protected async void attack()
     {
-        float distanceX = Mathf.Abs(transform.position.x - playerPosition.position.x);
-        float distanceY = Mathf.Abs(transform.position.y - playerPosition.position.y);
-
-        if (distanceX < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex) && distanceY < 1)
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            Debug.Log("id: " + id + " attackIndex: " + attackIndex + " playerId: " + gameController.GetPlayerId());
-            gameController.Attack(id, attackIndex, gameController.GetPlayerId());
+            float distanceX = Mathf.Abs(transform.position.x - playerPosition.position.x);
+            float distanceY = Mathf.Abs(transform.position.y - playerPosition.position.y);
+
+            if (distanceX < gameController.GetEnemyAttackRange(id) && gameController.CanCharacterAttack(id,attackIndex) && distanceY < 1)
+            {
+                gameController.Attack(id, attackIndex, gameController.GetPlayerId());
+            }
+        }
+        finally
+        {
+            SemaphoreManager.Semaphore.Release();
         }
     }
     
