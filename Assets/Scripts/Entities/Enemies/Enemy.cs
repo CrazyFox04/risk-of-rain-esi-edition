@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -9,9 +10,9 @@ public class Enemy : MonoBehaviour
     public Transform playerPosition;
     public Rigidbody2D rb;
 
-    // public Transform groundCheckLeft;
-    // public Transform groundCheckRight;
-    // public bool isGrounded;
+    public Transform groundCheckLeft;
+    public Transform groundCheckRight;
+    public bool isGrounded;
     
     public SpriteRenderer spriteRenderer;
     public Animator animator;
@@ -24,6 +25,9 @@ public class Enemy : MonoBehaviour
     private GameController gameController;
     
     private int lastHealthValue;
+    
+    public Transform obstacleCheck;
+    public LayerMask obstacleLayer;
     
     
     public const string IDLE = "Idle";
@@ -46,8 +50,13 @@ public class Enemy : MonoBehaviour
         //enemy too far from player -> do nothing (not visible on the screen)
         if (Vector2.Distance(playerPosition.position, transform.position) < 25)
         {
-            // isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
+            isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position, obstacleLayer);
+            if (isGrounded)
+            {
+                gameController.LandCharacter(id);
+            }
             move();
+            checkForObstacleAndJump();
             tryAttack();
             flip();
             updateBaseAnimation();
@@ -112,16 +121,27 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    // public void jump()
-    // {
-    //     Debug.Log("Jump");
-    //     if (gameController.CanCharacterMove(id, 1) && rb.velocity.x == 0)
-    //     {
-    //         rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)));
-    //     }
-    // }
+    private void checkForObstacleAndJump()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(obstacleCheck.position, isFacingRight ? Vector2.right : Vector2.left, 1f, obstacleLayer);
+        if (hit.collider != null)
+        {
+            jump();
+        }
+    }
     
-    
+    public void jump()
+    {
+        // if (gameController.CanCharacterMove(id, 1) && rb.velocity.x == 0)
+        if (gameController.CanCharacterMove(id, 1) && isGrounded)
+        {
+            Debug.Log("Jump");
+            rb.AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
+            gameController.Move(id, 1);
+        }
+    }
+
+
     protected void flip()
     {
         if (playerPosition.position.x > transform.position.x)

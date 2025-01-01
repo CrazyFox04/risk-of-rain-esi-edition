@@ -243,6 +243,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1021760856831423129}
   - {fileID: 3814592963725532213}
   - {fileID: 8185592498334166678}
   - {fileID: 8586544254866322220}
@@ -420,6 +421,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1669378297036110975}
   animator: {fileID: 3102473425756995385}
   jumpCollider: {fileID: 4899275744611816401}
+  obstacleCheck: {fileID: 1021760856831423129}
+  obstacleCheckDistance: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3006028969981143455
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +709,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6874137091669800365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1021760856831423129}
+  m_Layer: 0
+  m_Name: ObstacleCkeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1021760856831423129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874137091669800365}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0013, y: -0.1168, z: 0.002747909}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1763096055499839624}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7600134352398856026
 GameObject:
   m_ObjectHideFlags: 0
