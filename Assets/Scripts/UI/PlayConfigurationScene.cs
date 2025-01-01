@@ -25,11 +25,10 @@ public class PlayConfiguration : MenuScene
     }
 
     void InitializeAttackDropDown(Dropdown attackDpd, int type) {
-        attackDpd.ClearOptions();
+        //attackDpd.ClearOptions();
 
         if (type == LIGHT) {
             attackDpd.AddOptions(lightAttacks);
-            
         }
 
         if (type == STRONG) {

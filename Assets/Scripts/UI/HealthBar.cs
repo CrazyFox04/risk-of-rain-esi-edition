@@ -32,6 +32,9 @@ public class HealthBar : MonoBehaviour
     public void setHealth(int health)
     {
         StartCoroutine(SmoothHealthChange(health));
+        if (health <= 0) {
+            SceneLoader.LoadSceneIfExists("GameOver");
+        }
     }
 
     private IEnumerator SmoothHealthChange(int targetHealth)
