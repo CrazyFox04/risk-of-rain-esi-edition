@@ -84,6 +84,10 @@ public class Player : MonoBehaviour
         {
             attack3();
         }
+        if (Input.GetButtonDown("Health"))
+        {
+            useHealthPotion();
+        }
         movePlayer();
         updateBaseAnimation();
         checkForDamageAnimation();
@@ -126,12 +130,6 @@ public class Player : MonoBehaviour
             gameController.Move(id, 1);
             rb.AddForce(new Vector2(0f, (float)gameController.GetCharacterJumpForce(id)), ForceMode2D.Impulse);
         }
-
-        // for (int i = 0; i <= 5; i++)
-        // {
-        //     Debug.Log("item " + i + " : " + gameController.getNumberOfItem(id, i));
-        // }
-        // Debug.Log("item " + 0 + " : " + gameController.getNumberOfItem(id, 0));
     }
     
     private void jetPack()
@@ -285,6 +283,10 @@ public class Player : MonoBehaviour
         gameController.Attack(id, attackType, -1);
     }
     
+    private void useHealthPotion()
+    {
+        Debug.Log("Use Health Potion");   
+    }
     
     //-----------------Collision Behaviors-----------------
     

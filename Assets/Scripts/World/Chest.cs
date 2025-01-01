@@ -51,7 +51,7 @@ public class Chest : MonoBehaviour
         //can open chest
         if (Input.GetButtonDown("Use") && true && Vector2.Distance(player.position, transform.position) < 1 && !gameController.isChestEmpty(row, column, id))
         {
-            Debug.Log("Chest opened : " + gameController.openChest(row, column, id));
+            gameController.openChest(row, column, id);
             isOpen = true;
             animator.Play("ChestOpen");
         }
