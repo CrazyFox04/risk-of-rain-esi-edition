@@ -419,6 +419,7 @@ public class GameController : MonoBehaviour
         }
         Instantiate(generateWorld, new Vector3(0, 0, 0), Quaternion.identity);
         Instantiate(gameUi, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(musicPlayer, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     public void UseHealthPotionIfAvailable() {
