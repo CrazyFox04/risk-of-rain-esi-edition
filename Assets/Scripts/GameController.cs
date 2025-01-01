@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject generateWorld;
     [SerializeField] private GameObject gameUi;
 
+    [SerializeField] private GameObject musicPlayer;
+
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern IntPtr newGame(int primaryAttack, int secondaryAttack, int tertiaryAttack);
     
@@ -168,6 +170,8 @@ public class GameController : MonoBehaviour
         this.game = newGame(playerConfig.attack1, playerConfig.attack2, playerConfig.attack3);
         Instantiate(generateWorld, new Vector3(0, 0, 0), Quaternion.identity);
         Instantiate(gameUi, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(musicPlayer, new Vector3(0, 0, 0), Quaternion.identity);
+        
     }
 
     public void DestroyGame() {
