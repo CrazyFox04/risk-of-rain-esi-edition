@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private static extern IntPtr newGame(int primaryAttack, int secondaryAttack, int tertiaryAttack);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void destroyGame();
+    private static extern void destroyGame(IntPtr game);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern int getPlayerMaxHealth(IntPtr game);
@@ -44,15 +44,15 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getEnemyAttackRange(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack(IntPtr game, int id, int attackIndex);
-    
+
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getAttackDamage(IntPtr game, int id, int attackIndex);
         
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getAttackChargeTime(IntPtr game, int id, int attackIndex);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool canCharacterAttack(IntPtr game, int id, int attackIndex);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getCharacterHurtTime(IntPtr game, int id);
@@ -83,7 +83,6 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool isPlayerDashing(IntPtr game);
-    
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool canCharacterMove(IntPtr game, int id, int moveIndex);
@@ -140,7 +139,27 @@ public class GameController : MonoBehaviour
     private static extern int getNumberOfItem(IntPtr game, int id, int itemId);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void destroyGame(IntPtr game);
+    private static extern int getPrimaryPlayerAttack(IntPtr game);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int getSecondaryPlayerAttack(IntPtr game);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int getTertiaryPlayerAttack(IntPtr game);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool canEndCurrentLevel(IntPtr game, int bossId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void nextLevel(IntPtr game, int bossId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void useHealthPotionIfAvailable(IntPtr game);
+
+
+
+
+
         
     static GameController()
     {
@@ -150,6 +169,10 @@ public class GameController : MonoBehaviour
     public void Start ()
     {
         this.game = newGame(playerConfig.attack1, playerConfig.attack2, playerConfig.attack3);
+    }
+
+    public void DestroyGame() {
+        destroyGame(this.game);
     }
     
     void FixedUpdate()
@@ -366,7 +389,28 @@ public class GameController : MonoBehaviour
         return getNumberOfItem(this.game, id, itemId);
     }
 
-    public void DestroyGame() {
-        destroyGame(this.game);
+    public int GetPrimaryPlayerAttack() {
+        return getPrimaryPlayerAttack(this.game);
     }
+
+    public int GetSecondaryPlayerAttack() {
+        return getSecondaryPlayerAttack(this.game);
+    }
+
+    public int GetTertiaryPlayerAttack() {
+        return getTertiaryPlayerAttack(this.game);
+    }
+
+    public bool CanEndCurrentLevel(int bossId) {
+        return canEndCurrentLevel(this.game, bossId);
+    }
+
+    public void NextLevel(int bossId) {
+        nextLevel(this.game, bossId);
+    }
+
+    public void UseHealthPotionIfAvailable() {
+        useHealthPotionIfAvailable(this.game);
+    }
+
 }
