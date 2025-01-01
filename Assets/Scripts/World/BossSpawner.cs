@@ -8,7 +8,9 @@ public class BossSpawner : MonoBehaviour
     private int row;
     private int column;
     private int id = -1;
-    public bool isActive = false;
+    private int bossId;
+    private bool isActive = false;
+    private bool isEndGame = false; 
     public Animator animator;
     public GameObject[] enemies;
     
@@ -46,15 +48,22 @@ public class BossSpawner : MonoBehaviour
             {
                 isActive = true;
                 animator.Play("BossSpawnerActivated");
-                // animator.Play("BossSpawnerEndGame");
-                int tempId = gameController.ActivateBossSpawn(row, column, id);
-                Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<Enemy>().set(tempId, 7);
+                bossId = gameController.ActivateBossSpawn(row, column, id);
+                Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<Enemy>().set(bossId, 7);
             }
         }
 
         if (isActive)
         {
-            useSpawner();
+            endGame();
+            if (isEndGame)
+            {
+                nextLevel();
+            }
+            else
+            {
+                useSpawner();
+            }
         }
     }
     
@@ -78,6 +87,22 @@ public class BossSpawner : MonoBehaviour
                 
             }
             
+        }
+    }
+    
+    private void endGame()
+    {
+        if (gameController.CanEndCurrentLevel(bossId))
+        {
+            animator.Play("BossSpawnerEndGame");
+        }
+    }
+    
+    private void nextLevel()
+    {
+        if (Input.GetButtonDown("Use"))
+        {
+            gameController.NextLevel(bossId);
         }
     }
 }
