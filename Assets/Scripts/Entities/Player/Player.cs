@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     {
         CheckIfGrounded();
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump"))
         {
             jump();
         }
@@ -285,7 +285,7 @@ public class Player : MonoBehaviour
     
     private void useHealthPotion()
     {
-        Debug.Log("Use Health Potion");   
+        gameController.UseHealthPotionIfAvailable();
     }
     
     //-----------------Collision Behaviors-----------------
