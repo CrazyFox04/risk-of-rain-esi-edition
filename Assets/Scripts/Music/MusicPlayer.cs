@@ -4,7 +4,7 @@ using UnityEngine;
 public class SceneMusicPlayer : MonoBehaviour
 {
     [Header("Music Path")]
-    public string musicFolderPath;
+    [SerializeField] private string musicFolderPath;
 
     private AudioSource audioSrc;
     private List<AudioClip> musics;

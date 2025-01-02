@@ -6,8 +6,8 @@ using System;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    public Slider slider;
-    GameController gameController;
+    [SerializeField] private Slider slider;
+    private GameController gameController;
     private int enemyId = -1;
     
 

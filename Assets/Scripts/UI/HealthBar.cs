@@ -6,9 +6,9 @@ using System;
 
 public class wHealthBar : MonoBehaviour
 {
-    public Slider slider;
-    public TextMeshProUGUI text;
-    GameController gameController;
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI text;
+    private GameController gameController;
     
 
     private void Start()
