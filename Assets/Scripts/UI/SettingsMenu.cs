@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public Slider volumeSlider;
-    public TMP_Dropdown resolutionDropdown;
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
 
     private Resolution[] resolutions;
 

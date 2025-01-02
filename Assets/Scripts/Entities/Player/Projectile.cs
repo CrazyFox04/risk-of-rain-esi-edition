@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour
 {
-    public int attackType;
+    [SerializeField] private int attackType;
     private int playerId;
-    public float force;
-    public Rigidbody2D rb;
+    [SerializeField] private float force;
+    [SerializeField] private Rigidbody2D rb;
     private GameController gameController;
 
     void Start()

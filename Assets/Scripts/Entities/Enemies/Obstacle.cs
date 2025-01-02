@@ -3,16 +3,16 @@ using System.Collections;
 
 public class Obstacle : MonoBehaviour
 {
-    public float speed;
-    public Transform[] points;
+    [SerializeField] private float speed;
+    [SerializeField] private Transform[] points;
     private int pointIndex = 0;
     private Transform currentPoint;
 
-    public GameObject player;
+    [SerializeField] private GameObject player;
     private Player playerScript;
 
-    public int damage = 10;
-    public float damageInterval = 1.0f;
+    [SerializeField] private int damage = 10;
+    [SerializeField] private float damageInterval = 1.0f;
     private bool isPlayerInContact = false;
 
     void Start()

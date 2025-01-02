@@ -6,12 +6,12 @@ using System;
 
 public class ReloadActions : MonoBehaviour
 {
-    public Slider slider;
-    public Image fill;
+    [SerializeField] private Slider slider;
+    [SerializeField] private Image fill;
     private int playerId;
     private bool isReloading = false;
     private bool isMovementType = false;
-    GameController gameController;
+    private GameController gameController;
 
     private int index = -1;
 

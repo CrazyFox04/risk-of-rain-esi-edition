@@ -4,38 +4,38 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public int id;
-    public int attackIndex;
+    [SerializeField] private int id;
+    [SerializeField] private int attackIndex;
     
-    public Transform playerPosition;
-    public Rigidbody2D rb;
+    [SerializeField] private Transform playerPosition;
+    [SerializeField] private Rigidbody2D rb;
 
-    public Transform groundCheckLeft;
-    public Transform groundCheckRight;
-    public bool isGrounded;
+    [SerializeField] private Transform groundCheckLeft;
+    [SerializeField] private Transform groundCheckRight;
+    [SerializeField] private bool isGrounded;
     
-    public SpriteRenderer spriteRenderer;
-    public Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
     protected bool isFacingRight;
     
     protected bool isPerformingAnimation = false;
     
-    private bool isDead = false;
+    [SerializeField] private bool isDead = false;
     
-    public Collider2D jumpCollider;
+    [SerializeField] private Collider2D jumpCollider;
 
     private GameController gameController;
     
     private int lastHealthValue;
     
-    public Transform obstacleCheck;
-    public LayerMask obstacleLayer;
+    [SerializeField] private Transform obstacleCheck;
+    [SerializeField] private LayerMask obstacleLayer;
     
     
-    public const string IDLE = "Idle";
-    public const string ATTACK = "Attack";
-    public const string RUN = "Run";
-    public const string HURT = "Hurt";
+    private const string IDLE = "Idle";
+    private const string ATTACK = "Attack";
+    private const string RUN = "Run";
+    private const string HURT = "Hurt";
 
     protected void Start()
     {

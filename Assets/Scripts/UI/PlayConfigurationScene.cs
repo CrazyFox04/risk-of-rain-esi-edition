@@ -9,9 +9,8 @@ public class PlayConfiguration : MenuScene
     [SerializeField] private Dropdown lightAttackDpd;
     [SerializeField] private Dropdown strongAttackDpd;
 
-    public PlayerConfig playerConfig;
+    [SerializeField] private PlayerConfig playerConfig;
 
-    
     [SerializeField] private List<string> lightAttacks = new List<string>() {"Light Distance", "Light Short"}; // 2 et 4
     [SerializeField] private List<string> strongAttacks = new List<string>() {"Strong Distance", "Strong Short"}; // 3 et 5
 

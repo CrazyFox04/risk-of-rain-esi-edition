@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     private const string dllname = "librisk-of-rain-esi-edition-cpp";
-    public PlayerConfig playerConfig;
+    [SerializeField] private PlayerConfig playerConfig;
     private IntPtr game;
     [SerializeField] private GameObject generateWorld;
     [SerializeField] private GameObject gameUi;

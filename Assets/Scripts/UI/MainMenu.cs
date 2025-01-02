@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MenuScene
 {
-    public string playConfigurationSceneName;
-	public string settingsLevelSceneName;
+    [SerializeField] private string playConfigurationSceneName;
+	[SerializeField] private string settingsLevelSceneName;
 
     public void StartGame()
     {

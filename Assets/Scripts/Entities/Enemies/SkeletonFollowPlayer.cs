@@ -3,19 +3,19 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyFollow : MonoBehaviour
 {
-    public Transform player;
-    public float speed;
-    public float jumpForce;
-    public float followRange;
-    public float stopRange; 
-    public Rigidbody2D rb;
+    [SerializeField] private Transform player;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float followRange;
+    [SerializeField] private float stopRange; 
+    [SerializeField] private Rigidbody2D rb;
 
-    public Transform groundCheckLeft;
-    public Transform groundCheckRight;
-    public bool isGrounded = true;
+    [SerializeField] private Transform groundCheckLeft;
+    [SerializeField] private Transform groundCheckRight;
+    [SerializeField] private bool isGrounded = true;
 
-    public SpriteRenderer spriteRenderer;
-    public Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
     private bool isFacingRight;
 
     void FixedUpdate()
