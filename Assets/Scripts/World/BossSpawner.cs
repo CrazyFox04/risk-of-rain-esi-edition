@@ -17,7 +17,6 @@ public class BossSpawner : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        // player = GameObject.FindGameObjectWithTag("Player").transform;
         animator.Play("BossSpawner");
     }
     
@@ -115,7 +114,7 @@ public class BossSpawner : MonoBehaviour
     
     private void nextLevel()
     {
-        if (Input.GetButtonDown("Use"))
+        if (Input.GetButtonDown("Use") && Vector2.Distance(player.position, transform.position) < 7)
         {
             Debug.Log("Next Level");
             gameController.NextLevel(bossId);

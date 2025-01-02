@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
 
-    public int id;
-    public Rigidbody2D rb;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    public float checkRadius = 0.1f;
-    public bool isGrounded;
-    public bool isFacingRight = true;
+    [SerializeField] private int id;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float checkRadius = 0.1f;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool isFacingRight = true;
     private bool isPerformingAnimation = false;
     private bool isClimbing = false;
     private bool isJetPacking = false;
@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
     private float attack3Range = 3;
     private float attack4Range = 3;
     private float attack5Range = 3;
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private List<Enemy> enemies = new List<Enemy>();
     [SerializeField] private GameObject projectilePrefab;
     private GameController gameController;
@@ -331,6 +331,7 @@ public class Player : MonoBehaviour
     
     private void useHealthPotion()
     {
+        if (gameController.GetCharacterHealth(id) == gameController.GetCharacterMaxHealth(id)) return;
         gameController.UseHealthPotionIfAvailable();
     }
     
