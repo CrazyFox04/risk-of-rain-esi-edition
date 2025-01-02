@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuScene : MonoBehaviour
 {
-    public string parentSceneName;
+    [SerializeField] private string parentSceneName;
 
     public void PreviousScene()
     {

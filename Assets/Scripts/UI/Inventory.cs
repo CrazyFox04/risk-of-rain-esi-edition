@@ -4,19 +4,19 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public TextMeshProUGUI amount0;
-    public TextMeshProUGUI amount1;
-    public TextMeshProUGUI amount2;
-    public TextMeshProUGUI amount3;
-    public TextMeshProUGUI amount4;
-    public TextMeshProUGUI amount5;
+    [SerializeField] private TextMeshProUGUI amount0;
+    [SerializeField] private TextMeshProUGUI amount1;
+    [SerializeField] private TextMeshProUGUI amount2;
+    [SerializeField] private TextMeshProUGUI amount3;
+    [SerializeField] private TextMeshProUGUI amount4;
+    [SerializeField] private TextMeshProUGUI amount5;
     
-    public Image image0;
-    public Image image1;
-    public Image image2;
-    public Image image3;
-    public Image image4;
-    public Image image5;
+    [SerializeField] private Image image0;
+    [SerializeField] private Image image1;
+    [SerializeField] private Image image2;
+    [SerializeField] private Image image3;
+    [SerializeField] private Image image4;
+    [SerializeField] private Image image5;
     
     private GameController gameController;
     
