@@ -1,0 +1,374 @@
+fileFormatVersion: 2
+guid: c6a50b8170f343c4995e13c8f0d2eae1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2321272747161774967
+    second: small modeath and damagedt_0
+  - first:
+      213: 5359833360434809876
+    second: small modeath and damagedt_1
+  - first:
+      213: -4076076012327080128
+    second: small modeath and damagedt_2
+  - first:
+      213: -7526927732498051061
+    second: small modeath and damagedt_3
+  - first:
+      213: -8578937311816439817
+    second: small modeath and damagedt_4
+  - first:
+      213: -621045999316547014
+    second: small modeath and damagedt_5
+  - first:
+      213: -970445128237031054
+    second: small modeath and damagedt_6
+  - first:
+      213: 4066547182719274758
+    second: small modeath and damagedt_7
+  - first:
+      213: -540811630056180694
+    second: small modeath and damagedt_8
+  - first:
+      213: 5051772246323907006
+    second: small modeath and damagedt_9
+  - first:
+      213: -3265107679750486827
+    second: small modeath and damagedt_10
+  - first:
+      213: -3105670297215212761
+    second: small modeath and damagedt_11
+  - first:
+      213: -193091451481552484
+    second: small modeath and damagedt_12
+  - first:
+      213: -2099096204563419459
+    second: small modeath and damagedt_13
+  - first:
+      213: -8395574095982178288
+    second: small modeath and damagedt_14
+  - first:
+      213: 7774103142499910862
+    second: small modeath and damagedt_15
+  - first:
+      213: -6951340313352484998
+    second: small modeath and damagedt_16
+  - first:
+      213: 2532289283220384040
+    second: small modeath and damagedt_17
+  - first:
+      213: -73989607479664102
+    second: small modeath and damagedt_18
+  - first:
+      213: -8785099562501424487
+    second: small modeath and damagedt_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: small modeath and damagedt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 312
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b6f51d341d63020800000000000000
+      internalID: 2321272747161774967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small modeath and damagedt_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 273
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41c41003b04f16a40800000000000000
+      internalID: 5359833360434809876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small modeath and damagedt_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 234
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04fe0c7767ede67c0800000000000000
+      internalID: -4076076012327080128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small modeath and damagedt_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 195
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b00da6e4b1bfa8790800000000000000
+      internalID: -7526927732498051061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small modeath and damagedt_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 156
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f726d2d7fd71f880800000000000000
+      internalID: -8578937311816439817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small modeath and damagedt_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 117
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3a4f8d34f99167f0800000000000000
+      internalID: -621045999316547014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small modeath and damagedt_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 78
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2716c692c494882f0800000000000000
+      internalID: -970445128237031054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small modeath and damagedt_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 39
+        width: 82
+        height: 39
+      alignment: 9
+      pivot: {x: 0.17, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f09500e174f6830800000000000000
+      internalID: 4066547182719274758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: cdee8ac396f44564b94ce144752a10fb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      small modeath and damagedt_0: 2321272747161774967
+      small modeath and damagedt_1: 5359833360434809876
+      small modeath and damagedt_2: -4076076012327080128
+      small modeath and damagedt_3: -7526927732498051061
+      small modeath and damagedt_4: -8578937311816439817
+      small modeath and damagedt_5: -621045999316547014
+      small modeath and damagedt_6: -970445128237031054
+      small modeath and damagedt_7: 4066547182719274758
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

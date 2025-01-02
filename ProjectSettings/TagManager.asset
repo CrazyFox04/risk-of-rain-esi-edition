@@ -2,19 +2,27 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Ground
+  - Enemy
+  - PlayerHealthBar
+  - EnemySpawner
+  - BossSpawner
+  - PlayerSpawn
+  - EnemyHealthBar
+  - Chest
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemies
+  - PlayerCollider
+  - Ladder
+  - Projectile
   - 
   - 
   - 
@@ -41,3 +49,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background1
+    uniqueID: 1137533389
+    locked: 0
+  - name: Background2
+    uniqueID: 2061203673
+    locked: 0
+  - name: Enemies
+    uniqueID: 2100614473
+    locked: 0
+  - name: Player
+    uniqueID: 3953127641
+    locked: 0
+  - name: Shading
+    uniqueID: 2277595933
+    locked: 0
+  - name: Middleground
+    uniqueID: 1701650565
+    locked: 0
+  - name: Lighting
+    uniqueID: 711075415
+    locked: 0
+  - name: Forground
+    uniqueID: 129552757
+    locked: 0
+  m_RenderingLayers:
+  - Default

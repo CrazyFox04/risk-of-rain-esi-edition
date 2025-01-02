@@ -6,13 +6,18 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     private const string dllname = "librisk-of-rain-esi-edition-cpp";
+    [SerializeField] private PlayerConfig playerConfig;
     private IntPtr game;
+    [SerializeField] private GameObject generateWorld;
+    [SerializeField] private GameObject gameUi;
+
+    [SerializeField] private GameObject musicPlayer;
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern IntPtr newGame();
+    private static extern IntPtr newGame(int primaryAttack, int secondaryAttack, int tertiaryAttack);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void destroyGame();
+    private static extern void destroyGame(IntPtr game);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern int getPlayerMaxHealth(IntPtr game);
@@ -43,15 +48,15 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getEnemyAttackRange(IntPtr game, int id);
-    
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool canCharacterAttack(IntPtr game, int id, int attackIndex);
-    
+
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getAttackDamage(IntPtr game, int id, int attackIndex);
         
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getAttackChargeTime(IntPtr game, int id, int attackIndex);
+    
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool canCharacterAttack(IntPtr game, int id, int attackIndex);
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern double getCharacterHurtTime(IntPtr game, int id);
@@ -82,9 +87,6 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool isPlayerDashing(IntPtr game);
-
-    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool isPlayerUsingJetpack(IntPtr game);
     
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern bool canCharacterMove(IntPtr game, int id, int moveIndex);
@@ -139,7 +141,25 @@ public class GameController : MonoBehaviour
 
     [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
     private static extern int getNumberOfItem(IntPtr game, int id, int itemId);
-        
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int getPrimaryPlayerAttack(IntPtr game);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int getSecondaryPlayerAttack(IntPtr game);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern int getTertiaryPlayerAttack(IntPtr game);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern bool canEndCurrentLevel(IntPtr game, int bossId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void nextLevel(IntPtr game, int bossId);
+
+    [DllImport(dllname, CallingConvention = CallingConvention.Cdecl)]
+    private static extern void useHealthPotionIfAvailable(IntPtr game);
+    
     static GameController()
     {
         Debug.Log("Plugin name: " + dllname);
@@ -147,7 +167,23 @@ public class GameController : MonoBehaviour
 
     public void Start ()
     {
-        this.game = newGame();
+        this.game = newGame(playerConfig.attack1, playerConfig.attack2, playerConfig.attack3);
+        Instantiate(generateWorld, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(gameUi, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(musicPlayer, new Vector3(0, 0, 0), Quaternion.identity);
+        
+    }
+
+    public void DestroyGame() {
+        destroyGame(this.game);
+    }
+    
+    void FixedUpdate()
+    {
+        if (GetPlayerCurrentHealth() <= 0)
+        {
+            SceneLoader.LoadSceneIfExists("GameOver");
+        }
     }
 
     public int GetPlayerMaxHealth()
@@ -270,10 +306,6 @@ public class GameController : MonoBehaviour
         return isPlayerDashing(this.game);
     }
     
-    public bool IsPlayerUsingJetpack()
-    {
-        return isPlayerUsingJetpack(this.game);
-    }
     
     public bool CanCharacterMove(int id, int moveIndex)
     {
@@ -359,4 +391,39 @@ public class GameController : MonoBehaviour
     {
         return getNumberOfItem(this.game, id, itemId);
     }
+
+    public int GetPrimaryPlayerAttack() {
+        return getPrimaryPlayerAttack(this.game);
+    }
+
+    public int GetSecondaryPlayerAttack() {
+        return getSecondaryPlayerAttack(this.game);
+    }
+
+    public int GetTertiaryPlayerAttack() {
+        return getTertiaryPlayerAttack(this.game);
+    }
+
+    public bool CanEndCurrentLevel(int bossId) {
+        return canEndCurrentLevel(this.game, bossId);
+    }
+
+    public void NextLevel(int bossId) {
+        nextLevel(this.game, bossId);
+        foreach (GameObject obj in FindObjectsOfType<GameObject>())
+        {
+            if (obj != this.gameObject)
+            {
+                Destroy(obj);
+            }
+        }
+        Instantiate(generateWorld, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(gameUi, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(musicPlayer, new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
+    public void UseHealthPotionIfAvailable() {
+        useHealthPotionIfAvailable(this.game);
+    }
+
 }

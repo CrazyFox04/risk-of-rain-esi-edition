@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: d90c7494fcc95074ea7c10d3e6bc44a4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -473222746244504232
+    second: blue_rocks_0
+  - first:
+      213: 7705056563789893048
+    second: blue_rocks_1
+  - first:
+      213: -3624255105285558456
+    second: blue_rocks_2
+  - first:
+      213: -7877688974059106139
+    second: blue_rocks_3
+  - first:
+      213: -687063402204988286
+    second: blue_rocks_4
+  - first:
+      213: -7708029266023373607
+    second: blue_rocks_5
+  - first:
+      213: -126139664303213158
+    second: blue_rocks_6
+  - first:
+      213: -2739327413118777368
+    second: blue_rocks_7
+  - first:
+      213: -6851114386342192158
+    second: blue_rocks_8
+  - first:
+      213: -3172785961205205176
+    second: blue_rocks_9
+  - first:
+      213: 1914586488072413891
+    second: blue_rocks_10
+  - first:
+      213: -3599381137768542491
+    second: blue_rocks_11
+  - first:
+      213: 8765410908779057049
+    second: blue_rocks_12
+  - first:
+      213: -8737105227272251204
+    second: blue_rocks_13
+  - first:
+      213: 2916922779398046301
+    second: blue_rocks_14
+  - first:
+      213: -6433949291056908772
+    second: blue_rocks_15
+  - first:
+      213: -4753713987945951937
+    second: blue_rocks_16
+  - first:
+      213: -3742471397340303058
+    second: blue_rocks_17
+  - first:
+      213: 9164649221706347182
+    second: blue_rocks_18
+  - first:
+      213: 7613682069161457132
+    second: blue_rocks_19
+  - first:
+      213: 8289768033781660671
+    second: blue_rocks_20
+  - first:
+      213: -5367921903326079432
+    second: blue_rocks_21
+  - first:
+      213: -5439019488598883845
+    second: blue_rocks_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: blue_rocks_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 174
+        width: 46
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85526766b66ce69f0800000000000000
+      internalID: -473222746244504232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_1
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 178
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bd0df22f1cddea60800000000000000
+      internalID: 7705056563789893048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 174
+        width: 27
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84fee021f2f04bdc0800000000000000
+      internalID: -3624255105285558456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_3
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 158
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a0123aad93dca290800000000000000
+      internalID: -7877688974059106139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_4
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 158
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28c7665d97f0776f0800000000000000
+      internalID: -687063402204988286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_5
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 158
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d4ac50b834970590800000000000000
+      internalID: -7708029266023373607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_6
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 158
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95be15c4acdf3ef0800000000000000
+      internalID: -126139664303213158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_7
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 46
+        width: 123
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7c0993b34fbf9d0800000000000000
+      internalID: -2739327413118777368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_8
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 158
+        width: 33
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eb518ea3c3fbe0a0800000000000000
+      internalID: -6851114386342192158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_9
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 126
+        width: 59
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 847740a7afff7f3d0800000000000000
+      internalID: -3172785961205205176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_10
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 121
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2a159544af19a10800000000000000
+      internalID: 1914586488072413891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_11
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 110
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee8010fced6c0ec0800000000000000
+      internalID: -3599381137768542491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_12
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 78
+        width: 33
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99f0c18c7cef4a970800000000000000
+      internalID: 8765410908779057049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 94
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb89a3346119fb680800000000000000
+      internalID: -8737105227272251204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 94
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d52044730ddfa7820800000000000000
+      internalID: 2916922779398046301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_15
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 94
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c163da3553506b6a0800000000000000
+      internalID: -6433949291056908772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_16
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 78
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d0da0705a670eb0800000000000000
+      internalID: -4753713987945951937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 94
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21b873b712101cc0800000000000000
+      internalID: -3742471397340303058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_18
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 81
+        width: 31
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea2fdd629ef5f2f70800000000000000
+      internalID: 9164649221706347182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_19
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 46
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5312db08b39a960800000000000000
+      internalID: 7613682069161457132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_20
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 46
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffbb1fb0b1c2b0370800000000000000
+      internalID: 8289768033781660671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_21
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 46
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836d53a287f4185b0800000000000000
+      internalID: -5367921903326079432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_rocks_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 240
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf103af9798b484b0800000000000000
+      internalID: -5439019488598883845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      blue_rocks_0: -473222746244504232
+      blue_rocks_1: 7705056563789893048
+      blue_rocks_10: 1914586488072413891
+      blue_rocks_11: -3599381137768542491
+      blue_rocks_12: 8765410908779057049
+      blue_rocks_13: -8737105227272251204
+      blue_rocks_14: 2916922779398046301
+      blue_rocks_15: -6433949291056908772
+      blue_rocks_16: -4753713987945951937
+      blue_rocks_17: -3742471397340303058
+      blue_rocks_18: 9164649221706347182
+      blue_rocks_19: 7613682069161457132
+      blue_rocks_2: -3624255105285558456
+      blue_rocks_20: 8289768033781660671
+      blue_rocks_21: -5367921903326079432
+      blue_rocks_22: -5439019488598883845
+      blue_rocks_3: -7877688974059106139
+      blue_rocks_4: -687063402204988286
+      blue_rocks_5: -7708029266023373607
+      blue_rocks_6: -126139664303213158
+      blue_rocks_7: -2739327413118777368
+      blue_rocks_8: -6851114386342192158
+      blue_rocks_9: -3172785961205205176
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
