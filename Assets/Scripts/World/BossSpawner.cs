@@ -42,17 +42,9 @@ public class BossSpawner : MonoBehaviour
                 return;
             }
         }
-        if (Vector2.Distance(player.position, transform.position) < 7)
-        {
-            if (Input.GetButtonDown("Use") && gameController.CanActivateBossSpawn(row, column, id))
-            {
-                isActive = true;
-                animator.Play("BossSpawnerActivated");
-                bossId = gameController.ActivateBossSpawn(row, column, id);
-                Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<Enemy>().set(bossId, 7);
-            }
-        }
 
+        useBossSpawner();
+        
         if (isActive)
         {
             endGame();
@@ -64,6 +56,28 @@ public class BossSpawner : MonoBehaviour
             {
                 useSpawner();
             }
+        }
+    }
+
+    private async void useBossSpawner()
+    {
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
+        {
+            if (Vector2.Distance(player.position, transform.position) < 7)
+            {
+                if (Input.GetButtonDown("Use") && gameController.CanActivateBossSpawn(row, column, id))
+                {
+                    isActive = true;
+                    animator.Play("BossSpawnerActivated");
+                    bossId = gameController.ActivateBossSpawn(row, column, id);
+                    Instantiate(enemies[2], transform.position, Quaternion.identity).GetComponent<Enemy>().set(bossId, 7);
+                }
+            }
+        }
+        finally
+        {
+            SemaphoreManager.Semaphore.Release();
         }
     }
     

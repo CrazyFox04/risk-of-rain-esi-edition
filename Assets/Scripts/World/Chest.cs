@@ -45,15 +45,21 @@ public class Chest : MonoBehaviour
         }
     }
     
-    private void openChest()
+    private async void openChest()
     {
-        //TODO
-        //can open chest
-        if (Input.GetButtonDown("Use") && true && Vector2.Distance(player.position, transform.position) < 1 && !gameController.isChestEmpty(row, column, id))
+        await SemaphoreManager.Semaphore.WaitAsync();
+        try
         {
-            gameController.openChest(row, column, id);
-            isOpen = true;
-            animator.Play("ChestOpen");
+            if (Input.GetButtonDown("Use") && true && Vector2.Distance(player.position, transform.position) < 1 && !gameController.isChestEmpty(row, column, id))
+            {
+                gameController.openChest(row, column, id);
+                isOpen = true;
+                animator.Play("ChestOpen");
+            }
+        }
+        finally
+        {
+            SemaphoreManager.Semaphore.Release();
         }
     }
 }

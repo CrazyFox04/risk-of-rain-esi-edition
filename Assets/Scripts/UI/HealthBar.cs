@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
-public class HealthBar : MonoBehaviour
+public class wHealthBar : MonoBehaviour
 {
     public Slider slider;
     public TextMeshProUGUI text;
