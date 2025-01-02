@@ -61,17 +61,8 @@ MonoBehaviour:
   checkRadius: 0.1
   isGrounded: 1
   isFacingRight: 1
-  canShoot: 1
-  isClimbing: 0
-  isJetPacking: 0
-  attack1Range: 1
-  attack2Range: 3
-  attack3Range: 3
-  attack4Range: 3
-  attack5Range: 3
   animator: {fileID: 1068892474076559229}
   spriteRenderer: {fileID: 8668471363201641994}
-  enemies: []
   projectilePrefab: {fileID: 7412134826149268929, guid: 30f67739136a6f44b89819c0d0da882b, type: 3}
 --- !u!212 &8668471363201641994
 SpriteRenderer:
@@ -461,7 +452,7 @@ RectTransform:
   m_GameObject: {fileID: 4035143801279294256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1, y: 2.1, z: 2.1}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3678337174425196107}
