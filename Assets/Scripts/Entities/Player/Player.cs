@@ -331,7 +331,6 @@ public class Player : MonoBehaviour
     
     private void useHealthPotion()
     {
-        if (gameController.GetCharacterHealth(id) == gameController.GetCharacterMaxHealth(id)) return;
         gameController.UseHealthPotionIfAvailable();
     }
     
