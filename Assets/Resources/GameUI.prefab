@@ -3159,12 +3159,12 @@ MonoBehaviour:
   amount3: {fileID: 7037977724133379044}
   amount4: {fileID: 5543584310560224942}
   amount5: {fileID: 3258584400227307256}
-  image0: {fileID: 0}
-  image1: {fileID: 0}
-  image2: {fileID: 0}
-  image3: {fileID: 0}
-  image4: {fileID: 0}
-  image5: {fileID: 0}
+  image0: {fileID: 3300335336592026770}
+  image1: {fileID: 5001080461594525504}
+  image2: {fileID: 8181545910940529132}
+  image3: {fileID: 8406391717905901435}
+  image4: {fileID: 7510157433288672446}
+  image5: {fileID: 7714083851318741962}
 --- !u!1 &4413848780861598068
 GameObject:
   m_ObjectHideFlags: 0
